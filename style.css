@@ -1,0 +1,92 @@
+*{
+    margin: 0;
+}
+
+.flex-container{
+    display: flex;
+    justify-content: space-around;
+}
+
+
+header{
+    position: sticky;
+    top: 0;
+
+    height: 100px;
+
+    background-color: lightgray;
+}
+
+header button, #main-page{
+    position: absolute;
+}
+
+#main-page{
+    width: 10%;
+    height: 100%;
+
+    box-sizing: border-box;
+
+    padding: 30px 40px;
+}
+
+#checkout{
+    width: 2.5vw;
+    height: 2.5vw;
+
+    top: calc(50% - 1.25vw);
+    right: calc(7.5% - 1.25vw);
+
+    padding-inline: 0;
+    padding-block: 0;
+}
+
+#profile{
+    width: 3vw;
+    height: 3vw;
+
+    top: calc(50% - 1.5vw);
+    right: calc(3% - 1.5vw);
+
+    padding-inline: 0;
+    padding-block: 0;
+}
+
+
+nav{
+    position: relative;
+    top: 10%;
+
+    width: 80%;
+    height: 90%;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    background-color: aqua;
+}
+
+
+main{
+    width: 80%;
+    min-height: 2000px;
+
+    border: solid black 1px;
+    
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
+.donut-box{
+    width: calc((100% - 10%) / 4 - 2%);
+    background-color: aqua;
+}
+
+
+footer{
+    height: 100px;
+
+    background-color: gray;
+    color: white;
+}
