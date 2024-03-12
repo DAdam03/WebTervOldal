@@ -1,0 +1,43 @@
+.nyolcszog {
+    position: relative;
+    box-sizing: border-box;
+    width: var(--szelesseg); height: var(--magassag);
+    background-color: var(--border-color);
+    clip-path: polygon(
+        calc(var(--magassag)*0.15) 0px,
+        calc(var(--szelesseg) - var(--magassag)*0.15) 0%,
+        100% 15%,
+        100% 85%,
+        calc(var(--szelesseg) - var(--magassag)*0.15) 100%,
+        calc(var(--magassag)*0.15) 100%,
+        0% 85%,
+        0% 15%
+    );
+    padding: var(--border-size);
+}
+
+.nyolcszog::before {
+    --magassag2: calc(var(--magassag) - 2 * var(--border-size));
+    --szelesseg2: calc(var(--szelesseg) - 2 * var(--border-size));
+
+    content: "";
+    display: block;
+    position: absolute;
+    width: var(--szelesseg2);
+    height: var(--magassag2);
+    top: var(--border-size);
+    left: var(--border-size);
+    z-index: -1;
+    background-color: var(--background-color);
+
+    clip-path: polygon(
+        calc(var(--magassag2)*0.15) 0px,
+        calc(var(--szelesseg2) - var(--magassag2)*0.15) 0%,
+        100% 15%,
+        100% 85%,
+        calc(var(--szelesseg2) - var(--magassag2)*0.15) 100%,
+        calc(var(--magassag2)*0.15) 100%,
+        0% 85%,
+        0% 15%
+    );
+}
