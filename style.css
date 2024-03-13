@@ -84,9 +84,13 @@ main{
 }
 
 .donut-box{
-    width: calc((100% - 10%) / 4 - 2%);
+    /*width: calc((100% - 10%) / 4 - 2%);*/
+    --szelesseg: calc((100% - 10%) / 4 - 2%);
+    --magassag: 100px;
+    --background-color: lightgray;
+    --border-color: lightgray;
     min-width: 200px;
-    background-color: lightgray;
+    
     position: relative;
 }
 

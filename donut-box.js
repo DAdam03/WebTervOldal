@@ -31,6 +31,7 @@ function createDonutBoxes(){
 function DonutBox(data){
     let donutBoxDiv = document.createElement("div");
     donutBoxDiv.classList.add("donut-box");
+    donutBoxDiv.classList.add("nyolcszog");
     
     let imgContainerDiv = DonutImgContainer(data.ingredients);
     donutBoxDiv.appendChild(imgContainerDiv);
