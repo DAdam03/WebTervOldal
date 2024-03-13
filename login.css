@@ -1,0 +1,103 @@
+*{
+    margin: 0;
+    color: white;
+    font-family: "Inter", sans-serif;
+    outline: none;
+    border: none;
+}
+
+body {
+    background-color: #D9CAB3;
+}
+
+header{
+    position: fixed;
+    top: 0;
+}
+
+header button, #main-page{
+    position: absolute;
+}
+
+#main-page{
+    width: 10%;
+    height: 100%;
+
+    box-sizing: border-box;
+
+    padding: 30px 40px;
+}
+
+footer{
+    width: 100%;
+    height: 30px;
+
+    background-color: gray;
+    color: lightgray;
+}
+
+main {
+    --szelesseg: min(100%, 500px);
+    --magassag: 350px;
+    --background-color: #788585;
+    --border-size: 6px;
+    --border-color: #5A88FF;
+    margin: auto;
+}
+
+h2 {
+    margin: 10px auto 30px;
+    font-size: 86px;
+    text-align: center;
+}
+
+.login-input-wrapper {
+    width: fit-content;
+    position: relative;
+    font-size: 24px;
+    margin: 2em auto auto;
+    cursor: text;
+}
+
+
+.login-input-wrapper input {
+    font-size: 20px;
+    border-bottom: 1px solid white;
+    background-color: #788585;
+}
+
+label {
+    position: absolute;
+    top: 0px; left: 0px;
+
+    cursor: inherit;
+
+    transition: .2s;
+}
+
+input:focus ~ label, input:not(:placeholder-shown) ~ label {
+    transform: translateY(calc(-1em - 10px));
+}
+
+button[type="submit"] {
+    --szelesseg: 240px;
+    --magassag: 45px;
+    --background-color: #CDCDCD;
+    --border-size: 3px;
+    --border-color: #ffffff;
+    margin: 25px 50% 5px;
+    transform: translateX(-50%);
+    font-size: 32px;
+}
+
+#error {
+    visibility: hidden;
+    margin-top: 5px;
+    text-align: center;
+    color: red;
+}
+
+#to-signup {
+    text-align: center;
+    font-size: 16px;
+}
