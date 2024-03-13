@@ -7,9 +7,15 @@
 
     <link rel="stylesheet" href="style.css">
 
+
+    <script src="globals.js"></script>
+    <script src="donut-image-container.js"></script>
+    <script src="donut-box.js"></script>
+
+
     <title>Octo Donut</title>
 </head>
-<body>
+<body onload="createDonutBoxes()">
     <header>
         <div id="main-page">
             <a href="">
@@ -32,13 +38,8 @@
         <button id="profile"></button>
     </header>
     <main>
-        <div class="donut-box">
-            <img src="" alt="fank_kep">
-            <h2>Fánk</h2>
-            <h3>450 Ft</h3>
-            <p>összetevők</p>
-            <button class="donut-buy-button">Kosárba</button>
-            <input type="number" class="donut-amount-button" value="1">
+        <div id="donut-box-container" class="flex-container">
+
         </div>
     </main>
     <footer>
