@@ -15,12 +15,12 @@
 
     <script src="globals.js"></script>
     <script src="donut-image-container.js"></script>
-    <script src="donut-box.js"></script>
+    <script src="donut-editor.js"></script>
 
 
     <title>Octo Donut</title>
 </head>
-<body onload="createDonutBoxes()">
+<body onload="createIngredientInputs()">
     <header>
         <div id="logo">
             <a href="index.html">
@@ -35,10 +35,10 @@
     <main class="nyolcszog">
 
         <nav class="flex-container">
-            <div class="nav-button selected">
+            <div class="nav-button" onclick="location.href='index.html'">
                 Fánk kínálat
             </div>
-            <div class="nav-button" onclick="location.href='donut_maker.html'">
+            <div class="nav-button selected">
                 Fánk összeállító
             </div>
             <div class="nav-button">
@@ -47,8 +47,26 @@
         </nav>
 
         <div id="content">
-            <div id="donut-box-container" class="flex-container">
-
+            <div class="flex-container">
+                <div id="donut-ingredients">
+                    <h2>Összetevők:</h2>
+                    <div id="ingredient-container">
+    
+                    </div>
+                    <h3>Ár: 0 Ft</h3>
+                </div>
+                <div id="donut-image">
+                    <h2>Elkészült fánk:</h2>
+                    <div id="image-container">
+    
+                    </div>
+                </div>
+            </div>
+            <div id="inputs">
+                <button>Megosztás</button>
+                <label for="donut-name">Fánk neve:</label><input type="text" id="donut-name">
+                <input type="number" min="1" max="999" size="3">
+                <button>Kosárba</button>
             </div>
         </div>
     </main>

@@ -11,15 +11,25 @@ function DonutImgContainer(ingredients){
     imgContainerDiv.classList.add("donut-img-container");
     
     for(let i=0; i<ingredients.length; i++){
-        if(ingredients[i][0] in ingredientData){
-            let donutImg = document.createElement("img");
-            
-            donutImg.src = ingredientData[ingredients[i][0]][1];
-            donutImg.alt = "osszetevo";
-            
+        let donutImg = DonutImgLayer(ingredients[i][0]);
+        if(donutImg != null){
             imgContainerDiv.appendChild(donutImg);
         }
     }
-
     return imgContainerDiv;
 }
+
+
+function DonutImgLayer(ingredientId){
+    if(ingredientId in ingredientData){
+        let donutImg = document.createElement("img");
+                
+        donutImg.src = ingredientData[ingredientId][1];
+        donutImg.alt = "osszetevo";
+        donutImg.classList.add("ingredient_"+String(ingredientId));
+
+        return donutImg;
+    }
+    return null;
+}
+

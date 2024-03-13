@@ -112,30 +112,40 @@ nav{
     background-color: rgb(73, 73, 255) !important;
 }
 
-
-main{
+#content{
     background-color: white;
 
-    width: 80%;
-    min-height: 2000px;
     
+    min-height: calc(100vh - 200px - 30px);
+
+    width: 80%;
     margin-right: auto;
     margin-left: auto;
 
     z-index: -2;
 
+}
+
+main{
+    margin-bottom: 30px;
+    margin-right: auto;
+    margin-left: auto;
+
     /*ez nem működik*/
+    
     /*
     --szelesseg: 80vw;
-    --magassag: 20px;
+    --magassag: calc(100vh - 200px - 30px);
     --background-color: lightgrey;
     --border-size: 5px;
     --border-color: blue;
     */
+    
 }
 
 #donut-box-container{
     padding-top: 20px;
+    padding-bottom: 20px;
     row-gap: 20px;
 }
 
@@ -179,8 +189,47 @@ main{
 
 
 
+#donut-ingredients{
+    width: calc(50% - 20px);
+    padding: 10px;
+}
+
+#donut-image{
+    width: calc(50% - 20px);
+    padding: 10px;
+}
+
+#ingredient-container{
+    height: 400px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: lightgray;
+    overflow-y: auto;
+}
+
+#image-container{
+    height: 400px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: lightgray;
+}
+
+.ingredient-input-div{
+    height: 50px;
+}
+
+.ingredient-input-div img{
+    height: 40px;
+}
+
+
+
 footer{
     height: 100px;
+    width: 100%;
+
+    position: relative;
+    bottom: 0;
 
     background-color: gray;
     color: white;
