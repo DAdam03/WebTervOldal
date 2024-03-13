@@ -73,6 +73,9 @@ function DonutBox(data){
     let amountInput = document.createElement("input");
     amountInput.type = "number";
     amountInput.value = "1";
+    amountInput.max = 999;
+    amountInput.min = 1;
+    amountInput.size = 3;
     amountInput.classList.add("donut-amount-button");
     donutBoxDiv.appendChild(amountInput);
 

@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="nyolcszog.css">
 
+    <!--betűtípus betöltése-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
     <script src="globals.js"></script>
     <script src="donut-image-container.js"></script>
     <script src="donut-box.js"></script>
@@ -16,6 +21,43 @@
     <title>Octo Donut</title>
 </head>
 <body onload="createDonutBoxes()">
+    <header>
+        <div id="logo">
+            <a href="">
+                Octo<br>
+                Donut
+            </a>
+        </div>
+        <button id="checkout"></button>
+        <button id="profile"></button>
+    </header>
+
+    <div id="main" class="nyolcszog">
+
+        <nav class="flex-container">
+            <div class="nav-button">
+                Fánk kínálat
+            </div>
+            <div class="nav-button">
+                Fánk összeállító
+            </div>
+            <div class="nav-button">
+                Felhasználók fánkjai
+            </div>
+        </nav>
+
+        <main>
+            <div id="donut-box-container" class="flex-container">
+
+            </div>
+        </main>
+
+        <footer>
+            Ez itt a footer
+        </footer>
+    </div>
+
+    <!--
     <header>
         <div id="main-page">
             <a href="">
@@ -45,5 +87,6 @@
     <footer>
         Ez itt a footer
     </footer>
+    -->
 </body>
 </html>
