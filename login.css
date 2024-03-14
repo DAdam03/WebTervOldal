@@ -37,11 +37,12 @@ footer{
 }
 
 main {
-    --szelesseg: min(100%, 500px);
-    --magassag: 350px;
+    --cut-length: 50px;
     --background-color: #788585;
     --border-size: 6px;
     --border-color: #5A88FF;
+
+    width: min(100%, 500px); height: 350px;
     margin: auto;
 }
 
@@ -80,12 +81,13 @@ input:focus ~ label, input:not(:placeholder-shown) ~ label {
 }
 
 button[type="submit"] {
-    --szelesseg: 240px;
-    --magassag: 45px;
+    --cut-length: 15px;
     --background-color: #CDCDCD;
     --border-size: 3px;
     --border-color: #ffffff;
+
     margin: 25px 50% 5px;
+    padding: 5px 15px;
     transform: translateX(-50%);
     font-size: 32px;
 }
