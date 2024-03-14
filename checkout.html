@@ -48,7 +48,30 @@
     
             <div id="content">
                 <h2>Kosár:</h2>
-                
+                <div id="order-container">
+
+                </div>
+                <h2 id="price">Fizetendő összeg: 0 Ft</h2>
+                <form>
+                    <label for="name">Név:</label><br>
+                    <input type="text" id="name" name="name"><br>
+
+                    <label for="e-mail">E-mail cím:</label><br>
+                    <input type="email" id="e-mail" name="e-mail"><br>
+
+                    <label for="address">Szállítási cím:</label><br>
+                    <input type="text" id="address" name="address"><br>
+
+                    <p>Fizető eszköz:</p>
+                    <input type="radio" id="cash" name="payment" checked>
+                    <label for="cash">Készpénz</label><br>
+                    
+                    <input type="radio" id="card" name="payment">
+                    <label for="card">Bankkártya</label><br>
+                    
+
+                    <input type="submit" value="Rendelés küldése">
+                </form>
             </div>
         </main>
         <footer>

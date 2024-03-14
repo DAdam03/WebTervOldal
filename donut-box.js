@@ -16,7 +16,6 @@ function createDonutBoxes(){
     let testData = {
         "ingredients":[[0,1],[1,1],[2,1],[3,1]],
         "name":"TesztFánk",
-        "price":400,
         "rating":-1,
         "user":""
     }
@@ -41,7 +40,8 @@ function DonutBox(data){
     donutBoxDiv.appendChild(nameTag);
 
     let priceTag = document.createElement("h3");
-    nameTag.innerText = String(data.price)+" Ft";
+    let price = getPriceByIngredients(data.ingredients);
+    priceTag.innerText = String(price)+" Ft";
     donutBoxDiv.appendChild(priceTag);
 
     let ingredientsP = document.createElement("p");
@@ -83,27 +83,65 @@ function DonutBox(data){
 }
 
 function createCheckoutDonutBoxes(){
-    let donutBoxContainer = document.getElementById("content");
-    
-    let testData = {
-        "ingredients":[[0,1],[1,1],[2,1],[3,1]],
-        "name":"TesztFánk",
-        "price":400,
-        "rating":-1,
-        "user":""
+    let donutBoxContainer = document.getElementById("order-container");
+
+    for(let i=0; i<checkoutData.length; i++){
+        let donutBox = CheckoutDonutBox(checkoutData[i],i);
+        donutBoxContainer.appendChild(donutBox);
+        currentPrice += donutBox.price*checkoutData[donutBox.index]["amount"];
     }
 
-    for(let i=0; i<5; i++){
-        let donutBox = CheckoutDonutBox(testData);
-        donutBoxContainer.appendChild(donutBox);
-    }
+    let priceSum = document.getElementById("price");
+    priceSum.innerText = "Fizetendő összeg: "+String(currentPrice)+" Ft";
 }
 
 
+function CheckoutDonutAmountChanged(){
+    let donutBoxDiv = event.target.parentElement;
+    let oldAmount = checkoutData[donutBoxDiv.index]["amount"];
+    let newAmount = event.target.value;
+    checkoutData[donutBoxDiv.index]["amount"] = newAmount;
+    if(newAmount > event.target.max){
+        newAmount = event.target.max;
+    }else if(newAmount < event.target.min){
+        newAmount = event.target.min;
+    }
+    let priceTag = donutBoxDiv.getElementsByTagName("h3")[0];
+    priceTag.innerText = String(newAmount*donutBoxDiv.price)+" Ft";
 
-function CheckoutDonutBox(data){
+    currentPrice += (newAmount-oldAmount)*donutBoxDiv.price;
+    
+    let priceSum = document.getElementById("price");
+    priceSum.innerText = "Fizetendő összeg: "+String(currentPrice)+" Ft";
+}
+
+function CheckoutDonutDeleted(){
+    let donutBoxDiv = event.target.parentElement;
+    let amount = checkoutData[donutBoxDiv.index]["amount"];
+    
+    currentPrice -= amount*donutBoxDiv.price;
+
+    let priceSum = document.getElementById("price");
+    priceSum.innerText = "Fizetendő összeg: "+String(currentPrice)+" Ft";
+
+    let donutBoxContainer = document.getElementById("order-container");
+    for(let i=0; i<donutBoxContainer.childNodes.length; i++){
+        if(donutBoxContainer.childNodes[i].index > donutBoxDiv.index){
+            donutBoxContainer.childNodes[i].index -= 1;
+        }
+    }
+
+    checkoutData.splice(donutBoxDiv.index,1);
+
+    donutBoxDiv.remove();
+}
+
+
+function CheckoutDonutBox(data,index){
     let donutBoxDiv = document.createElement("div");
     donutBoxDiv.classList.add("checkout-donut-box");
+
+    donutBoxDiv.index = index;
 
     let imgContainerDiv = DonutImgContainer(data.ingredients);
     donutBoxDiv.appendChild(imgContainerDiv);
@@ -113,7 +151,9 @@ function CheckoutDonutBox(data){
     donutBoxDiv.appendChild(nameTag);
 
     let priceTag = document.createElement("h3");
-    nameTag.innerText = String(data.price)+" Ft";
+    let price = getPriceByIngredients(data.ingredients);
+    donutBoxDiv.price = price;
+    priceTag.innerText = String(price*data.amount)+" Ft";
     donutBoxDiv.appendChild(priceTag);
 
     let ingredientsP = document.createElement("p");
@@ -139,15 +179,21 @@ function CheckoutDonutBox(data){
 
     let amountInput = document.createElement("input");
     amountInput.type = "number";
-    amountInput.value = "1";
+    amountInput.value = String(data.amount);
     amountInput.max = 999;
     amountInput.min = 1;
     amountInput.size = 3;
     amountInput.classList.add("donut-amount-button");
+
+    amountInput.addEventListener("change",CheckoutDonutAmountChanged);
+
     donutBoxDiv.appendChild(amountInput);
 
     let deleteInput = document.createElement("button");
     deleteInput.innerText = "Törlés";
+
+    deleteInput.addEventListener("click", CheckoutDonutDeleted);
+
     donutBoxDiv.appendChild(deleteInput);
 
 
