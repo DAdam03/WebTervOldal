@@ -65,9 +65,8 @@ function ingredientCheckChanged(){
         currentPrice -= change;
         
         let imgLayers = imgContainerDiv.getElementsByClassName("ingredient_"+String(ingredientId));
-        while(imgLayers.length > 0){
-            imgLayers[imgLayers.length-1].remove();
-            imgLayers.pop();
+        for(let i=0; i<imgLayers.length; i++){
+            imgLayers[imgLayers.length-i-1].remove();
         }
     }else{
         let inputDiv = event.target.parentElement;
