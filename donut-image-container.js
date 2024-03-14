@@ -27,6 +27,7 @@ function DonutImgLayer(ingredientId){
         donutImg.src = ingredientData[ingredientId][1];
         donutImg.alt = "osszetevo";
         donutImg.classList.add("ingredient_"+String(ingredientId));
+        donutImg.style.zIndex = ingredientData[ingredientId][3];
 
         return donutImg;
     }
