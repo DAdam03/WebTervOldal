@@ -1,4 +1,15 @@
 /*
+    {
+        "ingredients":[[0,1], [1,1], ...],
+        "name":"Fánk neve",
+        "amount":1,
+    }
+*/
+var checkoutData = [
+
+]
+
+/*
 összetevőId:[név, kép elérési útvonal, ár, z-index]
 */
 var ingredientData = {

@@ -260,6 +260,25 @@ main{
     display: block;
 }
 
+.checkout-donut-box{
+    display: flex;
+    height: 100px;
+    box-sizing: border-box;
+    padding: 20px 2%;
+    justify-content: space-between;
+}
+
+.checkout-donut-box .donut-img-container{
+    width: 20%;
+    height: 100%;
+    margin: 0;
+    position: relative;
+}
+
+.checkout-donut-box .donut-img-container img{
+    height: 100%;
+    width: auto;
+}
 
 
 footer{
