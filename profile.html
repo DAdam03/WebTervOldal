@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Octo donut</title>
+
+    <link rel="stylesheet" href="nyolcszog.css">
+    <link rel="stylesheet" href="profile.css">
+
+    <script src="https://kit.fontawesome.com/4455646216.js" crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div id="logo">
+            <a href="index.html">
+                Octo<br>
+                Donut
+            </a>
+        </div>
+        <button id="checkout" onclick="location.href='checkout.html'"><i class="fa-solid fa-basket-shopping"></i></button>
+        <button id="profile" onclick="location.href='login.html'"><i class="fa-solid fa-user fa-lg"></i></button>
+    </header>
+
+    <h1>Saját adataim</h1>
+
+    <main class="nyolcszog">
+        <div id="profile-grid">
+            <label for="username">Felhasználó név: </label><input type="text" value="Sanyí" id="username" name="username">
+            <label for="valamiMás">más adat: </label><input type="text" value="adasd" id="valamiMás" name="valamiMás">
+        </div>
+        
+        <button id="logout" class="nyolcszog">Kijelentkezés</button>
+        <button id="delete" class="nyolcszog">Profil törlése</button>
+    </main>
+
+    <footer>
+        <p>Octo Donut</p>
+        <p>Készítette: Domokos Ádám, Nógrádi Adrián</p>
+    </footer>
+</body>
+</html>
