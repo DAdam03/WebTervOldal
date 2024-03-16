@@ -20,7 +20,7 @@
 
     <title>Octo Donut</title>
 </head>
-<body onload="createDonutBoxes()">
+<body onload="createUserDonutBoxes()">
     <header>
         <div id="logo">
             <a href="index.html">
@@ -35,13 +35,13 @@
     <main class="nyolcszog">
 
         <nav class="flex-container">
-            <div class="nav-button selected">
+            <div class="nav-button" onclick="location.href='index.html'">
                 Fánk kínálat
             </div>
             <div class="nav-button" onclick="location.href='donut_maker.html'">
                 Fánk összeállító
             </div>
-            <div class="nav-button" onclick="location.href='user_donuts.html'">
+            <div class="nav-button selected">
                 Felhasználók fánkjai
             </div>
         </nav>

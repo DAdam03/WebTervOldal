@@ -5,6 +5,11 @@
         "amount":1,
     }
 */
+
+var currentUser = {
+    "name":"TesztFelhasználó"
+}
+
 var checkoutData = [
     {
         "ingredients":[[0,1],[1,1],[2,1],[3,2]],

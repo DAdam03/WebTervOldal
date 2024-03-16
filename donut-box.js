@@ -26,6 +26,31 @@ function createDonutBoxes(){
     }
 }
 
+function createUserDonutBoxes(){
+    let donutBoxContainer = document.getElementById("donut-box-container");
+    
+    let testData = {
+        "ingredients":[[0,1],[1,1],[2,1],[3,1]],
+        "name":"TesztFánk",
+        "rating":3.5,
+        "user":"TesztFelhasználó"
+    }
+
+    for(let i=0; i<5; i++){
+        let donutBox = DonutBox(testData);
+        donutBoxContainer.appendChild(donutBox);
+    }
+}
+
+function donutEditClicked(){
+    location.href = "donut_maker.html";
+}
+
+function donutDeleteClicked(){
+    let donutBoxDiv = event.target.parentElement;
+    donutBoxDiv.remove();
+}
+
 
 function DonutBox(data){
     let donutBoxDiv = document.createElement("div");
@@ -65,6 +90,17 @@ function DonutBox(data){
     ingredientsP.innerText = ingredientsText;
     donutBoxDiv.appendChild(ingredientsP);
 
+
+    if(data.rating != -1){
+        let ratingDiv = document.createElement("div");
+        ratingDiv.classList.add("rating-container");
+        donutBoxDiv.appendChild(ratingDiv);
+
+        let userNameTag = document.createElement("h4");
+        userNameTag.innerText = data.user;
+        donutBoxDiv.appendChild(userNameTag);
+    }
+
     let buyButton = document.createElement("button");
     buyButton.classList.add("buy-button");
     buyButton.innerText = "Kosárba";
@@ -78,6 +114,24 @@ function DonutBox(data){
     amountInput.size = 3;
     amountInput.classList.add("donut-amount-button");
     donutBoxDiv.appendChild(amountInput);
+
+
+    let editButton = document.createElement("button");
+    editButton.classList.add("edit-button");
+    editButton.title = "Fánk szerkesztése";
+    editButton.addEventListener("click", donutEditClicked);
+    donutBoxDiv.appendChild(editButton);
+
+    if(data.user == currentUser.name){
+        let lnbreak = document.createElement("br");
+        donutBoxDiv.appendChild(lnbreak);
+
+        let deleteButton = document.createElement("button");
+        deleteButton.innerText = "Fánk törlése";
+        deleteButton.classList.add("delete-button");
+        deleteButton.addEventListener("click", donutDeleteClicked);
+        donutBoxDiv.appendChild(deleteButton);
+    }
 
     return donutBoxDiv;
 }
