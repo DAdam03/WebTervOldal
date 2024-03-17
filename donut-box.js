@@ -103,6 +103,8 @@ function DonutBox(data){
 
     let buyButton = document.createElement("button");
     buyButton.classList.add("buy-button");
+    /*adrian*/
+    buyButton.classList.add("nyolcszog");
     buyButton.innerText = "Kosárba";
     donutBoxDiv.appendChild(buyButton);
 
@@ -119,6 +121,8 @@ function DonutBox(data){
     let editButton = document.createElement("button");
     editButton.classList.add("edit-button");
     editButton.title = "Fánk szerkesztése";
+    /*adrian*/
+    deleteButton.classList.add("nyolcszog");
     editButton.addEventListener("click", donutEditClicked);
     donutBoxDiv.appendChild(editButton);
 
