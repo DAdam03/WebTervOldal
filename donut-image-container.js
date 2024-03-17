@@ -9,6 +9,8 @@ ingredients felépítése:
 function DonutImgContainer(ingredients){
     let imgContainerDiv = document.createElement("div");
     imgContainerDiv.classList.add("donut-img-container");
+    /*adrian*/
+    imgContainerDiv.classList.add("nyolcszog");
     
     for(let i=0; i<ingredients.length; i++){
         let donutImg = DonutImgLayer(ingredients[i][0]);
