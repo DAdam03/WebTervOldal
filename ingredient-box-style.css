@@ -1,0 +1,43 @@
+
+
+.ingredient-input-div{
+    height: 50px;
+
+    display: flex;
+    justify-content: space-between;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    line-height: 50px;
+    vertical-align: center;
+
+}
+
+.ingredient-input-div img{
+    height: 60px;
+    position: relative;
+    top: -7.5px;
+
+    background-color: white;
+    border-radius: 20%;
+}
+
+.ingredient-input-div label{
+    width: 35%;
+}
+
+.price-span{
+    width: 20%;
+    text-align: right;
+    overflow: hidden;
+}
+
+.donut-amount-button{
+    width: 4ch;    height: 50px;
+
+    background-color: #00000000;
+    border-bottom: 1px solid white;
+
+    margin-left: 2px;
+}

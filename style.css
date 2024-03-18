@@ -1,11 +1,10 @@
 *{
     margin: 0;
+    color: white;
     font-family: "Inter", sans-serif;
-}
-
-a{
-    color: inherit;
-    text-decoration: none;
+    font-size: 24px;
+    outline: none;
+    border: none;
 }
 
 .flex-container{
@@ -15,9 +14,40 @@ a{
 }
 
 body{
-    background-color: rgb(179, 179, 179);
+    background-color: #D9CAB3;
 }
 
+
+#checkout{
+    width: 2.5vw;
+    height: 2.5vw;
+
+    top: calc(30px + 0.25vw);
+    right: calc(6.5% - 1.25vw);
+
+    padding-inline: 0;
+    padding-block: 0;
+
+    border-radius: 50%;
+
+    background-color: #5A88FF;
+}
+
+#profile{
+    width: 3vw;
+    height: 3vw;
+
+    top: 30px;
+    right: calc(3% - 1.5vw);
+
+    padding-inline: 0;
+    padding-block: 0;
+
+    border-radius: 50%;
+
+    background-color: #5A88FF;
+
+}
 
 /*
 header{
@@ -55,27 +85,6 @@ header button{
 }
 */
 
-#checkout{
-    width: 2.5vw;
-    height: 2.5vw;
-
-    top: 30px;
-    right: calc(7.5% - 1.25vw);
-
-    padding-inline: 0;
-    padding-block: 0;
-}
-
-#profile{
-    width: 3vw;
-    height: 3vw;
-
-    top: 30px;
-    right: calc(3% - 1.5vw);
-
-    padding-inline: 0;
-    padding-block: 0;
-}
 
 
 nav{
@@ -83,7 +92,6 @@ nav{
     top: 0;
     z-index: 10;
 
-    width: 80%;
     height: 100px;
 
     margin-left: auto;
@@ -113,78 +121,25 @@ nav{
 }
 
 #content{
-    background-color: white;
-
-    
     min-height: calc(100vh - 200px - 30px);
-
-    width: 80%;
-    margin-right: auto;
-    margin-left: auto;
-
+    margin-top: 20px;
     z-index: -2;
-
 }
 
 main{
-    margin-bottom: 30px;
+    /*margin-bottom: 30px;
     margin-right: auto;
-    margin-left: auto;
+    margin-left: auto;*/
 
-    /*ez nem működik*/
-    
-    /*
-    --szelesseg: 80vw;
-    --magassag: calc(100vh - 200px - 30px);
-    --background-color: lightgrey;
-    --border-size: 5px;
-    --border-color: blue;
-    */
-    
-}
+    --cut-length: 50px;
+    --background-color: #788585;
+    --border-size: 6px;
+    --border-color: #5A88FF;
 
-#donut-box-container{
-    padding-top: 20px;
-    padding-bottom: 20px;
-    row-gap: 20px;
-}
-
-.donut-box{
-    /*width: calc((100% - 10%) / 4 - 2%);*/
-    --szelesseg: max(18vw, 200px);
-    --magassag: max(calc(max(18vw, 200px) * 1.5), 320px);
-    --background-color: lightgray;
-    --border-color: lightgray;
-    min-width: 200px;
-    
-    position: relative;
-
-    text-align: center;
-}
-
-.donut-img-container{
-    width: 100%;
-    margin: 5% 0% 100%;
-}
-
-.donut-img-container img{
-    position: absolute;
-    width: 100%;
-    display: block;
-}
-
-.donut-box p{
-    margin: 5px 10px;
-    font-style: italic;
-}
-
-
-.buy-button{
-    margin-right: 2px;
-}
-
-.donut-amount-button{
-    margin-left: 2px;
+    width: min(100%, 1400px);
+    padding: 0px 50px 20px !important;
+    margin: auto;
+    margin-bottom: 20px;
 }
 
 
@@ -199,55 +154,31 @@ main{
     padding: 10px;
 }
 
+
 #ingredient-container{
     height: 400px;
     margin-top: 10px;
     margin-bottom: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-    background-color: lightgray;
+    padding: 20px;
+
+    --cut-length: 20px;
+    --background-color: #788585;
+    --border-size: 6px;
+    --border-color: #5A88FF;
+
     overflow-y: auto;
 }
 
 #image-container{
+    position: relative;
     height: 400px;
     margin-top: 10px;
     margin-bottom: 10px;
-    background-color: lightgray;
-}
 
-.ingredient-input-div{
-    height: 30px;
-
-    display: flex;
-    justify-content: space-between;
-
-    padding-top: 10px;
-    padding-bottom: 10px;
-
-    line-height: 30px;
-    vertical-align: center;
-
-}
-
-.ingredient-input-div img{
-    height: 45px;
-    position: relative;
-    top: -7.5px;
-}
-
-.ingredient-input-div label{
-    width: 35%;
-}
-
-.price-span{
-    width: 20%;
-    text-align: right;
-    overflow: hidden;
-}
-
-#image-container{
-    position: relative;
+    --cut-length: 20px;
+    --background-color: #788585;
+    --border-size: 6px;
+    --border-color: #5A88FF;
 }
 
 

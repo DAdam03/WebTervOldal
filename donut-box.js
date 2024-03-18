@@ -117,10 +117,18 @@ function DonutBox(data){
     amountInput.classList.add("donut-amount-button");
     donutBoxDiv.appendChild(amountInput);
 
+    let lnbreak = document.createElement("br");
+    donutBoxDiv.appendChild(lnbreak);
 
     let editButton = document.createElement("button");
     editButton.classList.add("edit-button");
     editButton.title = "Fánk szerkesztése";
+
+    let editIcon = document.createElement("i");
+    editIcon.classList.add("fa-solid");
+    editIcon.classList.add("fa-pen");
+    editButton.appendChild(editIcon);
+    
     editButton.addEventListener("click", donutEditClicked);
     donutBoxDiv.appendChild(editButton);
 

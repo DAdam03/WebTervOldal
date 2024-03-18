@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="ingredient-box-style.css">
     <link rel="stylesheet" href="nyolcszog.css">
 
     <!--betűtípus betöltése-->
@@ -17,6 +18,7 @@
     <script src="donut-image-container.js"></script>
     <script src="donut-editor.js"></script>
 
+    <script src="https://kit.fontawesome.com/4455646216.js" crossorigin="anonymous"></script>
 
     <title>Octo Donut</title>
 </head>
@@ -28,8 +30,8 @@
                 Donut
             </a>
         </div>
-        <button id="checkout" onclick="location.href='checkout.html'"></button>
-        <button id="profile" onclick="location.href='login.html'"></button>
+        <button id="checkout" onclick="location.href='checkout.html'"><i class="fa-solid fa-basket-shopping"></i></button>
+        <button id="profile" onclick="location.href='login.html'"><i class="fa-solid fa-user fa-lg"></i></button>
     </header>
 
     <main class="nyolcszog">
@@ -50,14 +52,14 @@
             <div class="flex-container">
                 <div id="donut-ingredients">
                     <h2>Összetevők:</h2>
-                    <div id="ingredient-container">
+                    <div id="ingredient-container" class="nyolcszog">
     
                     </div>
                     <h3>Ár: 0 Ft</h3>
                 </div>
                 <div id="donut-image">
                     <h2>Elkészült fánk:</h2>
-                    <div id="image-container">
+                    <div id="image-container" class="nyolcszog">
     
                     </div>
                 </div>

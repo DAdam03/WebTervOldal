@@ -94,6 +94,7 @@ function IngredientInput(ingredientId){
 
     let ingredientImg = DonutImgLayer(ingredientId);
     if(ingredientImg != null){
+        //ingredientImg.classList.add("nyolcszog");
         inputDiv.appendChild(ingredientImg);
     }
 
