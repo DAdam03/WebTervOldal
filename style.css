@@ -15,6 +15,7 @@
 
 body{
     background-color: #D9CAB3;
+    min-height: 100vh;
 }
 
 
@@ -92,12 +93,11 @@ nav{
     top: 0;
     z-index: 10;
 
-    height: 100px;
+    min-height: 100px;
 
     margin-left: auto;
     margin-right: auto;
 
-    background-color: blue;
 }
 
 .nav-button{
@@ -106,6 +106,7 @@ nav{
     font-size: 30px;
     font-weight: bold;
     width: 32%;
+    min-width: 240px;
     text-align: center;
     cursor: pointer;
     user-select: none;
@@ -139,7 +140,6 @@ main{
     width: min(100%, 1400px);
     padding: 0px 50px 20px !important;
     margin: auto;
-    margin-bottom: 20px;
 }
 
 
@@ -150,7 +150,7 @@ main{
 }
 
 #donut-image{
-    width: calc(40% - 20px);
+    width: 410px;
     padding: 10px;
 }
 
@@ -172,8 +172,10 @@ main{
 #image-container{
     position: relative;
     height: 400px;
+    width: 400px;
     margin-top: 10px;
     margin-bottom: 10px;
+    
 
     --cut-length: 20px;
     --background-color: #788585;
@@ -184,41 +186,79 @@ main{
 
 #image-container img{
     position: absolute;
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 400px;
     margin-left: auto;
     margin-right: auto;
     display: block;
 }
 
-.checkout-donut-box{
-    display: flex;
-    height: 100px;
-    box-sizing: border-box;
-    padding: 20px 2%;
-    justify-content: space-between;
+
+#inputs button{
+    --cut-length: 8px;
+    --background-color: #CDCDCD;
+    --border-color: white;
+    --border-size: 3px;
+
+    padding: 3px 12px;
+    margin-right: 20px;
+
+    font-size: 26px;
+    font-weight: 700;
 }
 
-.checkout-donut-box .donut-img-container{
-    width: 10%;
-    height: 100%;
-    margin: 0;
-    position: relative;
+#checkout-form{
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.checkout-donut-box .donut-img-container img{
-    height: 100%;
-    width: auto;
+#checkout-form .login-input-wrapper{
+    margin: 2em 0;
 }
 
+
+
+input[type="number"]{
+    width: 4ch;    height: 30px;
+
+    background-color: #00000000;
+    border-bottom: 1px solid white;
+
+    margin-left: 2px;
+}
+
+#order-send-button{
+    --cut-length: 8px;
+    --background-color: #CDCDCD;
+    --border-color: #5A88FF;
+    --border-size: 5px;
+
+    margin-top: 20px;
+
+    font-size: 26px;
+    font-weight: 700;
+}
+
+
+#name-input{
+    display: inline-block;
+}
 
 footer{
     height: 100px;
+    margin-top: 20px;
+
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
     width: 100%;
+    padding: 3px 5px;
 
-    position: relative;
-    bottom: 0;
+    background-color: #788585;
 
-    background-color: gray;
-    color: white;
+    color: #cdcdcd;
+}
+
+footer p {
+    font-size: 16px;
 }

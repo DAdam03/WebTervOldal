@@ -255,7 +255,21 @@ function CheckoutDonutBox(data,index){
 
     donutBoxDiv.appendChild(amountInput);
 
+    let editButton = document.createElement("button");
+    editButton.classList.add("edit-button");
+    editButton.title = "Fánk szerkesztése";
+
+    let editIcon = document.createElement("i");
+    editIcon.classList.add("fa-solid");
+    editIcon.classList.add("fa-pen");
+    editButton.appendChild(editIcon);
+    
+    editButton.addEventListener("click", donutEditClicked);
+    donutBoxDiv.appendChild(editButton);
+
     let deleteInput = document.createElement("button");
+    deleteInput.classList.add("delete-button");
+    deleteInput.classList.add("nyolcszog");
     deleteInput.innerText = "Törlés";
 
     deleteInput.addEventListener("click", CheckoutDonutDeleted);

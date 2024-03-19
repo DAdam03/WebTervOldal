@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="text_input_style.css">
     <link rel="stylesheet" href="ingredient-box-style.css">
     <link rel="stylesheet" href="nyolcszog.css">
 
@@ -65,10 +66,13 @@
                 </div>
             </div>
             <div id="inputs">
-                <button>Megosztás</button>
-                <label for="donut-name">Fánk neve:</label><input type="text" id="donut-name" value="Fánk">
+                <button id="share-button" class="nyolcszog">Megosztás</button>
+                <div id="name-input" class="login-input-wrapper">
+                    <input type="text" id="donut-name" placeholder="">
+                    <label for="donut-name">Fánk neve:</label>
+                </div>
                 <input type="number" min="1" max="999" size="3" value="1">
-                <button onclick="location.href='checkout.html'">Kosárba</button>
+                <button id="buy-button" class="nyolcszog" onclick="location.href='checkout.html'">Kosárba</button>
             </div>
         </div>
     </main>

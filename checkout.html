@@ -6,6 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="text_input_style.css">
+        <link rel="stylesheet" href="donut_box_style.css">
         <link rel="stylesheet" href="nyolcszog.css">
     
         <!--betűtípus betöltése-->
@@ -53,15 +55,22 @@
 
                 </div>
                 <h2 id="price">Fizetendő összeg: 0 Ft</h2>
-                <form>
-                    <label for="name">Név:</label><br>
-                    <input type="text" id="name" name="name"><br>
+                <form id="checkout-form">
+                    <div class="login-input-wrapper">
+                        <input type="text" id="name" name="name" placeholder="">
+                        <label for="name">Név:</label>
+                    </div>
 
-                    <label for="e-mail">E-mail cím:</label><br>
-                    <input type="email" id="e-mail" name="e-mail"><br>
+                    <div class="login-input-wrapper">
+                        <input type="email" id="e-mail" name="e-mail" placeholder="">
+                        <label for="e-mail">E-mail cím:</label>
+                    </div>
 
-                    <label for="address">Szállítási cím:</label><br>
-                    <input type="text" id="address" name="address"><br>
+                    <div class="login-input-wrapper">
+                        <input type="text" id="address" name="address" placeholder="">
+                        <label for="address">Szállítási cím:</label>
+                    </div>
+                    
 
                     <p>Fizető eszköz:</p>
                     <input type="radio" id="cash" name="payment" checked>
@@ -71,7 +80,7 @@
                     <label for="card">Bankkártya</label><br>
                     
 
-                    <input type="submit" value="Rendelés küldése">
+                    <input type="submit" value="Rendelés küldése" id="order-send-button" class="nyolcszog">
                 </form>
             </div>
         </main>

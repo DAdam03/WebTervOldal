@@ -89,14 +89,14 @@
 }
 
 .delete-button{
-    --cut-length: 8px;
+    --cut-length: 6px;
     --background-color: #CDCDCD;
     --border-color: red;
     --border-size: 2px;
 
     color: red;
 
-    padding: 3px 8px;
+    padding: 3px 12px;
     margin-top: 10px;
 
     font-size: 20px;
@@ -127,4 +127,38 @@
 }
 
 
+
+
+.checkout-donut-box{
+    display: flex;
+    height: 140px;
+    box-sizing: border-box;
+    padding: 20px 2%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.checkout-donut-box .donut-img-container{
+    width: 120px;
+    height: 120px;
+    margin: 0;
+    position: relative;
+
+    --cut-length: 10px;
+    --background-color: #cdcdcd;
+    --border-color: white;
+    --border-size: 2px;
+}
+
+.checkout-donut-box .donut-img-container img{
+    width: 120px;
+}
+
+.checkout-donut-box p{
+    margin: 5px 10px;
+
+    font-size: 16px;
+    font-weight: 200;
+    font-style: italic;
+}
 

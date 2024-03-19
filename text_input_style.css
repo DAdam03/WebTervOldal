@@ -1,0 +1,27 @@
+.login-input-wrapper {
+    width: fit-content;
+    position: relative;
+    font-size: 24px;
+    margin: 2em auto auto;
+    cursor: text;
+}
+
+
+.login-input-wrapper input {
+    font-size: 20px;
+    border-bottom: 1px solid white;
+    background-color: #788585;
+}
+
+.login-input-wrapper label {
+    position: absolute;
+    top: 0px; left: 0px;
+
+    cursor: inherit;
+
+    transition: .2s;
+}
+
+.login-input-wrapper input:focus ~ label, .login-input-wrapper input:not(:placeholder-shown) ~ label {
+    transform: translateY(calc(-1em - 10px));
+}
