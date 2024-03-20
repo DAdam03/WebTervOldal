@@ -7,7 +7,8 @@
 */
 
 var currentUser = {
-    "name":"TesztFelhasználó"
+    "name":"TesztFelhasználó",
+    "admin":true //Nem biztonságos, de most ez is jó lesz
 }
 
 var checkoutData = [

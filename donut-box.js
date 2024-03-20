@@ -51,6 +51,52 @@ function donutDeleteClicked(){
     donutBoxDiv.remove();
 }
 
+function starMouseEntered(){
+    let ratingDiv = event.target.parentElement;
+    let starElements = ratingDiv.childNodes;
+    for(let i=0; i<starElements.length; i++){
+        if(starElements[i].classList.contains("fa-star")){
+            if(starElements[i].index <= event.target.index){
+                if(!(starElements[i].classList.contains("star-hovered"))){
+                    starElements[i].classList.add("star-hovered");
+                }
+            }
+        }
+    }
+}
+
+function starMouseExited(){
+    let ratingDiv = event.target.parentElement;
+    let starElements = ratingDiv.childNodes;
+    for(let i=0; i<starElements.length; i++){
+        if(starElements[i].classList.contains("fa-star")){
+            if(starElements[i].index <= event.target.index){
+                if(starElements[i].classList.contains("star-hovered")){
+                    starElements[i].classList.remove("star-hovered");
+                }
+            }
+        }
+    }
+}
+
+function starClicked(){
+    let ratingDiv = event.target.parentElement;
+    let starElements = ratingDiv.childNodes;
+    for(let i=0; i<starElements.length; i++){
+        if(starElements[i].classList.contains("fa-star")){
+            if(starElements[i].index <= event.target.index){
+                if(!starElements[i].classList.contains("star-selected")){
+                    starElements[i].classList.add("star-selected");
+                }
+            }else{
+                if(starElements[i].classList.contains("star-selected")){
+                    starElements[i].classList.remove("star-selected");
+                }
+            }
+        }
+    }
+}
+
 
 function DonutBox(data){
     let donutBoxDiv = document.createElement("div");
@@ -96,6 +142,22 @@ function DonutBox(data){
         ratingDiv.classList.add("rating-container");
         donutBoxDiv.appendChild(ratingDiv);
 
+        for(let i=0; i<5; i++){
+            let starIcon = document.createElement("i");
+            starIcon.classList.add("fa-solid");
+            starIcon.classList.add("fa-star");
+            starIcon.index = i;
+            starIcon.addEventListener("mouseenter",starMouseEntered);
+            starIcon.addEventListener("mouseleave",starMouseExited);
+            starIcon.addEventListener("click",starClicked);
+            ratingDiv.appendChild(starIcon);
+        }
+        let ratingSpan = document.createElement("span");
+            ratingSpan.classList.add("rating-span");
+            ratingSpan.innerText = String(data.rating);
+            ratingDiv.appendChild(ratingSpan);
+
+        
         let userNameTag = document.createElement("h4");
         userNameTag.innerText = data.user;
         donutBoxDiv.appendChild(userNameTag);
@@ -132,7 +194,7 @@ function DonutBox(data){
     editButton.addEventListener("click", donutEditClicked);
     donutBoxDiv.appendChild(editButton);
 
-    if(data.user == currentUser.name){
+    if(data.user == currentUser.name || currentUser.admin){
         let lnbreak = document.createElement("br");
         donutBoxDiv.appendChild(lnbreak);
 

@@ -74,6 +74,27 @@
     font-style: italic;
 }
 
+.rating-container *{
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+.rating-span{
+    margin-left: 5px;
+}
+
+.fa-star{
+    color: white;
+}
+
+.star-hovered{
+    color: #ffc966;
+}
+
+.star-selected{
+    color: orange !important;
+}
+
 
 .buy-button{
     --cut-length: 8px;
