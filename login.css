@@ -57,8 +57,9 @@ main {
     --border-size: 6px;
     --border-color: #5A88FF;
 
-    width: min(100%, 500px); height: 350px;
+    width: min(100%, 500px);
     margin: auto;
+    padding: 30px !important;
 }
 
 h1 {
