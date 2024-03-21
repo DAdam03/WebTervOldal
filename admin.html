@@ -28,7 +28,14 @@
             </a>
         </div>
         <button id="checkout" onclick="location.href='checkout.html'"><i class="fa-solid fa-basket-shopping"></i></button>
-        <button id="profile" onclick="location.href='login.html'"><i class="fa-solid fa-user fa-lg"></i></button>
+        <div id="profile-container">
+            <button id="profile" onclick="openMenu()"><i class="fa-solid fa-user fa-lg"></i></button>
+            <div id="profileMenu" class="nyolcszog">
+                <a href="profile.html">Saját profil</a>
+                <a href="admin.html">Admin oldal</a>
+                <a >Kijelentkezés</a>
+            </div>
+        </div>
     </header>
 
     <h1>Admin oldal</h1>
