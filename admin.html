@@ -6,7 +6,12 @@
     <title>Octo Donut</title>
 
     <link rel="stylesheet" href="nyolcszog.css">
+    <link rel="stylesheet" href="donut_box_style.css">
     <link rel="stylesheet" href="admin.css">
+
+    <script src="globals.js"></script>
+    <script src="donut-box.js"></script>
+    <script src="admin-ingredient-box.js"></script>
 
     <script src="https://kit.fontawesome.com/4455646216.js" crossorigin="anonymous"></script>
 
@@ -14,7 +19,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 </head>
-<body>
+<body onload="createAdminIngredientBoxes()">
     <header>
         <div id="logo">
             <a href="index.html">
@@ -29,55 +34,11 @@
     <h1>Admin oldal</h1>
 
     <main class="nyolcszog">
-        <div class="admin-ingredient-container">
-            <input type="text" name="donut_name" onblur="" value="Barackos töltelék">
-            <div>
-                <input type="number" name="donut_price" onblur="" value="100">
-                <span>Ft</span>
-            </div>
-            <div class="image">
-                <span>Mostani kép:</span>
-                <image src="img/chocolate_filling.png"></image>
-            </div>
-            <label class="nyolcszog" for="1">Új kép megadása</label>
-            <input type="file" name="donut_image" id="1" onblur="">
-            <div class="nyolcszog end" onclick="">
-                <i class="fa-solid fa-trash fa-xs"></i>
-            </div>
+        <div id="admin-ingredient-container">
+
         </div>
 
-        <div class="admin-ingredient-container">
-            <input type="text" name="donut_name" onblur="" value="Barackos töltelék">
-            <div>
-                <input type="number" name="donut_price" onblur="" value="100">
-                <span>Ft</span>
-            </div>
-            <div class="image">
-                <span>Mostani kép:</span>
-                <image src="img/chocolate_filling.png"></image>
-            </div>
-            <label class="nyolcszog" for="1">Új kép megadása</label>
-            <input type="file" name="donut_image" id="1" onblur="">
-            <div class="nyolcszog end" onclick="">
-                <i class="fa-solid fa-trash fa-xs"></i>
-            </div>
-        </div>
-
-        <div id="new" class="admin-ingredient-container">
-            <input type="text" name="donut_name" onblur="" placeholder="Összetevő neve">
-            <div>
-                <input type="number" name="donut_price" onblur="" placeholder="Ár">
-                <span>Ft</span>
-            </div>
-            <div></div>
-            <label class="nyolcszog" for="1">Új kép megadása</label>
-            <input type="file" name="donut_image" id="1" onblur="">
-            <div class="nyolcszog end" onclick="">
-                <i class="fa-solid fa-save fa-xs"></i>
-            </div>
-        </div>
-
-        <button id="newIngredient" class="nyolcszog">Új hozzáadása</button>
+        <button id="newIngredient" class="nyolcszog" onclick="newIngredientClicked()">Új hozzáadása</button>
     </main>
 
     <footer>

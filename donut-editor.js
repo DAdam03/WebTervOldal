@@ -28,9 +28,9 @@ function createIngredientInputs(){
         let firstIngredient = true; //az első összetevő kiválasztásához kell
 
         for(let i=0; i<ingredientIds.length; i++){
-            if(ingredientData[ingredientIds[i]][4] == typeIds[j]){
+            if(ingredientData[ingredientIds[i]][3] == typeIds[j]){
                 let ingredientInput = IngredientInput(ingredientIds[i]);
-                let canHaveMore = ingredientTypes[ingredientData[ingredientIds[i]][4]][1];
+                let canHaveMore = ingredientTypes[ingredientData[ingredientIds[i]][3]][1];
                 if(!canHaveMore && firstIngredient){
                     firstIngredient = false;
                     let radio = ingredientInput.querySelector("#r_i_"+String(ingredientIds[i]));
@@ -89,7 +89,7 @@ function ingredientAmountChanged(){
 function ingredientCheckChanged(){
     let ingredientId = event.target.ingredientId;
 
-    let canHaveMore = ingredientTypes[ingredientData[ingredientId][4]][1];
+    let canHaveMore = ingredientTypes[ingredientData[ingredientId][3]][1];
 
     let imgContainerDiv = document.getElementById("image-container");
 
@@ -153,7 +153,7 @@ function IngredientInput(ingredientId){
         inputDiv.appendChild(ingredientImg);
     }
 
-    let canHaveMore = ingredientTypes[ingredientData[ingredientId][4]][1];
+    let canHaveMore = ingredientTypes[ingredientData[ingredientId][3]][1];
 
     let checkbox = document.createElement("input");
     if(canHaveMore){
@@ -163,7 +163,7 @@ function IngredientInput(ingredientId){
     }else{
         checkbox.type = "radio";
         checkbox.id = "r_i_"+String(ingredientId);
-        checkbox.name = ingredientData[ingredientId][4];
+        checkbox.name = ingredientData[ingredientId][3];
     }
     
     checkbox.addEventListener("change",ingredientCheckChanged);
