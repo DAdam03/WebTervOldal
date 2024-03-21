@@ -154,19 +154,24 @@ main{
     padding: 10px;
 }
 
-
-#ingredient-container{
-    height: 400px;
+#ingredient-container-container{
     margin-top: 10px;
     margin-bottom: 10px;
-    padding: 20px;
+    
+    /*height: 400px;*/
 
     --cut-length: 20px;
     --background-color: #788585;
     --border-size: 6px;
     --border-color: #5A88FF;
 
+}
+
+#ingredient-container{
     overflow-y: auto;
+    padding: 20px;
+    height: 400px;
+    box-sizing: border-box;
 }
 
 #image-container{

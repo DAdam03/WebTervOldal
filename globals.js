@@ -32,13 +32,26 @@ var checkoutData = [
 var currentPrice = 0;
 
 /*
-összetevőId:[név, kép elérési útvonal, ár, z-index]
+összetevőId:[név, kép elérési útvonal, ár, z-index, típus]
+típusok: alap, maz, toltelek, feltet -> (ebből több is lehet egyszerre, a többiből csak egy)
 */
+/*
+    típus-id:[típus-név, lehet-több]
+*/
+
+var ingredientTypes = {
+    "alap":["Fánk alap",false],
+    "maz":["Máz",false],
+    "toltelek":["Töltelék",false],
+    "feltet":["Feltétek",true]
+};
+
 var ingredientData = {
-    0:["Fánk alap", "img/donut_base.png", 100, 0],
-    1:["Cukormáz", "img/icing.png", 100, 1],
-    2:["Csokis töltelék", "img/chocolate_filling.png", 50, 2],
-    3:["Cukorkák", "img/sprinkles.png", 20, 3]
+    0:["Fánk alap", "img/donut_base.png", 100, 0, "alap"],
+    1:["Cukormáz", "img/icing.png", 100, 1, "maz"],
+    2:["Csokis töltelék", "img/chocolate_filling.png", 50, 2, "toltelek"],
+    3:["Cukorkák", "img/sprinkles.png", 20, 3, "feltet"],
+    4:["Narancsos töltelék", "img/orange_filling.png", 40, 2, "toltelek"],
 };
 
 
