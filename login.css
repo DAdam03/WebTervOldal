@@ -61,7 +61,7 @@ main {
     margin: auto;
 }
 
-h2 {
+h1 {
     margin: 0px auto 30px;
     padding-top: 10px;
 
@@ -69,7 +69,7 @@ h2 {
     text-align: center;
 }
 
-.login-input-wrapper {
+.input-wrapper {
     width: fit-content;
     position: relative;
     font-size: 24px;
