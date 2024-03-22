@@ -10,7 +10,7 @@
 .login-input-wrapper input {
     font-size: 20px;
     border-bottom: 1px solid white;
-    background-color: #788585;
+    background-color: #00000000;
 }
 
 .login-input-wrapper label {
