@@ -33,7 +33,7 @@ function createUserDonutBoxes(){
         "ingredients":[[0,1],[1,1],[2,1],[3,1]],
         "name":"TesztFánk",
         "rating":3.5,
-        "user":"TesztFelhasználó"
+        "user":"TesztFelhasználó2"
     }
 
     for(let i=0; i<5; i++){
@@ -137,7 +137,7 @@ function DonutBox(data){
     donutBoxDiv.appendChild(ingredientsP);
 
 
-    if(data.rating != -1){
+    if(data.rating != -1 && currentUser["name"] != data.user){
         let ratingDiv = document.createElement("div");
         ratingDiv.classList.add("rating-container");
         donutBoxDiv.appendChild(ratingDiv);

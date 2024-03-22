@@ -14,14 +14,30 @@
 }
 
 body{
-    background-color: #D9CAB3;
+    position: relative;
+    background-color: white;
+   
+
     min-height: 100vh;
+}
+
+#background-image{
+    z-index: -1;
+    background-image: url("img/donut_background_tilable.png");
+    background-repeat: repeat;
+
+    filter: blur(6px);
+    -webkit-filter: blur(6px);
+
+    position: absolute;
+    width: 100%;
+    height: 100%;
 }
 
 
 #checkout{
-    width: 2.5vw;
-    height: 2.5vw;
+    width: 25px;
+    height: 25px;
 
     top: calc(30px + 0.25vw);
     right: calc(6.5% - 1.25vw);
@@ -35,8 +51,8 @@ body{
 }
 
 #profile{
-    width: 3vw;
-    height: 3vw;
+    width: 30px;
+    height: 30px;
 
     top: 30px;
     right: calc(3% - 1.5vw);
@@ -62,12 +78,21 @@ header{
 */
 
 #logo {
-    color: white;
-    font-weight: bold;
-    font-size: 30px;
     position: fixed;
-    top: 20px; left: 30px;
+    top: 10px; left: 30px;
     z-index: 10;
+}
+
+#logo img{
+    width: 150px;
+    height: auto;
+}
+
+#header-gradient{
+    background-image: linear-gradient(black,rgba(0, 0, 0, 0));
+    height: 140px;
+    width: 100%;
+    position: fixed;
 }
 
 header button{
@@ -138,7 +163,8 @@ main{
     margin-left: auto;*/
 
     --cut-length: 50px;
-    --background-color: #788585;
+    /*#D9CAB3*/
+    --background-color: #D9CAB3;
     --border-size: 6px;
     --border-color: #5A88FF;
 
@@ -264,7 +290,7 @@ footer{
     width: 100%;
     padding: 3px 5px;
 
-    background-color: #788585;
+    background-color: rgb(58, 58, 111);
 
     color: #cdcdcd;
 }
@@ -272,3 +298,96 @@ footer{
 footer p {
     font-size: 16px;
 }
+
+
+.only-phone{
+    display: none;
+}
+
+
+@media screen and (max-width: 800px){
+
+    .only-phone{
+        display: block;
+    }
+
+    .only-desktop{
+        display: none;
+    }
+
+
+    main{
+        /*margin-bottom: 30px;
+        margin-right: auto;
+        margin-left: auto;*/
+    
+        --cut-length: 20px;
+        /*#D9CAB3*/
+        --border-size: 6px;
+    
+        width: min(100%, 1400px);
+        padding: 0px 10px 20px !important;
+    }
+
+    nav{
+        margin-left: -4px;
+    }
+
+    #nav-button-only-phone{
+        width: 80%;
+        min-width: 220px;
+        display: grid;
+        grid-template-columns: 3fr 1fr 1fr;
+    }
+
+    #checkout-phone{
+        margin-top: 20%;
+        width: 40px;
+        height: 40px;
+    
+        padding-inline: 0;
+        padding-block: 0;
+    
+        border-radius: 50%;
+    
+        background-color: #5A88FF;
+    }
+    
+    #profile-phone{
+        margin-top: 20%;
+        width: 40px;
+        height: 40px;
+    
+        padding-inline: 0;
+        padding-block: 0;
+    
+        border-radius: 50%;
+    
+        background-color: #5A88FF;
+    
+    }
+
+    #logo-phone{
+        width: fit-content;
+    }
+    #logo-phone img{
+        width: 80px;
+    }
+
+    nav{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-button{
+        padding: 10px;
+        font-size: 22px;
+        width: 80%;
+        min-width: 220px;
+        text-align: center;
+        cursor: pointer;
+        user-select: none;
+        transition: all 0.2s;
+    }
+}
+
