@@ -375,6 +375,7 @@ footer p {
     }
 
     nav{
+        position: relative;
         flex-direction: column;
         align-items: center;
     }
@@ -388,6 +389,69 @@ footer p {
         cursor: pointer;
         user-select: none;
         transition: all 0.2s;
+    }
+
+    #donut-ingredients{
+        width: max(calc(60% - 20px), 280px);
+        padding: 10px;
+    }
+
+    #ingredient-container-container{
+        margin-top: 5px;
+        margin-bottom: 10px;
+    
+        --cut-length: 10px;
+        --border-size: 3px;
+    
+    }
+    
+    #ingredient-container{
+        overflow-y: auto;
+        padding: 10px;
+        height: 300px;
+        box-sizing: border-box;
+    }
+
+    #ingredient-container *{
+        font-size: 12px !important;
+    }
+
+    h2{
+        font-size: 18px;
+    }
+    
+    h3{
+        font-size: 18px;
+    }
+
+    #image-container{
+        height: 280px;
+        width: 280px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        
+    
+        --cut-length: 10px;
+        --border-size: 3px;
+    }
+    
+    
+    #image-container img{
+        max-width: 280px;
+    }
+
+    #inputs button{
+        --cut-length: 6px;
+        --border-size: 2px;
+    
+        padding: 2px 5px;
+    
+        font-size: 16px;
+        font-weight: 400;
+    }
+
+    #name-input{
+        font-size: 14px !important;
     }
 }
 

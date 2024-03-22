@@ -42,3 +42,36 @@
 
     margin-left: 2px;
 }
+
+
+@media screen and (max-width: 800px){
+
+    .ingredient-input-div{
+        margin-left: 20px;
+        min-height: 30px;
+        height: fit-content;
+    
+        display: flex;
+        justify-content: space-between;
+    
+        padding-top: 5px;
+        padding-bottom: 5px;
+    
+        line-height: 30px;
+        vertical-align: center;
+    }
+
+
+    .ingredient-input-div img{
+        height: 30px;
+        position: static;
+    
+        background-color: white;
+        border-radius: 20%;
+    }
+
+    .ingredient-input-div label{
+        line-height: 12px;
+    }
+}
+
