@@ -204,6 +204,9 @@ main{
     height: 400px;
     box-sizing: border-box;
 }
+#ingredient-container::-webkit-scrollbar {
+    display: none;
+}
 
 #image-container{
     position: relative;
