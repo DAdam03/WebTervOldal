@@ -7,12 +7,14 @@
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="nyolcszog.css">
+    <link rel="stylesheet" href="profile_menu_style.css">
     <link rel="stylesheet" href="donut_box_style.css">
     <link rel="stylesheet" href="admin.css">
 
     <script src="globals.js"></script>
     <script src="donut-box.js"></script>
     <script src="admin-ingredient-box.js"></script>
+    <script src="profile-menu.js"></script>
 
     <script src="https://kit.fontawesome.com/4455646216.js" crossorigin="anonymous"></script>
 
@@ -33,7 +35,7 @@
             <div id="profileMenu" class="nyolcszog">
                 <a href="profile.html">Saját profil</a>
                 <a href="admin.html">Admin oldal</a>
-                <a >Kijelentkezés</a>
+                <a href="login.html">Kijelentkezés</a>
             </div>
         </div>
     </header>
@@ -70,16 +72,6 @@
         <p>Készítette: Domokos Ádám, Nógrádi Adrián</p>
     </footer>
 
-    <script>
-        function openMenu() {
-            let profileBtn = document.getElementById("profileMenu");
-            if (profileBtn.style.display != "block") {
-                profileBtn.style.display = "block";
-            } else {
-                profileBtn.style.display = "none";
-            }
-        }
-        
-    </script>
+    
 </body>
 </html>

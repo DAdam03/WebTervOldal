@@ -47,16 +47,16 @@ function donutEditClicked(){
 }
 
 function donutDeleteClicked(){
-    let donutBoxDiv = event.target.parentElement;
+    let donutBoxDiv = this.parentElement;
     donutBoxDiv.remove();
 }
 
 function starMouseEntered(){
-    let ratingDiv = event.target.parentElement;
+    let ratingDiv = this.parentElement;
     let starElements = ratingDiv.childNodes;
     for(let i=0; i<starElements.length; i++){
         if(starElements[i].classList.contains("fa-star")){
-            if(starElements[i].index <= event.target.index){
+            if(starElements[i].index <= this.index){
                 if(!(starElements[i].classList.contains("star-hovered"))){
                     starElements[i].classList.add("star-hovered");
                 }
@@ -66,11 +66,11 @@ function starMouseEntered(){
 }
 
 function starMouseExited(){
-    let ratingDiv = event.target.parentElement;
+    let ratingDiv = this.parentElement;
     let starElements = ratingDiv.childNodes;
     for(let i=0; i<starElements.length; i++){
         if(starElements[i].classList.contains("fa-star")){
-            if(starElements[i].index <= event.target.index){
+            if(starElements[i].index <= this.index){
                 if(starElements[i].classList.contains("star-hovered")){
                     starElements[i].classList.remove("star-hovered");
                 }
@@ -80,11 +80,11 @@ function starMouseExited(){
 }
 
 function starClicked(){
-    let ratingDiv = event.target.parentElement;
+    let ratingDiv = this.parentElement;
     let starElements = ratingDiv.childNodes;
     for(let i=0; i<starElements.length; i++){
         if(starElements[i].classList.contains("fa-star")){
-            if(starElements[i].index <= event.target.index){
+            if(starElements[i].index <= this.index){
                 if(!starElements[i].classList.contains("star-selected")){
                     starElements[i].classList.add("star-selected");
                 }
@@ -180,6 +180,7 @@ function DonutBox(data){
     donutBoxDiv.appendChild(amountInput);
 
     let lnbreak = document.createElement("br");
+    lnbreak.classList.add("only-desktop");
     donutBoxDiv.appendChild(lnbreak);
 
     let editButton = document.createElement("button");
@@ -198,13 +199,17 @@ function DonutBox(data){
         let lnbreak = document.createElement("br");
         donutBoxDiv.appendChild(lnbreak);
 
-        let deleteButton = document.createElement("button");
-        deleteButton.innerText = "Fánk törlése";
-        deleteButton.classList.add("delete-button");
-        /*adrian*/
-        deleteButton.classList.add("nyolcszog");
-        deleteButton.addEventListener("click", donutDeleteClicked);
-        donutBoxDiv.appendChild(deleteButton);
+        let deleteInput = document.createElement("button");
+        deleteInput.classList.add("delete-button");
+
+        let deleteIcon = document.createElement("i");
+        deleteIcon.classList.add("fa-solid");
+        deleteIcon.classList.add("fa-trash");
+        deleteIcon.classList.add("fa-xs");
+
+        deleteInput.appendChild(deleteIcon);
+        deleteInput.addEventListener("click", donutDeleteClicked);
+        donutBoxDiv.appendChild(deleteInput);
     }
 
     return donutBoxDiv;

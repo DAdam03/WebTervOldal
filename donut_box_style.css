@@ -189,12 +189,22 @@
 
     .donut-box{
         width: min(300px, 90%);
+        padding: 15px;
     }
 
+    .donut-box *{
+        font-size: 16px !important;
+    }
 
     .donut-img-container{
-        width: 200px;
+        width: 180px;
+        height: 140px;
     }
+
+    .donut-box h4{
+        margin-bottom: 10px;
+    }
+
 
     .buy-button{
         margin-right: 0px;
@@ -233,6 +243,7 @@
     .edit-button{
         width: 30px;
         height: 30px;
+        margin-left: 10px;
     }
 
     .delete-button{

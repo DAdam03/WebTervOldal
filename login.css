@@ -16,9 +16,6 @@ header{
     top: 0;
 }
 
-header button, #main-page{
-    position: absolute;
-}
 
 #main-page{
     width: 10%;

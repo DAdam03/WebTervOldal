@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="nyolcszog.css">
     <link rel="stylesheet" href="donut_box_style.css">
+    <link rel="stylesheet" href="profile_menu_style.css">
 
     <!--betűtípus betöltése-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,6 +18,7 @@
     <script src="globals.js"></script>
     <script src="donut-image-container.js"></script>
     <script src="donut-box.js"></script>
+    <script src="profile-menu.js"></script>
 
     <script src="https://kit.fontawesome.com/4455646216.js" crossorigin="anonymous"></script>
     
@@ -30,7 +32,14 @@
             <img src="img/logo.png">
         </div>
         <button id="checkout" onclick="location.href='checkout.html'"><i class="fa-solid fa-basket-shopping"></i></button>
-        <button id="profile" onclick="location.href='login.html'"><i class="fa-solid fa-user fa-lg"></i></button>
+        <div id="profile-container">
+            <button id="profile" onclick="openMenu()"><i class="fa-solid fa-user fa-lg"></i></button>
+            <div id="profileMenu" class="nyolcszog">
+                <a href="profile.html">Saját profil</a>
+                <a href="admin.html">Admin oldal</a>
+                <a href="login.html">Kijelentkezés</a>
+            </div>
+        </div>
     </header>
 
     <main class="nyolcszog">
