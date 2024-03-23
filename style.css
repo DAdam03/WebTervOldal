@@ -173,7 +173,13 @@ main{
     margin: auto;
 }
 
-
+button {
+    transition: .2s;
+    cursor: pointer;
+}
+button:hover {
+    transform: scale(1.05);
+}
 
 #donut-ingredients{
     width: calc(60% - 20px);
