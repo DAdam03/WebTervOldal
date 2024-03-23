@@ -14,7 +14,7 @@
 
 .donut-box{
     --cut-length: 25px;
-    --background-color: #81a5ff;
+    --background-color: #7b9eb0;
     --border-color: #5A88FF;
     --border-size: 6px;
 
@@ -33,7 +33,7 @@
 
 .donut-img-container{
     --cut-length: 25px;
-    --background-color: white;
+    --background-color: #b9ccd5;
     --border-color: #5A88FF;
     --border-size: 3px;
 
