@@ -312,7 +312,10 @@ footer p {
         position: initial;
     }
 
-    #logo, #checkout, #profile-container {
+    #logo {
+        z-index: 0;
+    }
+    #checkout {
         z-index: 0;
     }
 }
