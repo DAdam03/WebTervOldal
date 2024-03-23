@@ -6,31 +6,57 @@
     <title>Octo Donut</title>
 
     <link rel="stylesheet" href="nyolcszog.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="text_input_style.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div id="main-page">
-            <a href="index.html">
-                Octo<br>
-                Donut
-            </a>
+    <div id="background-image"></div>
+    <header class="only-desktop">
+        <div id="header-gradient"></div>
+        <div id="logo" onclick="location.href='index.html'">
+            <img src="img/logo.png">
+        </div>
+        <button id="checkout" onclick="location.href='checkout.html'"><i class="fa-solid fa-basket-shopping"></i></button>
+        <div id="profile-container">
+            <button id="profile" onclick="openMenu()"><i class="fa-solid fa-user fa-lg"></i></button>
+            <div id="profileMenu" class="nyolcszog">
+                <a href="profile.html">Saját profil</a>
+                <a href="admin.html">Admin oldal</a>
+                <a >Kijelentkezés</a>
+            </div>
         </div>
     </header>
 
-    <h1>Bejelentkezés</h1>
-
     <main class="nyolcszog">
+        <nav class="flex-container">
+            <div id="nav-button-only-phone" class="only-phone">
+                <div id="logo-phone" onclick="location.href='index.html'">
+                    <img src="img/logo.png">
+                </div>
+                <button id="checkout-phone" onclick="location.href='checkout.html'"><i class="fa-solid fa-basket-shopping"></i></button>
+                <button id="profile-phone" onclick="location.href='login.html'"><i class="fa-solid fa-user fa-lg"></i></button>
+            </div>
+            <div class="nav-button" onclick="location.href='index.html'">
+                Fánk kínálat
+            </div>
+            <div class="nav-button" onclick="location.href='donut_maker.html'">
+                Fánk összeállító
+            </div>
+            <div class="nav-button" onclick="location.href='user_donuts.html'">
+                Felhasználók fánkjai
+            </div>
+        </nav>
         <form>
-            <div class="input-wrapper">
+            <div class="login-input-wrapper">
                 <input name="username" id="username" type="text" placeholder="">
                 <label for="username">Felhasználó név</label>
             </div>
-            <div class="input-wrapper">
+            <div class="login-input-wrapper">
                 <input name="password" id="password" type="password" placeholder="">
                 <label for="password">Jelszó</label>
             </div>

@@ -30,27 +30,15 @@ header button, #main-page{
 }
 
 footer{
-    height: 100px;
-    margin-top: 20px;
-
     position: absolute;
     bottom: 0;
-
-    display: flex;
-    justify-content: space-between;
-    box-sizing: border-box;
-    width: 100%;
-    padding: 3px 5px;
-
-    background-color: #788585;
-
-    color: #cdcdcd;
 }
+
 
 footer p {
     font-size: 16px;
 }
-
+/*
 main {
     --cut-length: 50px;
     --background-color: #788585;
@@ -61,7 +49,7 @@ main {
     margin: auto;
     padding: 30px !important;
 }
-
+*/
 h1 {
     margin: 0px auto 30px;
     padding-top: 10px;
@@ -69,7 +57,7 @@ h1 {
     font-size: 86px;
     text-align: center;
 }
-
+/*
 .input-wrapper {
     width: fit-content;
     position: relative;
@@ -97,16 +85,16 @@ label {
 input:focus ~ label, input:not(:placeholder-shown) ~ label {
     transform: translateY(calc(-1em - 10px));
 }
-
+*/
 button[type="submit"] {
     --cut-length: 15px;
     --background-color: #CDCDCD;
     --border-size: 3px;
     --border-color: #ffffff;
 
-    margin: 25px 50% 5px;
+    margin: 25px auto 5px;
+    display: block;
     padding: 5px 15px;
-    transform: translateX(-50%);
     font-size: 32px;
 }
 
@@ -121,3 +109,24 @@ button[type="submit"] {
     text-align: center;
     font-size: 16px;
 }
+
+form{
+    margin-bottom: 40px;
+}
+
+
+@media screen and (max-width: 800px){
+    button[type="submit"] {
+        --cut-length: 8px;
+        --border-size: 2px;
+    
+        margin: 10px auto 5px;
+        padding: 3px 8px;
+        font-size: 20px;
+    }
+
+    #error {
+        font-size: 16px;
+    }
+}
+
