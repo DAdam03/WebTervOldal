@@ -26,5 +26,19 @@
     transform: translateY(calc(-1em - 10px));
 }
 
+@media screen and (max-width: 800px){
+    .login-input-wrapper label {
+        top: 5px;
+        font-size: 16px !important;
+    }
 
+    .login-input-wrapper input {
+        font-size: 16px;
+    }
+
+    .login-input-wrapper {
+        font-size: 20px;
+        margin: 1em auto auto;
+    }
+}
 

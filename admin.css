@@ -1,4 +1,4 @@
-*{
+/**{
     margin: 0;
     color: white;
     font-family: "Inter", sans-serif;
@@ -142,12 +142,12 @@ nav{
     top: 0;
     z-index: 10;
 
-    /*width: 80%;*/
+    width: 80%;
     width: min(100vw, 1000px);
     height: 100px;
 
-    /*margin-left: auto;
-    margin-right: auto;*/
+    margin-left: auto;
+    margin-right: auto;
     margin: -30px 0px 30px -50px;
     
 
@@ -172,9 +172,10 @@ nav{
 
 .nav-button.selected{
     background-color: #4c73d6 !important;
-}
+}*/
 
 /*local*/
+/*
 main {
     --cut-length: 50px;
     --background-color: #788585;
@@ -184,7 +185,7 @@ main {
     width: min(100%, 1400px);
     padding: 30px 50px !important;
     margin: auto;
-}
+}*/
 
 .admin-ingredient-container {
     display: grid;
@@ -209,10 +210,10 @@ main {
 }
 
 .admin-ingredient-container .end {
-    --cut-length: 8px;
+    /*--cut-length: 8px;
     --background-color: #CDCDCD;
     --border-size: 2px;
-    --border-color: white;
+    --border-color: white;*/
 
     width: 32px; height: 32px;
     
@@ -272,4 +273,55 @@ input::placeholder {
 
     margin-top: 50px; 
     padding: 6px 15px;
+}
+
+@media screen and (max-width: 800px){
+    .admin-ingredient-container {
+        grid-template-columns: none;
+        column-gap: 0px;
+        row-gap: 5px;
+        display: flex;
+        flex-wrap: wrap;
+
+        margin-bottom: 15px;
+
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .admin-ingredient-container *{
+        font-size: 16px !important;
+    }
+
+    input[name="donut_name"]{
+        width: 50%;
+        margin-right: 30px;
+    }
+
+    .price-div{
+        margin-right: 30px;
+    }
+
+    .admin-ingredient-container label {
+        --cut-length: 4px;
+        --border-size: 1px;
+    
+        height: 24px;
+    
+        padding: 2px 3px;
+    }
+
+    #newIngredient {
+        --cut-length: 6px;
+        --border-size: 2px;
+    
+        font-size: 20px;
+    
+        margin-top: 20px; 
+        padding: 3px 8px;
+
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }

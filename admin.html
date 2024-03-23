@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Octo Donut</title>
 
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="nyolcszog.css">
     <link rel="stylesheet" href="donut_box_style.css">
     <link rel="stylesheet" href="admin.css">
@@ -20,12 +21,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body onload="createAdminIngredientBoxes()">
-    <header>
-        <div id="logo">
-            <a href="index.html">
-                Octo<br>
-                Donut
-            </a>
+    <div id="background-image"></div>
+    <header class="only-desktop">
+        <div id="header-gradient"></div>
+        <div id="logo" onclick="location.href='index.html'">
+            <img src="img/logo.png">
         </div>
         <button id="checkout" onclick="location.href='checkout.html'"><i class="fa-solid fa-basket-shopping"></i></button>
         <div id="profile-container">
@@ -38,9 +38,26 @@
         </div>
     </header>
 
-    <h1>Admin oldal</h1>
-
     <main class="nyolcszog">
+        <nav class="flex-container">
+            <div id="nav-button-only-phone" class="only-phone">
+                <div id="logo-phone" onclick="location.href='index.html'">
+                    <img src="img/logo.png">
+                </div>
+                <button id="checkout-phone" onclick="location.href='checkout.html'"><i class="fa-solid fa-basket-shopping"></i></button>
+                <button id="profile-phone" onclick="location.href='login.html'"><i class="fa-solid fa-user fa-lg"></i></button>
+            </div>
+            <div class="nav-button" onclick="location.href='index.html'">
+                Fánk kínálat
+            </div>
+            <div class="nav-button" onclick="location.href='donut_maker.html'">
+                Fánk összeállító
+            </div>
+            <div class="nav-button" onclick="location.href='user_donuts.html'">
+                Felhasználók fánkjai
+            </div>
+        </nav>
+
         <div id="admin-ingredient-container">
 
         </div>

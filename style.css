@@ -18,7 +18,7 @@ body{
     background-color: white;
    
 
-    min-height: 100vh;
+    /*min-height: 100vh;*/
 }
 
 #background-image{
@@ -36,8 +36,8 @@ body{
 
 
 #checkout{
-    width: 25px;
-    height: 25px;
+    width: 40px;
+    height: 40px;
 
     top: calc(30px + 0.25vw);
     right: calc(6.5% - 1.25vw);
@@ -51,8 +51,8 @@ body{
 }
 
 #profile{
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
 
     top: 30px;
     right: calc(3% - 1.5vw);
@@ -253,9 +253,9 @@ main{
 }
 
 
-
 input[type="number"]{
-    width: 4ch;    height: 30px;
+    width: 4ch;    
+    height: 30px;
 
     background-color: #00000000;
     border-bottom: 1px solid white;
@@ -270,6 +270,9 @@ input[type="number"]{
     --border-size: 5px;
 
     margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 
     font-size: 26px;
     font-weight: 700;
@@ -450,8 +453,17 @@ footer p {
         font-weight: 400;
     }
 
-    #name-input{
-        font-size: 14px !important;
+    #order-send-button{
+        --cut-length: 4px;
+        --border-size: 3px;
+    
+        margin-top: 10px;
+    
+        font-size: 16px;
+    }
+
+    #checkout-form *{
+        font-size: 16px;
     }
 }
 

@@ -63,6 +63,7 @@ function AdminIngredientBox(ingredientId){
     adminIngredientDiv.appendChild(nameInput);
 
     let priceDiv = document.createElement("div");
+    priceDiv.classList.add("price-div");
 
     let priceInput = document.createElement("input");
     priceInput.type = "number";
@@ -81,6 +82,7 @@ function AdminIngredientBox(ingredientId){
 
     let imageSpan = document.createElement("span");
     imageSpan.innerText = "Mostani kép:";
+    imageSpan.classList.add("only-desktop");
     imageDiv.appendChild(imageSpan);
 
     let image = document.createElement("img");
@@ -121,6 +123,22 @@ function AdminIngredientBox(ingredientId){
     }
     adminIngredientDiv.appendChild(typeSelect);
 
+
+    let deleteInput = document.createElement("button");
+    deleteInput.classList.add("delete-button");
+    //deleteInput.classList.add("nyolcszog");
+    //deleteInput.innerText = "Törlés";
+
+    let deleteIcon = document.createElement("i");
+    deleteIcon.classList.add("fa-solid");
+    deleteIcon.classList.add("fa-trash");
+    deleteIcon.classList.add("fa-xs");
+
+    deleteInput.appendChild(deleteIcon);
+    deleteInput.addEventListener("click", ingredientDeleteClicked);
+    adminIngredientDiv.appendChild(deleteInput);
+
+    /*
     let deleteDiv = document.createElement("div");
     deleteDiv.classList.add("nyolcszog");
     deleteDiv.classList.add("end");
@@ -135,7 +153,7 @@ function AdminIngredientBox(ingredientId){
     deleteDiv.appendChild(deleteIcon);
 
     adminIngredientDiv.appendChild(deleteDiv);
-
+    */
     return adminIngredientDiv;
 }
 

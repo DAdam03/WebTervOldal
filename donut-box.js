@@ -244,7 +244,7 @@ function CheckoutDonutAmountChanged(){
 }
 
 function CheckoutDonutDeleted(){
-    let donutBoxDiv = event.target.parentElement;
+    let donutBoxDiv = this.parentElement;
     let amount = checkoutData[donutBoxDiv.index]["amount"];
     
     currentPrice -= amount*donutBoxDiv.price;
@@ -303,6 +303,7 @@ function CheckoutDonutBox(data,index){
         }
     }
     ingredientsP.innerText = ingredientsText;
+    ingredientsP.classList.add("only-desktop");
     donutBoxDiv.appendChild(ingredientsP);
 
     let amountInput = document.createElement("input");
@@ -331,11 +332,16 @@ function CheckoutDonutBox(data,index){
 
     let deleteInput = document.createElement("button");
     deleteInput.classList.add("delete-button");
-    deleteInput.classList.add("nyolcszog");
-    deleteInput.innerText = "Törlés";
+    //deleteInput.classList.add("nyolcszog");
+    //deleteInput.innerText = "Törlés";
 
+    let deleteIcon = document.createElement("i");
+    deleteIcon.classList.add("fa-solid");
+    deleteIcon.classList.add("fa-trash");
+    deleteIcon.classList.add("fa-xs");
+
+    deleteInput.appendChild(deleteIcon);
     deleteInput.addEventListener("click", CheckoutDonutDeleted);
-
     donutBoxDiv.appendChild(deleteInput);
 
 

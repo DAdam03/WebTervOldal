@@ -110,18 +110,18 @@
 }
 
 .delete-button{
-    --cut-length: 6px;
-    --background-color: #ffffff;
-    --border-color: red;
-    --border-size: 2px;
+    padding-inline: 0;
+    padding-block: 0;
 
-    color: red;
+    border-radius: 50%;
 
-    padding: 3px 12px;
     margin-top: 10px;
 
-    font-size: 20px;
-    font-weight: 400;
+    width: 40px;
+    height: 40px;
+
+    background-color: #ff0000;
+    border: white 2px solid;
 }
 
 .edit-button{
@@ -191,6 +191,7 @@
         width: min(300px, 90%);
     }
 
+
     .donut-img-container{
         width: 200px;
     }
@@ -210,6 +211,39 @@
         border-bottom: 1px solid white;
     
         margin-left: 2px;
+    }
+
+    .checkout-donut-box *{
+        font-size: 12px !important;
+    }
+
+    .checkout-donut-box .donut-img-container{
+        width: 50px;
+        height: 50px;
+    
+        --cut-length: 5px;
+        --background-color: #cdcdcd;
+        --border-color: white;
+    }
+    
+    .checkout-donut-box .donut-img-container img{
+        width: 50px;
+    }
+    
+    .edit-button{
+        width: 30px;
+        height: 30px;
+    }
+
+    .delete-button{
+        width: 30px;
+        height: 30px;
+    }
+
+    .checkout-donut-box{
+        height: 70px;
+        box-sizing: border-box;
+        padding: 10px 2%;
     }
 
 }
