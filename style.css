@@ -307,6 +307,11 @@ footer p {
     display: none;
 }
 
+@media screen and (max-width: 1700px){
+    #header-gradient {
+        position: initial;
+    }
+}
 
 @media screen and (max-width: 800px){
 
@@ -466,4 +471,5 @@ footer p {
         font-size: 16px;
     }
 }
+
 
