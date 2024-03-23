@@ -109,6 +109,10 @@
     font-weight: 700;
 }
 
+.buy-button:hover {
+    transform: scale(1.1);
+}
+
 .delete-button{
     padding-inline: 0;
     padding-block: 0;
@@ -137,6 +141,10 @@
 
     background-color: #5A88FF;
     border: white 2px solid;
+}
+
+.delete-button:hover, .edit-button:hover {
+    transform: scale(1.15);
 }
 
 .donut-amount-button{
