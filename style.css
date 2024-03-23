@@ -311,6 +311,10 @@ footer p {
     #header-gradient {
         position: initial;
     }
+
+    #logo, #checkout, #profile-container {
+        z-index: 0;
+    }
 }
 
 @media screen and (max-width: 800px){
