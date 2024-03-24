@@ -36,16 +36,6 @@
     border-radius: 5px;
 }
 
-.admin-ingredient-container .end {
-    width: 32px; height: 32px;
-    
-    text-align: center;
-
-    justify-self: end;
-
-    cursor: pointer;
-}
-
 input[type="text"], input[type="number"] {
     width: 100%;    height: 1em;
 
