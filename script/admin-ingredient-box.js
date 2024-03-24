@@ -1,7 +1,7 @@
 
 
 function createAdminIngredientBoxes(){
-    let ingredientContainer = document.getElementById("admin-ingredient-container");
+    let ingredientContainer = document.getElementById("admin-ingredients");
     let ingredientIds = Object.keys(ingredientData);
 
     for(let i=0; i<ingredientIds.length; i++){
@@ -11,7 +11,7 @@ function createAdminIngredientBoxes(){
 }
 
 function newIngredientClicked(){
-    let ingredientContainer = document.getElementById("admin-ingredient-container");
+    let ingredientContainer = document.getElementById("admin-ingredients");
     let newIngredientId = 0;
     while(newIngredientId in ingredientData){
         newIngredientId++;

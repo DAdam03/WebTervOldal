@@ -18,10 +18,10 @@
     
         <link rel="icon" href="img/favicon.png"/>
 
-        <script src="globals.js"></script>
-        <script src="donut-image-container.js"></script>
-        <script src="donut-box.js"></script>
-        <script src="profile-menu.js"></script>
+        <script src="script/globals.js"></script>
+        <script src="script/donut-image-container.js"></script>
+        <script src="script/donut-box.js"></script>
+        <script src="script/profile-menu.js"></script>
     
         <script src="https://kit.fontawesome.com/4455646216.js" crossorigin="anonymous"></script>
     
@@ -68,11 +68,11 @@
     
             <div id="content">
                 <h2>Kosár:</h2>
-                <div id="order-container">
+                <div id="order-container" class="nyolcszog">
 
                 </div>
                 <h2 id="price">Fizetendő összeg: 0 Ft</h2>
-                <form id="checkout-form">
+                <form id="checkout-form" class="nyolcszog">
                     <div class="login-input-wrapper">
                         <input type="text" id="name" name="name" placeholder="">
                         <label for="name">Név:</label>
@@ -97,7 +97,7 @@
                     <label for="card">Bankkártya</label><br>
                     
 
-                    <input type="submit" value="Rendelés küldése" id="order-send-button" class="nyolcszog">
+                    <button type="submit" id="order-send-button" class="nyolcszog">Rendelés küldése</button>
                 </form>
             </div>
         </main>

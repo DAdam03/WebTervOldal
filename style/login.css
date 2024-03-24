@@ -47,7 +47,7 @@ h1 {
 
 button[type="submit"] {
     --cut-length: 15px;
-    --background-color: #CDCDCD;
+    --background-color: #5A88FF;
     --border-size: 3px;
     --border-color: #ffffff;
 
@@ -70,7 +70,16 @@ button[type="submit"] {
 }
 
 form{
-    margin-bottom: 40px;
+    width: fit-content;
+
+    margin: 40px auto;
+
+    --cut-length: 20px;
+    --background-color: #7b9eb0;
+    --border-size: 6px;
+    --border-color: #5A88FF;
+
+    padding: 20px !important;
 }
 
 

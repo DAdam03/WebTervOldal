@@ -1,6 +1,17 @@
+#admin-ingredients{
+    --cut-length: 20px;
+    --background-color: #7b9eb0;
+    --border-size: 6px;
+    --border-color: #5A88FF;
+
+    padding: 20px;
+}
+
+
+
 .admin-ingredient-container {
     display: grid;
-    grid-template-columns: 3fr 1fr 2.5fr 3fr 1.5fr 0.5fr;
+    grid-template-columns: 2.9fr 1.1fr 2.5fr 3fr 1.5fr 0.5fr;
     align-items: center;
     column-gap: 50px;
 
@@ -19,7 +30,8 @@
     width: 40px;    height: 40px;
     object-fit: cover;
 
-    border: 2px solid white;
+    background-color: white;
+    border-radius: 5px;
 }
 
 .admin-ingredient-container .end {
@@ -59,12 +71,14 @@ input::placeholder {
 }
 
 .donut-type-select{
-    background-color: #CDCDCD;
+    background-color: #5A88FF;
+    border-radius: 5px;
+    border: white solid 2px;
 }
 
 .admin-ingredient-container label {
     --cut-length: 8px;
-    --background-color: #CDCDCD;
+    --background-color: #5A88FF;
     --border-size: 2px;
     --border-color: white;
 
@@ -77,7 +91,7 @@ input::placeholder {
 
 #newIngredient {
     --cut-length: 8px;
-    --background-color: #CDCDCD;
+    --background-color: #5A88FF;
     --border-size: 2px;
     --border-color: white;
 

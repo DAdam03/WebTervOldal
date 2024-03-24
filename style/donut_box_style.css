@@ -29,7 +29,14 @@
     padding: 30px;
     
     text-align: center;
+
+    transition: all 0.2s;
 }
+
+.donut-box:hover{
+    transform: translateY(-10px);
+}
+
 
 .donut-img-container{
     --cut-length: 25px;
@@ -150,7 +157,6 @@
 .donut-amount-button{
     width: 4ch;    height: 1em;
 
-    background-color: #cdcdcd;
     border-bottom: 1px solid white;
 
     margin-left: 2px;
@@ -175,7 +181,7 @@
     position: relative;
 
     --cut-length: 10px;
-    --background-color: #cdcdcd;
+    --background-color: #b9ccd5;
     --border-color: white;
     --border-size: 2px;
 }

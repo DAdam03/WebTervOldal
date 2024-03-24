@@ -33,6 +33,12 @@ h2 {
 }
 
 #profile-grid {
+    --cut-length: 20px;
+    --background-color: #7b9eb0;
+    --border-size: 6px;
+    --border-color: #5A88FF;
+    padding: 20px;
+
     display: grid;
     grid-template-columns: 350px 400px;
     row-gap: 10px;
@@ -40,7 +46,7 @@ h2 {
 }
 
 input {
-    background-color: inherit;
+    background-color: #00000000;
     border-bottom: 1px solid white;
 }
 
@@ -48,7 +54,7 @@ input {
     --cut-length: 12px;
     --border-size: 3px;
     --border-color: white;
-    --background-color: #CDCDCD;
+    --background-color: #5A88FF;
 
     font-weight: 700;
 
@@ -61,7 +67,7 @@ input {
     --cut-length: 12px;
     --border-size: 3px;
     --border-color: white;
-    --background-color: #CDCDCD;
+    --background-color: #5A88FF;
 
     font-weight: 700;
 
@@ -74,7 +80,7 @@ input {
     --cut-length: 12px;
     --border-size: 3px;
     --border-color: red;
-    --background-color: #CDCDCD;
+    --background-color: white;
 
     color: red;
     font-weight: 700;

@@ -17,8 +17,7 @@ body{
     position: relative;
     background-color: white;
    
-
-    min-height: 100vh;
+    min-height: max(100vh,800px) !important;
 }
 
 #background-image{
@@ -87,6 +86,11 @@ header{
 #logo img{
     width: 150px;
     height: auto;
+    transition: all 0.2s;
+}
+
+#logo img:hover{
+    transform: scale(1.05);
 }
 
 #header-gradient{
@@ -199,7 +203,7 @@ button:hover {
     /*height: 400px;*/
 
     --cut-length: 20px;
-    --background-color: #788585;
+    --background-color: #7b9eb0;
     --border-size: 6px;
     --border-color: #5A88FF;
 
@@ -211,10 +215,11 @@ button:hover {
     height: 400px;
     box-sizing: border-box;
 }
+/*
 #ingredient-container::-webkit-scrollbar {
     display: none;
 }
-
+*/
 #image-container{
     position: relative;
     height: 400px;
@@ -224,7 +229,7 @@ button:hover {
     
 
     --cut-length: 20px;
-    --background-color: #788585;
+    --background-color: #7b9eb0;
     --border-size: 6px;
     --border-color: #5A88FF;
 }
@@ -241,7 +246,7 @@ button:hover {
 
 #inputs button{
     --cut-length: 8px;
-    --background-color: #CDCDCD;
+    --background-color: #5A88FF;
     --border-color: white;
     --border-size: 3px;
 
@@ -252,10 +257,31 @@ button:hover {
     font-weight: 700;
 }
 
+
+#order-container{
+    --cut-length: 20px;
+    --background-color: #7b9eb0;
+    --border-size: 6px;
+    --border-color: #5A88FF;
+
+    min-height: 80px;
+
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+
 #checkout-form{
     width: fit-content;
     margin-left: auto;
     margin-right: auto;
+
+    padding: 30px;
+
+    --cut-length: 20px;
+    --background-color: #7b9eb0;
+    --border-size: 6px;
+    --border-color: #5A88FF;
 }
 
 #checkout-form .login-input-wrapper{
@@ -275,14 +301,16 @@ input[type="number"]{
 
 #order-send-button{
     --cut-length: 8px;
-    --background-color: #CDCDCD;
-    --border-color: #5A88FF;
-    --border-size: 5px;
+    --background-color: #5A88FF;
+    --border-color: white;
+    --border-size: 3px;
 
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
     display: block;
+
+    padding: 3px 20px !important;
 
     font-size: 26px;
     font-weight: 700;
@@ -334,6 +362,7 @@ footer p {
         z-index: 1;
     }
 }
+
 
 @media screen and (max-width: 800px){
 

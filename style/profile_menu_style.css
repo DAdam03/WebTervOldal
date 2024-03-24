@@ -14,7 +14,7 @@
     display: none;
 
     --cut-length: 20px;
-    --background-color: #788585;
+    --background-color: #7b9eb0;
     --border-size: 4px;
     --border-color: #5A88FF;
 
@@ -35,7 +35,7 @@
     cursor: pointer;
 }
 #profileMenu a:hover {
-    background-color: #636e6e;
+    background-color: #48748a;
 }
 
 #profileMenu a:not(:last-child) {
