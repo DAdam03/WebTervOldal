@@ -217,7 +217,7 @@ input::placeholder {
     padding: 6px 15px;
 }
 
-@media screen and (max-width: 800px){
+@media screen and (max-width: 1400px){
     .admin-ingredient-container {
         grid-template-columns: none;
         column-gap: 0px;
@@ -231,14 +231,22 @@ input::placeholder {
         justify-content: space-around;
     }
 
-    .admin-ingredient-container *{
-        font-size: 16px !important;
-    }
-
     input[name="donut_name"]{
         width: 50%;
         margin-right: 30px;
     }
+}
+
+
+
+@media screen and (max-width: 800px){
+    
+
+    .admin-ingredient-container *{
+        font-size: 16px !important;
+    }
+
+    
 
     .price-div{
         margin-right: 30px;

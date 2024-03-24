@@ -23,7 +23,7 @@ body{
 
 #background-image{
     z-index: -1;
-    background-image: url("img/donut_background_tilable.png");
+    background-image: url("../img/donut_background_tilable.png");
     background-repeat: repeat;
 
     filter: blur(6px);
@@ -39,8 +39,8 @@ body{
     width: 40px;
     height: 40px;
 
-    top: calc(30px + 0.25vw);
-    right: calc(6.5% - 1.25vw);
+    top: 35px;
+    right: 90px;
 
     padding-inline: 0;
     padding-block: 0;
@@ -56,7 +56,7 @@ body{
     height: 50px;
 
     top: 30px;
-    right: calc(3% - 1.5vw);
+    right: 30px;
 
     padding-inline: 0;
     padding-block: 0;
