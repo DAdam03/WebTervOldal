@@ -10,20 +10,6 @@
 
 }
 
-#profile{
-    position: static;
-    width: 3vw;
-    height: 3vw;
-
-    padding-inline: 0;
-    padding-block: 0;
-
-    border-radius: 50%;
-
-    background-color: #5A88FF;
-
-}
-
 #profileMenu{
     display: none;
 
