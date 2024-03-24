@@ -174,7 +174,13 @@ main{
     margin: auto;
 }
 
-
+button {
+    transition: .2s;
+    cursor: pointer;
+}
+button:hover {
+    transform: scale(1.05);
+}
 
 #donut-ingredients{
     width: calc(60% - 20px);
@@ -204,6 +210,9 @@ main{
     padding: 20px;
     height: 400px;
     box-sizing: border-box;
+}
+#ingredient-container::-webkit-scrollbar {
+    display: none;
 }
 
 #image-container{
@@ -308,6 +317,18 @@ footer p {
     display: none;
 }
 
+@media screen and (max-width: 1700px){
+    #header-gradient {
+        position: initial;
+    }
+
+    #logo {
+        z-index: 0;
+    }
+    #checkout {
+        z-index: 0;
+    }
+}
 
 @media screen and (max-width: 800px){
 
@@ -467,4 +488,5 @@ footer p {
         font-size: 16px;
     }
 }
+
 

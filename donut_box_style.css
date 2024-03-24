@@ -14,7 +14,7 @@
 
 .donut-box{
     --cut-length: 25px;
-    --background-color: #81a5ff;
+    --background-color: #7b9eb0;
     --border-color: #5A88FF;
     --border-size: 6px;
 
@@ -33,7 +33,7 @@
 
 .donut-img-container{
     --cut-length: 25px;
-    --background-color: white;
+    --background-color: #b9ccd5;
     --border-color: #5A88FF;
     --border-size: 3px;
 
@@ -109,6 +109,10 @@
     font-weight: 700;
 }
 
+.buy-button:hover {
+    transform: scale(1.1);
+}
+
 .delete-button{
     padding-inline: 0;
     padding-block: 0;
@@ -137,6 +141,10 @@
 
     background-color: #5A88FF;
     border: white 2px solid;
+}
+
+.delete-button:hover, .edit-button:hover {
+    transform: scale(1.15);
 }
 
 .donut-amount-button{

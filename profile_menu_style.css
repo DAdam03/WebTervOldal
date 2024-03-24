@@ -43,3 +43,9 @@
 
     border-bottom: 1px solid white;
 }
+
+@media screen and (max-width: 1700px) {
+    #profile-container {
+        z-index: 0;
+    }
+}
