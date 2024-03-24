@@ -1,4 +1,6 @@
 #admin-ingredients{
+    margin-top: 40px;
+
     --cut-length: 20px;
     --background-color: #7b9eb0;
     --border-size: 6px;
