@@ -359,7 +359,7 @@ footer p {
 }
 
 @media screen and (max-width: 1700px){
-    .only-desktop {
+    header.only-desktop {
         position: initial;
     }
 }
