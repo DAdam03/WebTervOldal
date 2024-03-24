@@ -17,7 +17,7 @@ body{
     position: relative;
     background-color: white;
    
-    min-height: max(100vh,800px) !important;
+    min-height: max(100vh,900px) !important;
 }
 
 #background-image{
