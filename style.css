@@ -322,11 +322,16 @@ footer p {
         position: initial;
     }
 
+    /*
+    nav{
+        top: 140px;
+    }*/
+
     #logo {
-        z-index: 0;
+        z-index: 1;
     }
     #checkout {
-        z-index: 0;
+        z-index: 1;
     }
 }
 

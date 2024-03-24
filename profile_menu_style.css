@@ -3,7 +3,7 @@
     top: 30px;
     right: calc(3% - 1.5vw);
 
-    z-index: 99;
+    z-index: 11;
 
     text-align: end;
     width: fit-content;
@@ -43,9 +43,10 @@
 
     border-bottom: 1px solid white;
 }
-
+/*
 @media screen and (max-width: 1700px) {
     #profile-container {
         z-index: 0;
     }
 }
+*/
