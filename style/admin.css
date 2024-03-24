@@ -64,7 +64,7 @@ input::placeholder {
 
 .admin-ingredient-container label {
     --cut-length: 8px;
-    --background-color: #CDCDCD;
+    --background-color: #5A88FF;
     --border-size: 2px;
     --border-color: white;
 
@@ -77,7 +77,7 @@ input::placeholder {
 
 #newIngredient {
     --cut-length: 8px;
-    --background-color: #CDCDCD;
+    --background-color: #5A88FF;
     --border-size: 2px;
     --border-color: white;
 
