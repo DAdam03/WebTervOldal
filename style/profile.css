@@ -11,25 +11,10 @@ body {
     background-color: #D9CAB3;
     min-height: 100vh;
 }
-/*
-header button{
-    position: fixed;
-    z-index: 10;
-}
-*/
 
 footer p {
     font-size: 16px;
 }
-/*
-#logo {
-    color: white;
-    font-weight: bold;
-    font-size: 30px;
-    position: fixed;
-    top: 20px; left: 30px;
-    z-index: 10;
-}*/
 
 h1 {
     margin: 0px auto 30px;
@@ -40,18 +25,7 @@ h1 {
 
 
 /*Local*/
-/*
-main {
-    --cut-length: 50px;
-    --background-color: #788585;
-    --border-size: 6px;
-    --border-color: #5A88FF;
 
-    width: min(100%, 1400px);
-    padding: 30px 50px !important;
-    margin: auto;
-}
-*/
 h2 {
     font-size: 30px;
     margin: 0px 0px 10px -15px;
