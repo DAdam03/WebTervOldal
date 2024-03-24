@@ -10,7 +10,6 @@ data felépítése
 */
 
 function createDonutBoxes(){
-    //console.log("xd");
     let donutBoxContainer = document.getElementById("donut-box-container");
     
     let testData = {
@@ -230,14 +229,14 @@ function createCheckoutDonutBoxes(){
 
 
 function CheckoutDonutAmountChanged(){
-    let donutBoxDiv = event.target.parentElement;
+    let donutBoxDiv = this.parentElement;
     let oldAmount = checkoutData[donutBoxDiv.index]["amount"];
-    let newAmount = event.target.value;
+    let newAmount = this.value;
     checkoutData[donutBoxDiv.index]["amount"] = newAmount;
-    if(newAmount > event.target.max){
-        newAmount = event.target.max;
-    }else if(newAmount < event.target.min){
-        newAmount = event.target.min;
+    if(newAmount > this.max){
+        newAmount = this.max;
+    }else if(newAmount < this.min){
+        newAmount = this.min;
     }
     let priceTag = donutBoxDiv.getElementsByTagName("h3")[0];
     priceTag.innerText = String(newAmount*donutBoxDiv.price)+" Ft";
@@ -337,8 +336,6 @@ function CheckoutDonutBox(data,index){
 
     let deleteInput = document.createElement("button");
     deleteInput.classList.add("delete-button");
-    //deleteInput.classList.add("nyolcszog");
-    //deleteInput.innerText = "Törlés";
 
     let deleteIcon = document.createElement("i");
     deleteIcon.classList.add("fa-solid");

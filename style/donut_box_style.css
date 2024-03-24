@@ -7,9 +7,6 @@
     row-gap: 20px;
 
     margin-bottom: 50px;
-
-    /* padding-top: 20px;
-    padding-bottom: 20px; */
 }
 
 .donut-box{
@@ -18,9 +15,6 @@
     --border-color: #5A88FF;
     --border-size: 6px;
 
-    /*width: max(18vw, 200px);
-    min-width: 200px;
-    height: max(calc(max(18vw, 200px) * 1.5), 320px);*/
 
     position: relative;
 

@@ -126,8 +126,6 @@ function AdminIngredientBox(ingredientId){
 
     let deleteInput = document.createElement("button");
     deleteInput.classList.add("delete-button");
-    //deleteInput.classList.add("nyolcszog");
-    //deleteInput.innerText = "Törlés";
 
     let deleteIcon = document.createElement("i");
     deleteIcon.classList.add("fa-solid");
@@ -138,22 +136,6 @@ function AdminIngredientBox(ingredientId){
     deleteInput.addEventListener("click", ingredientDeleteClicked);
     adminIngredientDiv.appendChild(deleteInput);
 
-    /*
-    let deleteDiv = document.createElement("div");
-    deleteDiv.classList.add("nyolcszog");
-    deleteDiv.classList.add("end");
-    deleteDiv.addEventListener("click",ingredientDeleteClicked);
-    deleteDiv.ingredientId = ingredientId;
-
-    let deleteIcon = document.createElement("i");
-    deleteIcon.classList.add("fa-solid");
-    deleteIcon.classList.add("fa-trash");
-    deleteIcon.classList.add("fa-xs");
-
-    deleteDiv.appendChild(deleteIcon);
-
-    adminIngredientDiv.appendChild(deleteDiv);
-    */
     return adminIngredientDiv;
 }
 

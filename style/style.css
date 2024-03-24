@@ -66,16 +66,6 @@ body{
 
 }
 
-/*
-header{
-    position: sticky;
-    top: 0;
-
-    height: 100px;
-
-    background-color: lightgray;
-}
-*/
 
 header.only-desktop {
     position: fixed;
@@ -100,12 +90,6 @@ header.only-desktop {
     transform: scale(1.05);
 }
 
-/* #header-gradient{
-    background-image: linear-gradient(black,rgba(0, 0, 0, 0));
-    height: 140px;
-    width: 100%;
-    position: absolute;
-} */
 
 header button{
     position: fixed;
@@ -118,17 +102,6 @@ header button{
     top: 35px; right: 80px;
 }
 
-/*
-#main-page{
-    width: 10%;
-    height: 100%;
-
-    box-sizing: border-box;
-
-    padding: 30px 40px;
-}
-*/
-
 
 
 nav{
@@ -137,10 +110,6 @@ nav{
     z-index: 10;
 
     min-height: 100px;
-
-    /*margin-left: auto;
-    margin-right: auto;*/
-
     margin-left: -44px;
     width: calc(min(100vw, 1400px) - 2 * 6px);
     background-color: #5a88ff;
@@ -152,7 +121,6 @@ nav{
     padding-top: 30px;
     font-size: 30px;
     font-weight: bold;
-    /*width: 32%;*/
     width: 25%;
     min-width: 240px;
     text-align: center;
@@ -176,12 +144,8 @@ nav{
 }
 
 main{
-    /*margin-bottom: 30px;
-    margin-right: auto;
-    margin-left: auto;*/
 
     --cut-length: 50px;
-    /*#D9CAB3*/
     --background-color: #D9CAB3;
     --border-size: 6px;
     --border-color: #5A88FF;
@@ -213,7 +177,6 @@ button:hover {
     margin-top: 10px;
     margin-bottom: 10px;
     
-    /*height: 400px;*/
 
     --cut-length: 20px;
     --background-color: #7b9eb0;
@@ -228,11 +191,7 @@ button:hover {
     height: 400px;
     box-sizing: border-box;
 }
-/*
-#ingredient-container::-webkit-scrollbar {
-    display: none;
-}
-*/
+
 #image-container{
     position: relative;
     height: 400px;
@@ -377,12 +336,7 @@ footer p {
 
 
     main{
-        /*margin-bottom: 30px;
-        margin-right: auto;
-        margin-left: auto;*/
-    
         --cut-length: 20px;
-        /*#D9CAB3*/
         --border-size: 6px;
     
         width: min(100%, 1400px);

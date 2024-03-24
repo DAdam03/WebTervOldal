@@ -57,22 +57,18 @@ function createIngredientInputs(){
 
 
 function ingredientAmountChanged(){
-    let ingredientId = event.target.ingredientId;
-    //console.log(event);
-    if(event.target.value > event.target.max){
-        event.target.value = event.target.max;
-    }else if(event.target.value < event.target.min){
-        event.target.value = event.target.mim;
+    let ingredientId = this.ingredientId;
+    if(this.value > this.max){
+        this.value = this.max;
+    }else if(this.value < this.min){
+        this.value = this.mim;
     }
 
-    let newAmount = event.target.value;
-    let inputDiv = event.target.parentElement;
+    let newAmount = this.value;
+    let inputDiv = this.parentElement;
     
     let priceSpan = inputDiv.getElementsByClassName("price-span")[0];
-    //console.log(ingredientId);
     priceSpan.innerText = String(newAmount*ingredientData[ingredientId][2])+" Ft";
-
-    //console.log(newAmount);
 
     if(ingredientId in currentRecipe){
         let oldAmount = currentRecipe[ingredientId];
@@ -87,7 +83,7 @@ function ingredientAmountChanged(){
 }
 
 function ingredientCheckChanged(){
-    let ingredientId = event.target.ingredientId;
+    let ingredientId = this.ingredientId;
 
     let canHaveMore = ingredientTypes[ingredientData[ingredientId][3]][1];
 
@@ -103,16 +99,15 @@ function ingredientCheckChanged(){
             imgLayers[imgLayers.length-i-1].remove();
         }
     }else{
-        let inputDiv = event.target.parentElement;
+        let inputDiv = this.parentElement;
         let amount = 1;
         let change = 0;
         if(canHaveMore){
             let amountInput = inputDiv.getElementsByClassName("donut-amount-button")[0];
             amount = amountInput.value;
         }else{
-            let sibligNodes = event.target.parentElement.parentElement.childNodes;
+            let sibligNodes = this.parentElement.parentElement.childNodes;
             for(let i=0; i<sibligNodes.length; i++){
-                //console.log(sibligNodes[i]);
                 if(sibligNodes[i].classList.contains("ingredient-input-div")){
                     let siblingIngredientId = sibligNodes[i].ingredientId;
                     if(siblingIngredientId in currentRecipe){
@@ -149,7 +144,6 @@ function IngredientInput(ingredientId){
 
     let ingredientImg = DonutImgLayer(ingredientId);
     if(ingredientImg != null){
-        //ingredientImg.classList.add("nyolcszog");
         inputDiv.appendChild(ingredientImg);
     }
 
