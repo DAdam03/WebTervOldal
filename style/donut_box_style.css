@@ -1,0 +1,271 @@
+/* fánk kártya formázás*/
+#donut-box-container{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    column-gap: 15px;
+    row-gap: 20px;
+
+    margin-bottom: 50px;
+
+    /* padding-top: 20px;
+    padding-bottom: 20px; */
+}
+
+.donut-box{
+    --cut-length: 25px;
+    --background-color: #7b9eb0;
+    --border-color: #5A88FF;
+    --border-size: 6px;
+
+    /*width: max(18vw, 200px);
+    min-width: 200px;
+    height: max(calc(max(18vw, 200px) * 1.5), 320px);*/
+
+    position: relative;
+
+    width: 300px;
+
+    padding: 30px;
+    
+    text-align: center;
+}
+
+.donut-img-container{
+    --cut-length: 25px;
+    --background-color: #b9ccd5;
+    --border-color: #5A88FF;
+    --border-size: 3px;
+
+    width: 240px;
+    height: 180px;
+
+    margin: 0px auto 10px;
+}
+
+.donut-img-container img{
+    position: absolute;
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.donut-box h2 {
+    font-size: 26px;
+
+    margin-bottom: 8px;
+}
+
+.donut-box h3, .donut-box h4 {
+    font-size: 22px;
+    font-weight: 500;
+
+    margin-bottom: 15px;
+}
+
+.donut-box p{
+    margin: 5px 10px;
+
+    font-size: 16px;
+    font-weight: 200;
+    font-style: italic;
+}
+
+.rating-container *{
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+.rating-span{
+    margin-left: 5px;
+}
+
+.fa-star{
+    color: white;
+}
+
+.star-hovered{
+    color: #ffc966;
+}
+
+.star-selected{
+    color: orange !important;
+}
+
+
+.buy-button{
+    --cut-length: 8px;
+    --background-color: #5A88FF;
+    --border-color: white;
+    --border-size: 2px;
+
+    padding: 3px 12px;
+    margin-right: 20px;
+
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.buy-button:hover {
+    transform: scale(1.1);
+}
+
+.delete-button{
+    padding-inline: 0;
+    padding-block: 0;
+
+    border-radius: 50%;
+
+    margin-top: 10px;
+
+    width: 40px;
+    height: 40px;
+
+    background-color: #ff0000;
+    border: white 2px solid;
+}
+
+.edit-button{
+    padding-inline: 0;
+    padding-block: 0;
+
+    border-radius: 50%;
+
+    margin-top: 10px;
+
+    width: 40px;
+    height: 40px;
+
+    background-color: #5A88FF;
+    border: white 2px solid;
+}
+
+.delete-button:hover, .edit-button:hover {
+    transform: scale(1.15);
+}
+
+.donut-amount-button{
+    width: 4ch;    height: 1em;
+
+    background-color: #cdcdcd;
+    border-bottom: 1px solid white;
+
+    margin-left: 2px;
+}
+
+
+
+
+.checkout-donut-box{
+    display: flex;
+    height: 140px;
+    box-sizing: border-box;
+    padding: 20px 2%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.checkout-donut-box .donut-img-container{
+    width: 120px;
+    height: 120px;
+    margin: 0;
+    position: relative;
+
+    --cut-length: 10px;
+    --background-color: #cdcdcd;
+    --border-color: white;
+    --border-size: 2px;
+}
+
+.checkout-donut-box .donut-img-container img{
+    width: 120px;
+}
+
+.checkout-donut-box p{
+    margin: 5px 10px;
+
+    font-size: 16px;
+    font-weight: 200;
+    font-style: italic;
+}
+
+
+@media screen and (max-width: 800px){
+
+    .donut-box{
+        width: min(300px, 90%);
+        padding: 15px;
+    }
+
+    .donut-box *{
+        font-size: 16px !important;
+    }
+
+    .donut-img-container{
+        width: 180px;
+        height: 140px;
+    }
+
+    .donut-box h4{
+        margin-bottom: 10px;
+    }
+
+
+    .buy-button{
+        margin-right: 0px;
+        font-size: 20px;
+        margin-right: 10px;
+    }
+
+    .donut-amount-button{
+        font-size: 20px;
+        width: 4ch;
+        height: 1em;
+    
+        background-color: #cdcdcd;
+        border-bottom: 1px solid white;
+    
+        margin-left: 2px;
+    }
+
+    .checkout-donut-box *{
+        font-size: 12px !important;
+    }
+
+    .checkout-donut-box .donut-img-container{
+        width: 50px;
+        height: 50px;
+    
+        --cut-length: 5px;
+        --background-color: #cdcdcd;
+        --border-color: white;
+    }
+    
+    .checkout-donut-box .donut-img-container img{
+        width: 50px;
+    }
+    
+    .edit-button{
+        width: 30px;
+        height: 30px;
+        margin-left: 10px;
+    }
+
+    .delete-button{
+        width: 30px;
+        height: 30px;
+    }
+
+    .checkout-donut-box{
+        height: 70px;
+        box-sizing: border-box;
+        padding: 10px 2%;
+    }
+
+}
+
+
+

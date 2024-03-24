@@ -1,0 +1,39 @@
+.nyolcszog {
+    box-sizing: border-box;
+    position: relative;
+    background-color: var(--border-color);
+    padding: var(--border-size);
+
+    clip-path: polygon(
+        var(--cut-length) 0px,
+        calc(100% - var(--cut-length)) 0%,
+        100% var(--cut-length),
+        100% calc(100% - var(--cut-length)),
+        calc(100% - var(--cut-length)) 100%,
+        var(--cut-length) 100%,
+        0% calc(100% - var(--cut-length)),
+        0% var(--cut-length)
+    );
+}
+
+.nyolcszog::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: var(--border-size);
+    left: var(--border-size);
+    background-color: var(--background-color);
+    width: calc(100% - 2 * var(--border-size));
+    height:  calc(100% - 2 * var(--border-size));
+
+    z-index: -1;
+
+    clip-path: inherit;
+}
+
+/* szükséges változók:
+    --cut-length:
+    --background-color:
+    --border-size:
+    --border-color: 
+*/

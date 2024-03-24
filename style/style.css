@@ -1,0 +1,497 @@
+*{
+    margin: 0;
+    color: white;
+    font-family: "Inter", sans-serif;
+    font-size: 24px;
+    outline: none;
+    border: none;
+}
+
+.flex-container{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+body{
+    position: relative;
+    background-color: white;
+   
+
+    min-height: 100vh;
+}
+
+#background-image{
+    z-index: -1;
+    background-image: url("img/donut_background_tilable.png");
+    background-repeat: repeat;
+
+    filter: blur(6px);
+    -webkit-filter: blur(6px);
+
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+
+#checkout{
+    width: 40px;
+    height: 40px;
+
+    top: calc(30px + 0.25vw);
+    right: calc(6.5% - 1.25vw);
+
+    padding-inline: 0;
+    padding-block: 0;
+
+    border-radius: 50%;
+
+    background-color: #5A88FF;
+}
+
+#profile{
+    position: static;
+    width: 50px;
+    height: 50px;
+
+    top: 30px;
+    right: calc(3% - 1.5vw);
+
+    padding-inline: 0;
+    padding-block: 0;
+
+    border-radius: 50%;
+
+    background-color: #5A88FF;
+
+}
+
+/*
+header{
+    position: sticky;
+    top: 0;
+
+    height: 100px;
+
+    background-color: lightgray;
+}
+*/
+
+#logo {
+    position: fixed;
+    top: 10px; left: 30px;
+    z-index: 10;
+}
+
+#logo img{
+    width: 150px;
+    height: auto;
+}
+
+#header-gradient{
+    background-image: linear-gradient(black,rgba(0, 0, 0, 0));
+    height: 140px;
+    width: 100%;
+    position: fixed;
+}
+
+header button{
+    position: fixed;
+    z-index: 10;
+}
+
+/*
+#main-page{
+    width: 10%;
+    height: 100%;
+
+    box-sizing: border-box;
+
+    padding: 30px 40px;
+}
+*/
+
+
+
+nav{
+    position: sticky;
+    top: 0;
+    z-index: 10;
+
+    min-height: 100px;
+
+    /*margin-left: auto;
+    margin-right: auto;*/
+
+    margin-left: -44px;
+    width: calc(min(100vw, 1400px) - 2 * 6px);
+    background-color: #5a88ff;
+
+}
+
+.nav-button{
+    color: white;
+    padding-top: 30px;
+    font-size: 30px;
+    font-weight: bold;
+    /*width: 32%;*/
+    width: 25%;
+    min-width: 240px;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s;
+}
+
+.nav-button:hover{
+    background-color: rgb(65, 65, 255);
+}
+
+.nav-button.selected{
+    background-color: rgb(73, 73, 255) !important;
+}
+
+#content{
+    min-height: calc(100vh - 200px - 30px);
+    margin-top: 20px;
+    z-index: -2;
+}
+
+main{
+    /*margin-bottom: 30px;
+    margin-right: auto;
+    margin-left: auto;*/
+
+    --cut-length: 50px;
+    /*#D9CAB3*/
+    --background-color: #D9CAB3;
+    --border-size: 6px;
+    --border-color: #5A88FF;
+
+    width: min(100%, 1400px);
+    padding: 0px 50px 20px !important;
+    margin: auto;
+}
+
+button {
+    transition: .2s;
+    cursor: pointer;
+}
+button:hover {
+    transform: scale(1.05);
+}
+
+#donut-ingredients{
+    width: calc(60% - 20px);
+    padding: 10px;
+}
+
+#donut-image{
+    width: 410px;
+    padding: 10px;
+}
+
+#ingredient-container-container{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    
+    /*height: 400px;*/
+
+    --cut-length: 20px;
+    --background-color: #788585;
+    --border-size: 6px;
+    --border-color: #5A88FF;
+
+}
+
+#ingredient-container{
+    overflow-y: auto;
+    padding: 20px;
+    height: 400px;
+    box-sizing: border-box;
+}
+#ingredient-container::-webkit-scrollbar {
+    display: none;
+}
+
+#image-container{
+    position: relative;
+    height: 400px;
+    width: 400px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    
+
+    --cut-length: 20px;
+    --background-color: #788585;
+    --border-size: 6px;
+    --border-color: #5A88FF;
+}
+
+
+#image-container img{
+    position: absolute;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+
+#inputs button{
+    --cut-length: 8px;
+    --background-color: #CDCDCD;
+    --border-color: white;
+    --border-size: 3px;
+
+    padding: 3px 12px;
+    margin-right: 20px;
+
+    font-size: 26px;
+    font-weight: 700;
+}
+
+#checkout-form{
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#checkout-form .login-input-wrapper{
+    margin: 2em 0;
+}
+
+
+input[type="number"]{
+    width: 4ch;    
+    height: 30px;
+
+    background-color: #00000000;
+    border-bottom: 1px solid white;
+
+    margin-left: 2px;
+}
+
+#order-send-button{
+    --cut-length: 8px;
+    --background-color: #CDCDCD;
+    --border-color: #5A88FF;
+    --border-size: 5px;
+
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+
+    font-size: 26px;
+    font-weight: 700;
+}
+
+
+#name-input{
+    display: inline-block;
+}
+
+footer{
+    height: 100px;
+    margin-top: 20px;
+
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 3px 5px;
+
+    background-color: rgb(58, 58, 111);
+
+    color: #cdcdcd;
+}
+
+footer p {
+    font-size: 16px;
+}
+
+
+.only-phone{
+    display: none;
+}
+
+@media screen and (max-width: 1700px){
+    #header-gradient {
+        position: initial;
+    }
+
+    /*
+    nav{
+        top: 140px;
+    }*/
+
+    #logo {
+        z-index: 1;
+    }
+    #checkout {
+        z-index: 1;
+    }
+}
+
+@media screen and (max-width: 800px){
+
+    .only-phone{
+        display: block;
+    }
+
+    .only-desktop{
+        display: none;
+    }
+
+
+    main{
+        /*margin-bottom: 30px;
+        margin-right: auto;
+        margin-left: auto;*/
+    
+        --cut-length: 20px;
+        /*#D9CAB3*/
+        --border-size: 6px;
+    
+        width: min(100%, 1400px);
+        padding: 0px 10px 20px !important;
+    }
+
+    nav{
+        margin-left: -4px;
+    }
+
+    #nav-button-only-phone{
+        width: 80%;
+        min-width: 220px;
+        display: grid;
+        grid-template-columns: 3fr 1fr 1fr;
+    }
+
+    #checkout-phone{
+        margin-top: 20%;
+        width: 40px;
+        height: 40px;
+    
+        padding-inline: 0;
+        padding-block: 0;
+    
+        border-radius: 50%;
+    
+        background-color: #5A88FF;
+    }
+    
+    #profile-phone{
+        margin-top: 20%;
+        width: 40px;
+        height: 40px;
+    
+        padding-inline: 0;
+        padding-block: 0;
+    
+        border-radius: 50%;
+    
+        background-color: #5A88FF;
+    
+    }
+
+    #logo-phone{
+        width: fit-content;
+    }
+    #logo-phone img{
+        width: 80px;
+    }
+
+    nav{
+        position: relative;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-button{
+        padding: 10px;
+        font-size: 22px;
+        width: 80%;
+        min-width: 220px;
+        text-align: center;
+        cursor: pointer;
+        user-select: none;
+        transition: all 0.2s;
+    }
+
+    #donut-ingredients{
+        width: max(calc(60% - 20px), 280px);
+        padding: 10px;
+    }
+
+    #ingredient-container-container{
+        margin-top: 5px;
+        margin-bottom: 10px;
+    
+        --cut-length: 10px;
+        --border-size: 3px;
+    
+    }
+    
+    #ingredient-container{
+        overflow-y: auto;
+        padding: 10px;
+        height: 300px;
+        box-sizing: border-box;
+    }
+
+    #ingredient-container *{
+        font-size: 12px !important;
+    }
+
+    h2{
+        font-size: 18px;
+    }
+    
+    h3{
+        font-size: 18px;
+    }
+
+    #image-container{
+        height: 280px;
+        width: 280px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        
+    
+        --cut-length: 10px;
+        --border-size: 3px;
+    }
+    
+    
+    #image-container img{
+        max-width: 280px;
+    }
+
+    #inputs button{
+        --cut-length: 6px;
+        --border-size: 2px;
+    
+        padding: 2px 5px;
+    
+        font-size: 16px;
+        font-weight: 400;
+    }
+
+    #order-send-button{
+        --cut-length: 4px;
+        --border-size: 3px;
+    
+        margin-top: 10px;
+    
+        font-size: 16px;
+    }
+
+    #checkout-form *{
+        font-size: 16px;
+    }
+}
+
+

@@ -1,0 +1,44 @@
+.login-input-wrapper {
+    width: fit-content;
+    position: relative;
+    font-size: 24px;
+    margin: 2em auto auto;
+    cursor: text;
+}
+
+
+.login-input-wrapper input {
+    font-size: 20px;
+    border-bottom: 1px solid white;
+    background-color: #00000000;
+}
+
+.login-input-wrapper label {
+    position: absolute;
+    top: 0px; left: 0px;
+
+    cursor: inherit;
+
+    transition: .2s;
+}
+
+.login-input-wrapper input:focus ~ label, .login-input-wrapper input:not(:placeholder-shown) ~ label {
+    transform: translateY(calc(-1em - 10px));
+}
+
+@media screen and (max-width: 800px){
+    .login-input-wrapper label {
+        top: 5px;
+        font-size: 16px !important;
+    }
+
+    .login-input-wrapper input {
+        font-size: 16px;
+    }
+
+    .login-input-wrapper {
+        font-size: 20px;
+        margin: 1em auto auto;
+    }
+}
+
