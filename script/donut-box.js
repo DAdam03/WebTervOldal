@@ -232,12 +232,15 @@ function CheckoutDonutAmountChanged(){
     let donutBoxDiv = this.parentElement;
     let oldAmount = checkoutData[donutBoxDiv.index]["amount"];
     let newAmount = this.value;
-    checkoutData[donutBoxDiv.index]["amount"] = newAmount;
+    
     if(newAmount > this.max){
         newAmount = this.max;
     }else if(newAmount < this.min){
         newAmount = this.min;
     }
+    checkoutData[donutBoxDiv.index]["amount"] = newAmount;
+
+    this.value = newAmount;
     let priceTag = donutBoxDiv.getElementsByTagName("h3")[0];
     priceTag.innerText = String(newAmount*donutBoxDiv.price)+" Ft";
 
