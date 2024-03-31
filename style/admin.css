@@ -107,7 +107,7 @@ footer p {
 
     .admin-ingredient-container {
         grid-template-columns: none;
-        column-gap: 0px;
+        column-gap: 0;
         row-gap: 5px;
         display: flex;
         flex-wrap: wrap;

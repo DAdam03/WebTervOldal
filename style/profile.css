@@ -17,7 +17,7 @@ footer p {
 }
 
 h1 {
-    margin: 0px auto 30px;
+    margin: 0 auto 30px;
     padding-top: 10px;
     font-size: 86px;
     text-align: center;
@@ -28,7 +28,7 @@ h1 {
 
 h2 {
     font-size: 30px;
-    margin: 0px 0px 10px -15px;
+    margin: 0 0 10px -15px;
 
 }
 

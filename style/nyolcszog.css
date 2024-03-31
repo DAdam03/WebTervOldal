@@ -5,7 +5,7 @@
     padding: var(--border-size);
 
     clip-path: polygon(
-        var(--cut-length) 0px,
+        var(--cut-length) 0,
         calc(100% - var(--cut-length)) 0%,
         100% var(--cut-length),
         100% calc(100% - var(--cut-length)),
