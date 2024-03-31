@@ -11,33 +11,27 @@ data felépítése
 
 function createDonutBoxes(){
     let donutBoxContainer = document.getElementById("donut-box-container");
-    
-    let testData = {
-        "ingredients":[[0,1],[1,1],[2,1],[3,1]],
-        "name":"TesztFánk",
-        "rating":-1,
-        "user":""
-    }
 
-    for(let i=0; i<5; i++){
-        let donutBox = DonutBox(testData);
-        donutBoxContainer.appendChild(donutBox);
+    let donutIds = Object.keys(donutData);
+
+    for(let i=0; i<donutIds.length; i++){
+        if(donutData[donutIds[i]]["rating"] == -1){
+            let donutBox = DonutBox(donutIds[i]);
+            donutBoxContainer.appendChild(donutBox);
+        }
     }
 }
 
 function createUserDonutBoxes(){
     let donutBoxContainer = document.getElementById("donut-box-container");
     
-    let testData = {
-        "ingredients":[[0,1],[1,1],[2,1],[3,1]],
-        "name":"TesztFánk",
-        "rating":3.5,
-        "user":"TesztFelhasználó2"
-    }
+    let donutIds = Object.keys(donutData);
 
-    for(let i=0; i<5; i++){
-        let donutBox = DonutBox(testData);
-        donutBoxContainer.appendChild(donutBox);
+    for(let i=0; i<donutIds.length; i++){
+        if(donutData[donutIds[i]]["rating"] != -1){
+            let donutBox = DonutBox(donutIds[i]);
+            donutBoxContainer.appendChild(donutBox);
+        }
     }
 }
 
@@ -97,10 +91,47 @@ function starClicked(){
 }
 
 
-function DonutBox(data){
+function donutAmountChanged(){
+    if(this.value > this.max){
+        this.value = this.max;
+    }else if(this.value < this.min){
+        this.value = this.min;
+    }
+}
+
+
+function donutBuyClicked(){
+    let donutBoxDiv = this.parentElement;
+    let donutAmountInput = donutBoxDiv.querySelector(".donut-amount-button");
+    let donutId = donutBoxDiv.id;
+    
+    let checkoutData = JSON.parse(sessionStorage.getItem("checkout"));
+    
+    for(let i=0; i<checkoutData.length; i++){
+        if("id" in checkoutData[i] && checkoutData[i]["id"] == donutId){
+            checkoutData[i]["amount"] = Number(checkoutData[i]["amount"]);
+            checkoutData[i]["amount"] += Number(donutAmountInput.value);
+            sessionStorage.setItem("checkout",JSON.stringify(checkoutData));
+            return;
+        }
+    }
+    let newDonutData = {
+        "id":donutId,
+        "amount":donutAmountInput.value,
+    };
+
+    checkoutData.push(newDonutData);
+    sessionStorage.setItem("checkout",JSON.stringify(checkoutData));
+}
+
+
+function DonutBox(donutId){
+    let data = donutData[donutId];
     let donutBoxDiv = document.createElement("div");
     donutBoxDiv.classList.add("donut-box");
     donutBoxDiv.classList.add("nyolcszog");
+
+    donutBoxDiv.id = donutId;
     
     let imgContainerDiv = DonutImgContainer(data.ingredients);
     donutBoxDiv.appendChild(imgContainerDiv);
@@ -136,7 +167,7 @@ function DonutBox(data){
     donutBoxDiv.appendChild(ingredientsP);
 
 
-    if(data.rating != -1 && currentUser["name"] != data.user){
+    if(data.rating != -1 && currentUser != data.user){
         let ratingDiv = document.createElement("div");
         ratingDiv.classList.add("rating-container");
         donutBoxDiv.appendChild(ratingDiv);
@@ -158,7 +189,7 @@ function DonutBox(data){
 
         
         let userNameTag = document.createElement("h4");
-        userNameTag.innerText = data.user;
+        userNameTag.innerText = userData[data.user]["name"];
         donutBoxDiv.appendChild(userNameTag);
     }
 
@@ -167,6 +198,7 @@ function DonutBox(data){
     /*adrian*/
     buyButton.classList.add("nyolcszog");
     buyButton.innerText = "Kosárba";
+    buyButton.addEventListener("click",donutBuyClicked);
     donutBoxDiv.appendChild(buyButton);
 
     let amountInput = document.createElement("input");
@@ -176,6 +208,7 @@ function DonutBox(data){
     amountInput.min = 1;
     amountInput.size = 3;
     amountInput.classList.add("donut-amount-button");
+    amountInput.addEventListener("change",donutAmountChanged);
     donutBoxDiv.appendChild(amountInput);
 
     let lnbreak = document.createElement("br");
@@ -194,7 +227,7 @@ function DonutBox(data){
     editButton.addEventListener("click", donutEditClicked);
     donutBoxDiv.appendChild(editButton);
 
-    if(data.user == currentUser.name || currentUser.admin){
+    if(data.user == currentUser || userData[currentUser].admin){
         let lnbreak = document.createElement("br");
         donutBoxDiv.appendChild(lnbreak);
 
@@ -217,10 +250,23 @@ function DonutBox(data){
 function createCheckoutDonutBoxes(){
     let donutBoxContainer = document.getElementById("order-container");
 
+    let checkoutData = JSON.parse(sessionStorage.getItem("checkout"));
+
     for(let i=0; i<checkoutData.length; i++){
-        let donutBox = CheckoutDonutBox(checkoutData[i],i);
-        donutBoxContainer.appendChild(donutBox);
-        currentPrice += donutBox.price*checkoutData[donutBox.index]["amount"];
+        if("id" in checkoutData[i]){
+            let data = {
+                "ingredients":donutData[checkoutData[i]["id"]]["ingredients"],
+                "name":donutData[checkoutData[i]["id"]]["name"],
+                "amount":checkoutData[i]["amount"],
+            };
+            let donutBox = CheckoutDonutBox(data,i);
+            donutBoxContainer.appendChild(donutBox);
+            currentPrice += donutBox.price*checkoutData[donutBox.index]["amount"];
+        }else{
+            let donutBox = CheckoutDonutBox(checkoutData[i],i);
+            donutBoxContainer.appendChild(donutBox);
+            currentPrice += donutBox.price*checkoutData[donutBox.index]["amount"];
+        }
     }
 
     let priceSum = document.getElementById("price");
@@ -229,6 +275,8 @@ function createCheckoutDonutBoxes(){
 
 
 function CheckoutDonutAmountChanged(){
+    let checkoutData = JSON.parse(sessionStorage.getItem("checkout"));
+
     let donutBoxDiv = this.parentElement;
     let oldAmount = checkoutData[donutBoxDiv.index]["amount"];
     let newAmount = this.value;
@@ -239,6 +287,8 @@ function CheckoutDonutAmountChanged(){
         newAmount = this.min;
     }
     checkoutData[donutBoxDiv.index]["amount"] = newAmount;
+
+    sessionStorage.setItem("checkout",JSON.stringify(checkoutData));
 
     this.value = newAmount;
     let priceTag = donutBoxDiv.getElementsByTagName("h3")[0];
@@ -251,6 +301,8 @@ function CheckoutDonutAmountChanged(){
 }
 
 function CheckoutDonutDeleted(){
+    let checkoutData = JSON.parse(sessionStorage.getItem("checkout"));
+
     let donutBoxDiv = this.parentElement;
     let amount = checkoutData[donutBoxDiv.index]["amount"];
     
@@ -267,6 +319,8 @@ function CheckoutDonutDeleted(){
     }
 
     checkoutData.splice(donutBoxDiv.index,1);
+
+    sessionStorage.setItem("checkout",JSON.stringify(checkoutData));
 
     donutBoxDiv.remove();
 }

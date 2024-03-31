@@ -6,28 +6,79 @@
     }
 */
 
-var currentUser = {
-    "name":"TesztFelhasználó",
-    "admin":true //Nem biztonságos, de most ez is jó lesz
+//Ez majd szerveren lesz tárolva. A kliens csak a felhasználónáv - userId párokat kapja meg a fánkok kiírásához
+var userData = {
+    0:{
+        "name":"TesztFelhasználó",
+        "admin":true
+    },
+    1:{
+        "name":"TesztFelhasználó2",
+        "admin":false
+    },
+    2:{
+        "name":"TesztFelhasználó3",
+        "admin":false
+    },
 }
 
-var checkoutData = [
+
+var currentUser = 0;
+
+/*
     {
         "ingredients":[[0,1],[1,1],[2,1],[3,2]],
         "name":"TesztFánk",
         "amount":1
     },
+
+    vagy
+
     {
-        "ingredients":[[0,1],[1,1],[2,3],[3,1]],
-        "name":"TesztFánk2",
-        "amount":2
+        id:donutId,
+        amount:1
     },
-    {
-        "ingredients":[[0,1],[1,4],[2,1],[3,1]],
+*/
+
+var donutData = {
+    0:{
+        "ingredients":[[0,1],[1,1],[2,1],[3,1]],
+        "name":"TesztFánk",
+        "rating":-1,
+        "user":-1
+    },
+    1:{
+        "ingredients":[[0,1],[1,1],[2,1],[3,1]],
+        "name":"TesztFánk2",
+        "rating":-1,
+        "user":-1
+    },
+    2:{
+        "ingredients":[[0,1],[1,1],[2,1],[3,1]],
         "name":"TesztFánk3",
-        "amount":1
-    }
+        "rating":-1,
+        "user":-1
+    },
+    3:{
+        "ingredients":[[0,1],[1,1],[2,1],[3,1]],
+        "name":"TesztFánk4",
+        "rating":2,
+        "user":0
+    },
+    4:{
+        "ingredients":[[0,1],[1,1],[2,1],[3,1]],
+        "name":"TesztFánk5",
+        "rating":5.5,
+        "user":1
+    },
+}
+
+
+/*
+var checkoutData = [
+    
 ]
+*/
 
 var currentPrice = 0;
 
@@ -66,5 +117,21 @@ function getPriceByIngredients(ingredients){
     
     return price;
 }
+
+/*
+if(!sessionStorage.getItem("test")){
+    console.log("nincs ilyen meg");
+    sessionStorage.setItem("test",[[10,0,2],[20,0],[13,3,3,7]]);
+}else{
+    console.log(sessionStorage.getItem("test"));
+}
+*/
+
+if(!sessionStorage.getItem("checkout")){
+    //console.log("nincs ilyen meg");
+    sessionStorage.setItem("checkout","[]");
+}
+
+
 
 
