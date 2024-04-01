@@ -22,20 +22,42 @@ function createDonutBoxes(){
     }
 }
 
+function ratingSort(idX,idY){
+    if(donutData[idX]["rating"] < donutData[idY]["rating"]){
+        return 1;
+    }else if(donutData[idX]["rating"] > donutData[idY]["rating"]){
+        return -1;
+    }
+    return 0;
+}
+
 function createUserDonutBoxes(){
     let donutBoxContainer = document.getElementById("donut-box-container");
     
     let donutIds = Object.keys(donutData);
+    let sortedIds = [];
 
     for(let i=0; i<donutIds.length; i++){
         if(donutData[donutIds[i]]["rating"] != -1){
-            let donutBox = DonutBox(donutIds[i]);
-            donutBoxContainer.appendChild(donutBox);
+            sortedIds.push(donutIds[i]);
         }
+    }
+
+    sortedIds.sort(ratingSort);
+
+    for(let i=0; i<sortedIds.length; i++){
+        let donutBox = DonutBox(sortedIds[i]);
+        donutBoxContainer.appendChild(donutBox);
     }
 }
 
 function donutEditClicked(){
+    let donutAmount = this.parentElement.querySelector(".donut-amount-button");
+    let editData = {
+        "id":this.parentElement.id,
+        "amount":donutAmount.value,
+    }
+    sessionStorage.setItem("editId",JSON.stringify(editData));
     location.href = "donut_maker.html";
 }
 
@@ -167,20 +189,22 @@ function DonutBox(donutId){
     donutBoxDiv.appendChild(ingredientsP);
 
 
-    if(data.rating != -1 && currentUser != data.user){
+    if(data.rating != -1){
         let ratingDiv = document.createElement("div");
         ratingDiv.classList.add("rating-container");
         donutBoxDiv.appendChild(ratingDiv);
 
-        for(let i=0; i<5; i++){
-            let starIcon = document.createElement("i");
-            starIcon.classList.add("fa-solid");
-            starIcon.classList.add("fa-star");
-            starIcon.index = i;
-            starIcon.addEventListener("mouseenter",starMouseEntered);
-            starIcon.addEventListener("mouseleave",starMouseExited);
-            starIcon.addEventListener("click",starClicked);
-            ratingDiv.appendChild(starIcon);
+        if(currentUser != data.user){
+            for(let i=0; i<5; i++){
+                let starIcon = document.createElement("i");
+                starIcon.classList.add("fa-solid");
+                starIcon.classList.add("fa-star");
+                starIcon.index = i;
+                starIcon.addEventListener("mouseenter",starMouseEntered);
+                starIcon.addEventListener("mouseleave",starMouseExited);
+                starIcon.addEventListener("click",starClicked);
+                ratingDiv.appendChild(starIcon);
+            }
         }
         let ratingSpan = document.createElement("span");
             ratingSpan.classList.add("rating-span");
@@ -300,6 +324,16 @@ function CheckoutDonutAmountChanged(){
     priceSum.innerText = "Fizetendő összeg: "+String(currentPrice)+" Ft";
 }
 
+
+function checkoutDonutEditClicked(){
+    let checkoutData = JSON.parse(sessionStorage.getItem("checkout"));
+    let donutIndex = this.parentElement.index;
+    sessionStorage.setItem("editCheckoutIndex",donutIndex);
+    sessionStorage.setItem("editId",JSON.stringify(checkoutData[donutIndex]));
+    location.href = "donut_maker.html";
+}
+
+
 function CheckoutDonutDeleted(){
     let checkoutData = JSON.parse(sessionStorage.getItem("checkout"));
 
@@ -382,13 +416,14 @@ function CheckoutDonutBox(data,index){
     let editButton = document.createElement("button");
     editButton.classList.add("edit-button");
     editButton.title = "Fánk szerkesztése";
+    editButton.addEventListener("click", checkoutDonutEditClicked);
 
     let editIcon = document.createElement("i");
     editIcon.classList.add("fa-solid");
     editIcon.classList.add("fa-pen");
     editButton.appendChild(editIcon);
     
-    editButton.addEventListener("click", donutEditClicked);
+    //editButton.addEventListener("click", donutEditClicked);
     donutBoxDiv.appendChild(editButton);
 
     let deleteInput = document.createElement("button");

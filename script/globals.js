@@ -118,20 +118,16 @@ function getPriceByIngredients(ingredients){
     return price;
 }
 
-/*
-if(!sessionStorage.getItem("test")){
-    console.log("nincs ilyen meg");
-    sessionStorage.setItem("test",[[10,0,2],[20,0],[13,3,3,7]]);
-}else{
-    console.log(sessionStorage.getItem("test"));
-}
-*/
 
 if(!sessionStorage.getItem("checkout")){
-    //console.log("nincs ilyen meg");
     sessionStorage.setItem("checkout","[]");
 }
 
+if(!sessionStorage.getItem("editId")){
+    sessionStorage.setItem("editId","{}");
+}
 
-
+if(!sessionStorage.getItem("editCheckoutIndex")){
+    sessionStorage.setItem("editCheckoutIndex","-1");
+}
 

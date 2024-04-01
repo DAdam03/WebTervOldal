@@ -10,9 +10,23 @@ var currentRecipe = {
 };
 var currentPrice = 0;
 
-
+var checkoutIndex = -1;
 
 function createIngredientInputs(){
+
+    let editId = JSON.parse(sessionStorage.getItem("editId"));
+    let editData = {};
+    if(Object.keys(editId).length != 0){
+        if("id" in editId){
+            editData["ingredients"] = donutData[Number(editId["id"])]["ingredients"];
+            editData["name"] = donutData[Number(editId["id"])]["name"];
+            editData["amount"] = Number(editId["amount"]);
+        }else{
+            editData = editId;
+        }
+    }
+    
+
     let ingredientContainer = document.getElementById("ingredient-container");
 
     let ingredientIds = Object.keys(ingredientData);
@@ -34,25 +48,97 @@ function createIngredientInputs(){
                 if(!canHaveMore && firstIngredient){
                     firstIngredient = false;
                     let radio = ingredientInput.querySelector("#r_i_"+String(ingredientIds[i]));
-                    radio.checked = true;
-
-                    let imgContainerDiv = document.getElementById("image-container");
-                    let imgLayer = DonutImgLayer(ingredientIds[i]);
-                    imgContainerDiv.appendChild(imgLayer);
-
-                    currentRecipe[ingredientIds[i]] = 1;
-                    currentPrice += ingredientData[ingredientIds[i]][2];
+                    if(Object.keys(editId).length == 0){
+                        radio.checked = true;
                     
-                    let fullPrice = document.getElementsByTagName("h3")[0];
-                    fullPrice.innerText = "Ár: "+String(currentPrice)+" Ft";
+                        let imgContainerDiv = document.getElementById("image-container");
+                        let imgLayer = DonutImgLayer(ingredientIds[i]);
+                        imgContainerDiv.appendChild(imgLayer);
+
+                        currentRecipe[ingredientIds[i]] = 1;
+                        currentPrice += ingredientData[ingredientIds[i]][2];
+                        
+                        let fullPrice = document.getElementsByTagName("h3")[0];
+                        fullPrice.innerText = "Ár: "+String(currentPrice)+" Ft";
+                    }
+                }
+                if(Object.keys(editId).length != 0){
+                    for(let j=0; j<editData["ingredients"].length; j++){
+                        if(ingredientIds[i] == editData["ingredients"][j][0]){
+                            if(canHaveMore){
+                                let amountInput = ingredientInput.querySelector(".donut-amount-button");
+                                amountInput.value = Number(editData["ingredients"][j][1]);
+                                let radio = ingredientInput.querySelector("#ch_i_"+String(ingredientIds[i]));
+                                radio.checked = true;
+                            }else{
+                                let radio = ingredientInput.querySelector("#r_i_"+String(ingredientIds[i]));
+                                radio.checked = true;
+                            }
+
+                            let imgContainerDiv = document.getElementById("image-container");
+                            let imgLayer = DonutImgLayer(ingredientIds[i]);
+                            imgContainerDiv.appendChild(imgLayer);
+
+                            currentRecipe[ingredientIds[i]] = 1;
+                            currentPrice += ingredientData[ingredientIds[i]][2];
+                            
+                            let fullPrice = document.getElementsByTagName("h3")[0];
+                            fullPrice.innerText = "Ár: "+String(currentPrice)+" Ft";
+
+                            break;
+                        }
+                    }
                 }
                 typeDiv.appendChild(ingredientInput);
             }
         }
 
-        ingredientContainer.appendChild(typeDiv)
+        ingredientContainer.appendChild(typeDiv);
     }
-    
+
+    if(Object.keys(editId).length != 0){
+        let nameInput = document.getElementById("donut-name");
+        nameInput.value = editData["name"];
+
+        let amountInput = document.getElementById("buy-amount-button");
+        amountInput.value = Number(editData["amount"]);
+    }
+
+    checkoutIndex = Number(sessionStorage.getItem("editCheckoutIndex"));
+    sessionStorage.setItem("editCheckoutIndex","-1");
+}
+
+function donutBuyClicked(){
+    let checkoutData = JSON.parse(sessionStorage.getItem("checkout"));
+
+    let curIngredients = [];
+    let curIngredientIds = Object.keys(currentRecipe);
+    for(let i=0; i<curIngredientIds.length; i++){
+        curIngredients.push([curIngredientIds[i],currentRecipe[curIngredientIds[i]]]);
+    }
+
+    let nameInput = document.getElementById("donut-name");
+    let curName = nameInput.value;
+
+    let amountInput = document.getElementById("buy-amount-button");
+    let curAmount = amountInput.value;
+
+    let curData = {
+        "ingredients":curIngredients,
+        "name":curName,
+        "amount":curAmount
+    };
+
+    if(checkoutIndex == -1){
+        checkoutData.push(curData);
+    }else{
+        checkoutData[checkoutIndex] = curData;
+    }
+
+    sessionStorage.setItem("editId","{}");
+    sessionStorage.setItem("checkout",JSON.stringify(checkoutData));
+
+    location.href = "checkout.html";
 }
 
 
