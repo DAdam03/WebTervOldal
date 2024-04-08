@@ -138,7 +138,7 @@ function donutBuyClicked(){
     sessionStorage.setItem("editId","{}");
     sessionStorage.setItem("checkout",JSON.stringify(checkoutData));
 
-    location.href = "checkout.html";
+    location.href = "checkout.php";
 }
 
 

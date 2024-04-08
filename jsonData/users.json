@@ -1,0 +1,17 @@
+{
+    "0":{
+        "name":"TesztFelhasználó",
+        "admin":true,
+        "score":0
+    },
+    "1":{
+        "name":"TesztFelhasználó2",
+        "admin":false,
+        "score":50
+    },
+    "2":{
+        "name":"TesztFelhasználó3",
+        "admin":false,
+        "score":0
+    }
+}

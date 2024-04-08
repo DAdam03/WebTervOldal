@@ -58,7 +58,7 @@ function donutEditClicked(){
         "amount":donutAmount.value,
     }
     sessionStorage.setItem("editId",JSON.stringify(editData));
-    location.href = "donut_maker.html";
+    location.href = "donut_maker.php";
 }
 
 function donutDeleteClicked(){
@@ -144,6 +144,8 @@ function donutBuyClicked(){
 
     checkoutData.push(newDonutData);
     sessionStorage.setItem("checkout",JSON.stringify(checkoutData));
+
+    location.href = "checkout.php";
 }
 
 
@@ -330,7 +332,7 @@ function checkoutDonutEditClicked(){
     let donutIndex = this.parentElement.index;
     sessionStorage.setItem("editCheckoutIndex",donutIndex);
     sessionStorage.setItem("editId",JSON.stringify(checkoutData[donutIndex]));
-    location.href = "donut_maker.html";
+    location.href = "donut_maker.php";
 }
 
 
