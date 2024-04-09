@@ -1,3 +1,8 @@
+<?php 
+    include "file_functions.php";
+
+    $user_data = load_json("jsonData/users.json");
+?>
 <!DOCTYPE html>
 <html lang="hu">
     <head>
@@ -19,6 +24,12 @@
         <link rel="icon" href="img/favicon.png"/>
         
         <script src="script/globals.js"></script>
+        <?php
+            if(isset($_SESSION["user"])){
+                $user_id = $_SESSION["user"]["id"];
+                echo "<script>currentUser = '$user_id'; userData = '$user_data';</script>";
+            }
+        ?>
         <script src="script/donut-image-container.js"></script>
         <script src="script/donut-box.js"></script>
         <script src="script/profile-menu.js"></script>

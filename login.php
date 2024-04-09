@@ -1,7 +1,28 @@
 <?php 
-    if(!isset($_SESSION["user"])){
-        header("Location: login.php");
+    include "file_functions.php";
+
+    $user_data = load_json("jsonData/users.json");
+
+    if(isset($_POST["username"])){
+        $password = "";
+        if(isset($_POST["password"])){
+            $password = $_POST["password"];
+        }
+
+        foreach($user_data as $id => $u_data){
+            if($u_data["name"] == $_POST["username"] && password_verify($password,$u_data["name"])){
+                session_start();
+                $_SESSION["user"] = ["id" => $id, "data" => $u_data];
+                break;
+            }else{
+                //hibas adatok
+            }
+        }
+
+    }else{
+        //nincs un
     }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,6 +45,13 @@
 
     <script src="https://kit.fontawesome.com/4455646216.js" crossorigin="anonymous"></script>
 
+    <script src="script/globals.js"></script>
+    <?php
+        if(isset($_SESSION["user"])){
+            $user_id = $_SESSION["user"]["id"];
+            echo "<script>currentUser = '$user_id'; userData = '$user_data';</script>";
+        }
+    ?>
     <script src="script/profile-menu.js"></script>
 </head>
 <body>
@@ -62,7 +90,7 @@
                 Felhasználók fánkjai
             </div>
         </nav>
-        <form action="profile.php" class="nyolcszog">
+        <form action="profile.php" class="nyolcszog" method="POST">
             <div class="login-input-wrapper">
                 <input name="username" id="username" type="text" placeholder="">
                 <label for="username">Felhasználó név</label>

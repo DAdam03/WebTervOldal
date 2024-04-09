@@ -1,17 +1,1 @@
-{
-    "0":{
-        "name":"TesztFelhasználó",
-        "admin":true,
-        "score":0
-    },
-    "1":{
-        "name":"TesztFelhasználó2",
-        "admin":false,
-        "score":50
-    },
-    "2":{
-        "name":"TesztFelhasználó3",
-        "admin":false,
-        "score":0
-    }
-}
+[{"name":"j\u00e1nos","password":"$2y$10$ROKrgGv4QjYIDw88bDE.G.PUn\/ycUF2fEYmJQvXR6MBC8Ev7W84fS","email":"janos@ikszde.hu","score":0,"admin":true}]

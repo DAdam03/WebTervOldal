@@ -1,5 +1,10 @@
 <?php 
-    if(!isset($_SESSION["user"])){
+
+    include "file_functions.php";
+
+    $user_data = load_json("jsonData/users.json");
+
+    if(!isset($_SESSION["user"]) || !$_SESSION["user"]["data"]["admin"]){
         header("Location: login.php");
     }
 ?>
@@ -17,6 +22,12 @@
     <link rel="stylesheet" href="style/admin.css">
 
     <script src="script/globals.js"></script>
+    <?php
+        if(isset($_SESSION["user"])){
+            $user_id = $_SESSION["user"]["id"];
+            echo "<script>currentUser = '$user_id'; userData = '$user_data';</script>";
+        }
+    ?>
     <script src="script/donut-box.js"></script>
     <script src="script/admin-ingredient-box.js"></script>
     <script src="script/profile-menu.js"></script>

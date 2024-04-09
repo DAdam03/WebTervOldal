@@ -23,7 +23,7 @@ var userData = {
 }
 
 
-var currentUser = 0; // -1 -> nincs bejelentkezve
+var currentUser = -1; // -1 -> nincs bejelentkezve
 
 /*
     {
