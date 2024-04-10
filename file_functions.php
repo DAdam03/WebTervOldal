@@ -12,7 +12,7 @@
 
     function store_json($data, $file_path){
 
-        $str_data = json_encode($data);
+        $str_data = json_encode($data, JSON_FORCE_OBJECT | JSON_PRETTY_PRINT);
         file_put_contents($file_path,$str_data);
 
     }

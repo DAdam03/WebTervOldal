@@ -3,6 +3,17 @@
 
     $user_data = load_json("jsonData/users.json");
 
+    session_start();
+
+    $c_user_data = [];
+    foreach($user_data as $id => $u_data){
+        $c_data = [];
+        $c_data["name"] = $u_data["name"];
+        $c_data["admin"] = $u_data["admin"];
+        $c_user_data[(int)$id] = $c_data;
+    }
+    $client_user_data = json_encode($c_user_data, JSON_UNESCAPED_UNICODE | JSON_FORCE_OBJECT);
+
     $errors = [];
     if(isset($_POST["login"])){
         if(!isset($_POST["username"]) || trim($_POST["username"]) == ""){
@@ -52,6 +63,12 @@
                 $user_data[(string) $new_id] = $new_data;
 
                 store_json($user_data,"jsonData/users.json");
+
+                session_unset();
+                session_destroy();
+
+                session_start();
+                $_SESSION["user"] = ["id" => $new_id, "data" => $new_data];
             }
         }
     }
@@ -82,8 +99,9 @@
     <?php
         if(isset($_SESSION["user"])){
             $user_id = $_SESSION["user"]["id"];
-            echo "<script>currentUser = '$user_id'; userData = '$user_data';</script>";
+            echo "<script>currentUser = Number('$user_id');</script>";
         }
+        echo "<script>userData = JSON.parse('$client_user_data');</script>";
     ?>
 
     <script src="script/profile-menu.js"></script>
@@ -99,7 +117,11 @@
             <button id="profile" onclick="openMenu()"><i class="fa-solid fa-user fa-lg"></i></button>
             <div id="profileMenu" class="nyolcszog">
                 <a href="profile.php">Saját profil</a>
-                <a href="admin.php">Admin oldal</a>
+                <?php
+                    if(isset($_SESSION["user"]) && isset($_SESSION["user"]["data"]["admin"])){
+                        echo '<a href="admin.php">Admin oldal</a>';
+                    }
+                ?>
                 <a href="login.php">Kijelentkezés</a>
             </div>
         </div>

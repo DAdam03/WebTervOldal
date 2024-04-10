@@ -3,16 +3,32 @@
 
     $user_data = load_json("jsonData/users.json");
 
+    session_start();
+
+    $c_user_data = [];
+    foreach($user_data as $id => $u_data){
+        $c_data = [];
+        $c_data["name"] = $u_data["name"];
+        $c_data["admin"] = $u_data["admin"];
+        $c_user_data[(int)$id] = $c_data;
+    }
+    $client_user_data = json_encode($c_user_data, JSON_UNESCAPED_UNICODE | JSON_FORCE_OBJECT);
+
+
     if(isset($_POST["username"])){
         $password = "";
         if(isset($_POST["password"])){
             $password = $_POST["password"];
         }
 
+
         foreach($user_data as $id => $u_data){
-            if($u_data["name"] == $_POST["username"] && password_verify($password,$u_data["name"])){
+            if($u_data["name"] == $_POST["username"] && password_verify($password,$u_data["password"])){
+                session_unset();
+                session_destroy();
+                
                 session_start();
-                $_SESSION["user"] = ["id" => $id, "data" => $u_data];
+                $_SESSION["user"] = ["id" => (int)$id, "data" => $u_data];
                 break;
             }else{
                 //hibas adatok
@@ -49,12 +65,14 @@
     <?php
         if(isset($_SESSION["user"])){
             $user_id = $_SESSION["user"]["id"];
-            echo "<script>currentUser = '$user_id'; userData = '$user_data';</script>";
+            echo "<script>currentUser = Number('$user_id');</script>";
         }
+        echo "<script>userData = JSON.parse('$client_user_data');</script>";
     ?>
     <script src="script/profile-menu.js"></script>
 </head>
 <body>
+
     <div id="background-image"></div>
     <header class="only-desktop">
         <div id="logo" onclick="location.href='index.php'">
@@ -65,7 +83,11 @@
             <button id="profile" onclick="openMenu()"><i class="fa-solid fa-user fa-lg"></i></button>
             <div id="profileMenu" class="nyolcszog">
                 <a href="profile.php">Saját profil</a>
-                <a href="admin.php">Admin oldal</a>
+                <?php
+                    if(isset($_SESSION["user"]) && isset($_SESSION["user"]["data"]["admin"])){
+                        echo '<a href="admin.php">Admin oldal</a>';
+                    }
+                ?>
                 <a href="login.php">Kijelentkezés</a>
             </div>
         </div>
@@ -90,7 +112,7 @@
                 Felhasználók fánkjai
             </div>
         </nav>
-        <form action="profile.php" class="nyolcszog" method="POST">
+        <form class="nyolcszog" method="POST">
             <div class="login-input-wrapper">
                 <input name="username" id="username" type="text" placeholder="">
                 <label for="username">Felhasználó név</label>

@@ -215,7 +215,7 @@ function DonutBox(donutId){
 
         
         let userNameTag = document.createElement("h4");
-        userNameTag.innerText = userData[data.user]["name"];
+        userNameTag.innerText = userData[String(data.user)]["name"];
         donutBoxDiv.appendChild(userNameTag);
     }
 
@@ -253,7 +253,7 @@ function DonutBox(donutId){
     editButton.addEventListener("click", donutEditClicked);
     donutBoxDiv.appendChild(editButton);
 
-    if(data.user == currentUser || userData[currentUser].admin){
+    if(currentUser != -1 && (data.user == currentUser || userData[String(currentUser)].admin)){
         let lnbreak = document.createElement("br");
         donutBoxDiv.appendChild(lnbreak);
 

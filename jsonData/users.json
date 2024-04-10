@@ -1,1 +1,23 @@
-[{"name":"j\u00e1nos","password":"$2y$10$ROKrgGv4QjYIDw88bDE.G.PUn\/ycUF2fEYmJQvXR6MBC8Ev7W84fS","email":"janos@ikszde.hu","score":0,"admin":true}]
+{
+    "0": {
+        "name": "janoska65",
+        "password": "$2y$10$3N3BWojv2Hzkpvr.WZTV2eF0F\/XlhmTEIa.Dh71ldDRHAzfRvEtQ2",
+        "email": "janos@ikszde.hu",
+        "score": 0,
+        "admin": true
+    },
+    "1": {
+        "name": "janoska",
+        "password": "$2y$10$3N3BWojv2Hzkpvr.WZTV2eF0F\/XlhmTEIa.Dh71ldDRHAzfRvEtQ2",
+        "email": "janos@ikszde.com",
+        "score": 10,
+        "admin": false
+    },
+    "2": {
+        "name": "janoska007",
+        "password": "$2y$10$3N3BWojv2Hzkpvr.WZTV2eF0F\/XlhmTEIa.Dh71ldDRHAzfRvEtQ2",
+        "email": "janos@ikszde007.com",
+        "score": 200,
+        "admin": false
+    }
+}

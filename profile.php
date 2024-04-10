@@ -1,4 +1,5 @@
 <?php 
+    session_start();
     if(!isset($_SESSION["user"])){
         header("Location: login.php");
     }
@@ -6,6 +7,16 @@
     include "file_functions.php";
 
     $user_data = load_json("jsonData/users.json");
+
+    $c_user_data = [];
+    foreach($user_data as $id => $u_data){
+        $c_data = [];
+        $c_data["name"] = $u_data["name"];
+        $c_data["admin"] = $u_data["admin"];
+        $c_user_data[(int)$id] = $c_data;
+    }
+    $client_user_data = json_encode($c_user_data, JSON_UNESCAPED_UNICODE | JSON_FORCE_OBJECT);
+
 ?>
 <!DOCTYPE html>
 <html lang="hu">
@@ -24,8 +35,9 @@
     <?php
         if(isset($_SESSION["user"])){
             $user_id = $_SESSION["user"]["id"];
-            echo "<script>currentUser = '$user_id'; userData = '$user_data';</script>";
+            echo "<script>currentUser = Number('$user_id');</script>";
         }
+        echo "<script>userData = JSON.parse('$client_user_data');</script>";
     ?>
     <script src="script/donut-box.js"></script>
     <script src="script/donut-image-container.js"></script>
@@ -52,7 +64,11 @@
             <button id="profile" onclick="openMenu()"><i class="fa-solid fa-user fa-lg"></i></button>
             <div id="profileMenu" class="nyolcszog">
                 <a href="profile.php">Saját profil</a>
-                <a href="admin.php">Admin oldal</a>
+                <?php
+                    if(isset($_SESSION["user"]) && isset($_SESSION["user"]["data"]["admin"])){
+                        echo '<a href="admin.php">Admin oldal</a>';
+                    }
+                ?>
                 <a href="login.php">Kijelentkezés</a>
             </div>
         </div>
