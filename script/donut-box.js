@@ -23,9 +23,11 @@ function createDonutBoxes(){
 }
 
 function ratingSort(idX,idY){
-    if(donutData[idX]["rating"] < donutData[idY]["rating"]){
+    let ratingX = calculateRating(donutData[idX]["rating"]);
+    let ratingY = calculateRating(donutData[idY]["rating"]);
+    if(ratingX < ratingY){
         return 1;
-    }else if(donutData[idX]["rating"] > donutData[idY]["rating"]){
+    }else if(ratingX > ratingY){
         return -1;
     }
     return 0;
@@ -131,6 +133,14 @@ function starClicked(){
             }
         }
     }
+
+    if(currentUser == -1){
+        location.href = "login.php";
+    }else{
+        let phpLocation = location.href.split("?")[0];
+        let donutId = ratingDiv.parentElement.id;
+        location.href = phpLocation+"?rate_id="+donutId+"&rating="+this.index;
+    }
 }
 
 
@@ -193,10 +203,12 @@ function DonutBox(donutId){
     let ingredientsP = document.createElement("p");
     let ingredientsText = "";
 
-    if(data.ingredients.length > 0 && data.ingredients[0][0] in ingredientData){
+    let ingredientIndex = Object.keys(data.ingredients); //ez muszaj mert a php osszekeveri az array-t es az object-et
+
+    if(ingredientIndex.length > 0 && data.ingredients[0][0] in ingredientData){
         ingredientsText += ingredientData[data.ingredients[0][0]][0];
     }
-    for(let i=1; i<data.ingredients.length; i++){
+    for(let i=1; i<ingredientIndex.length; i++){
         if(data.ingredients[i][0] in ingredientData){
             if(ingredientsText.length != 0){
                 ingredientsText += ", ";
@@ -229,10 +241,13 @@ function DonutBox(donutId){
                 ratingDiv.appendChild(starIcon);
             }
         }
+        let ratingbreak = document.createElement("br");
+        ratingDiv.appendChild(ratingbreak)
+        let ratingAmount = calculateRating(data.rating);
         let ratingSpan = document.createElement("span");
-            ratingSpan.classList.add("rating-span");
-            ratingSpan.innerText = String(data.rating);
-            ratingDiv.appendChild(ratingSpan);
+        ratingSpan.classList.add("rating-span");
+        ratingSpan.innerText = "Pontok: "+String(Math.round(ratingAmount*10)/10);
+        ratingDiv.appendChild(ratingSpan);
 
         
         let userNameTag = document.createElement("h4");
@@ -405,10 +420,12 @@ function CheckoutDonutBox(data,index){
     let ingredientsP = document.createElement("p");
     let ingredientsText = "";
 
-    if(data.ingredients.length > 0 && data.ingredients[0][0] in ingredientData){
+    let ingredientIndex = Object.keys(data.ingredients); //ez muszaj mert a php osszekeveri az array-t es az object-et
+
+    if(ingredientIndex.length > 0 && data.ingredients[0][0] in ingredientData){
         ingredientsText += ingredientData[data.ingredients[0][0]][0];
     }
-    for(let i=1; i<data.ingredients.length; i++){
+    for(let i=1; i<ingredientIndex.length; i++){
         if(data.ingredients[i][0] in ingredientData){
             if(ingredientsText.length != 0){
                 ingredientsText += ", ";

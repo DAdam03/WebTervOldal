@@ -2,6 +2,9 @@
     include "file_functions.php";
 
     $user_data = load_json("jsonData/users.json");
+    $donut_data = load_json("jsonData/donuts.json");
+
+    
 
     session_start();
 
@@ -14,10 +17,23 @@
 
     if(isset($_GET["delete"]) && $_GET["delete"] == session_id()){
         if(isset($_SESSION["user"])){
+            // fankok torlese, ertekelesek torlese
+            $new_donut_data = [];
+            foreach($donut_data as $id => $data){
+                if($data["user"] != $_SESSION["user"]){
+                    if(isset($data["ratings"][(string)$_SESSION["user"]])){
+                        unset($data["ratings"][(string)$_SESSION["user"]]);
+                    }
+                    $new_donut_data[$id] = $data;
+                }
+            }
+            $donut_data = $new_donut_data;
+
+            store_json($donut_data, "jsonData/donuts.json");
+
             unset($user_data[(string)$_SESSION["user"]["id"]]);
             store_json($user_data,"jsonData/users.json");
 
-            // fankok torlese
 
             session_unset();
             session_destroy();
@@ -25,6 +41,8 @@
             session_start();
         }
     }
+
+    $c_donut_data = json_encode($donut_data, JSON_UNESCAPED_UNICODE | JSON_FORCE_OBJECT);
 
     $c_user_data = [];
     foreach($user_data as $id => $u_data){
@@ -91,7 +109,7 @@
             $user_id = $_SESSION["user"]["id"];
             echo "<script>currentUser = Number('$user_id');</script>";
         }
-        echo "<script>userData = JSON.parse('$client_user_data');</script>";
+        echo "<script>userData = JSON.parse('$client_user_data'); donutData = JSON.parse('$c_donut_data');</script>";
     ?>
     <script src="script/profile-menu.js"></script>
 </head>

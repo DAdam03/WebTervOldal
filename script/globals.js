@@ -118,6 +118,18 @@ function getPriceByIngredients(ingredients){
     return price;
 }
 
+function calculateRating(ratings){
+    let avgRating = 0.0;
+    userIds = Object.keys(ratings);
+    for(let i=0; i<userIds.length; i++){
+        avgRating += ratings[userIds[i]];
+    }
+    if(userIds.length > 0){
+        avgRating /= userIds.length;
+    }
+    return avgRating;
+}
+
 
 if(!sessionStorage.getItem("checkout")){
     sessionStorage.setItem("checkout","[]");

@@ -2,6 +2,9 @@
     include "file_functions.php";
 
     $user_data = load_json("jsonData/users.json");
+    $donut_data = load_json("jsonData/donuts.json");
+
+    $c_donut_data = json_encode($donut_data, JSON_UNESCAPED_UNICODE | JSON_FORCE_OBJECT);
 
     session_start();
 
@@ -103,7 +106,7 @@
             $user_id = $_SESSION["user"]["id"];
             echo "<script>currentUser = Number('$user_id');</script>";
         }
-        echo "<script>userData = JSON.parse('$client_user_data');</script>";
+        echo "<script>userData = JSON.parse('$client_user_data'); donutData = JSON.parse('$c_donut_data');</script>";
     ?>
 
     <script src="script/profile-menu.js"></script>

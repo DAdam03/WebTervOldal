@@ -1,10 +1,12 @@
 /*
 ingredients felépítése:
 [
-    [összetevő1-id, összetevő1-mennyiség],
+    [összetevő1-id, összetevő1-mennyiség], 
     [összetevő2-id, összetevő2-mennyiség],
     ...
 ]
+
+php miatt itt mar objectek vannak ugyanazokkal az indexekkel
 */
 function DonutImgContainer(ingredients){
     let imgContainerDiv = document.createElement("div");
@@ -12,7 +14,9 @@ function DonutImgContainer(ingredients){
     /*adrian*/
     imgContainerDiv.classList.add("nyolcszog");
     
-    for(let i=0; i<ingredients.length; i++){
+    let ingredientIndex = Object.keys(ingredients); //ez muszaj mert a php osszekeveri az array-t es az object-et
+
+    for(let i=0; i<ingredientIndex.length; i++){
         let donutImg = DonutImgLayer(ingredients[i][0]);
         if(donutImg != null){
             imgContainerDiv.appendChild(donutImg);

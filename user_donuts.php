@@ -4,6 +4,34 @@
     session_start();
 
     $user_data = load_json("jsonData/users.json");
+    $donut_data = load_json("jsonData/donuts.json");
+
+
+    if(isset($_GET["rate_id"]) && isset($_SESSION["user"]) && isset($donut_data[(string)$_GET["rate_id"]])){
+        if($_SESSION["user"]["id"] != (string)$donut_data[(string)$_GET["rate_id"]]["user"]){
+            if(isset($_GET["rating"])){
+                $new_rating = max(min((int)$_GET["rating"],4),0)+1;
+                if($donut_data[(string)$_GET["rate_id"]]["rating"] != -1){
+                    if(isset($donut_data[(string)$_GET["rate_id"]]["rating"][(string)$_SESSION["user"]["id"]])){
+                        //az adott felhasznalo mar pontozta ezt a fankot
+                        $donut_data[(string)$_GET["rate_id"]]["rating"][(string)$_SESSION["user"]["id"]] = $new_rating;
+                    }else{
+                        //az adott felhasznalo meg nem pontozta ezt a fankot
+                        //pontot kell adni a fank keszitojenek
+                        $donut_data[(string)$_GET["rate_id"]]["rating"][(string)$_SESSION["user"]["id"]] = $new_rating;
+                        //az ertekeles tizszereset kapja
+                        $user_data[(string)$donut_data[(string)$_GET["rate_id"]]["user"]]["score"] += $new_rating*10;
+                        store_json($user_data,"jsonData/users.json");
+                    }
+                    store_json($donut_data,"jsonData/donuts.json");
+                }
+                
+            }
+        }
+    }
+
+
+    $c_donut_data = json_encode($donut_data, JSON_UNESCAPED_UNICODE | JSON_FORCE_OBJECT);
 
     $c_user_data = [];
     foreach($user_data as $id => $u_data){
@@ -40,7 +68,7 @@
             $user_id = $_SESSION["user"]["id"];
             echo "<script>currentUser = Number('$user_id');</script>";
         }
-        echo "<script>userData = JSON.parse('$client_user_data');</script>";
+        echo "<script>userData = JSON.parse('$client_user_data'); donutData = JSON.parse('$c_donut_data');</script>";
     ?>
     <script src="script/donut-image-container.js"></script>
     <script src="script/donut-box.js"></script>

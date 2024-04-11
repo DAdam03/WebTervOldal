@@ -7,6 +7,48 @@
     include "file_functions.php";
 
     $user_data = load_json("jsonData/users.json");
+    $donut_data = load_json("jsonData/donuts.json");
+
+    $c_donut_data = json_encode($donut_data, JSON_UNESCAPED_UNICODE | JSON_FORCE_OBJECT);
+    
+    $errors = [];
+
+    if(isset($_POST["data-save"])){
+        if(!isset($_POST["username"]) || trim($_POST["username"]) == ""){
+            $errors[] = "username";
+        }
+        if(!isset($_POST["email"]) || trim($_POST["email"]) == ""){
+            $errors[] = "email";
+        }
+        if(count($errors) == 0){
+            $username = htmlspecialchars(trim($_POST["username"]));
+            $email = htmlspecialchars(trim($_POST["email"]));
+
+            $exists = FALSE;
+            $email_exists = FALSE;
+            foreach($user_data as $id => $u_data){
+                if($id != (string)$_SESSION["user"]["id"]){
+                    if($u_data["name"] == $username){
+                        $exists = TRUE;
+                    }
+                    if($u_data["email"] == $email){
+                        $email_exists = TRUE;
+                    }
+                }
+            }
+            if($exists){
+                $errors[] = "username_used";
+            }elseif($email_exists){
+                $errors[] = "email_used";
+            }else{
+                $_SESSION["user"]["data"]["name"] = $username;
+                $_SESSION["user"]["data"]["email"] = $email;
+
+                $user_data[(string)$_SESSION["user"]["id"]] = $_SESSION["user"]["data"];
+                store_json($user_data,"jsonData/users.json");
+            }
+        }
+    }
 
     $c_user_data = [];
     foreach($user_data as $id => $u_data){
@@ -37,7 +79,7 @@
             $user_id = $_SESSION["user"]["id"];
             echo "<script>currentUser = Number('$user_id');</script>";
         }
-        echo "<script>userData = JSON.parse('$client_user_data');</script>";
+        echo "<script>userData = JSON.parse('$client_user_data'); donutData = JSON.parse('$c_donut_data');</script>";
     ?>
     <script src="script/donut-box.js"></script>
     <script src="script/donut-image-container.js"></script>
@@ -94,7 +136,7 @@
             </div>
         </nav>
         <h2>Saját adatok:</h2>
-        <div id="profile-grid" class="nyolcszog">
+        <form id="profile-grid" class="nyolcszog" method="POST">
             <label for="username">Felhasználó név: </label><br class="only-phone">
             <?php
                 echo '<input type="text" value="';
@@ -102,6 +144,13 @@
                     echo $_SESSION["user"]["data"]["name"];
                 }
                 echo '" id="username" name="username"><br class="only-phone">';
+            ?>
+            <?php
+                if(in_array("username",$errors)){
+                    echo "<p id='error'>Töltsd ki a mezőt!</p><br>";
+                }elseif(in_array("username_used",$errors)){
+                    echo "<p id='error'>Ez a név már foglalt!</p><br>";
+                }
             ?>
             <label for="email">E-mail: </label><br class="only-phone">
             <?php
@@ -111,7 +160,15 @@
                 }
                 echo '" id="email" name="email"><br class="only-phone">';
             ?>
-        </div>
+            <?php
+                if(in_array("email",$errors)){
+                    echo "<p id='error'>Töltsd ki a mezőt!</p><br>";
+                }elseif(in_array("email_used",$errors)){
+                    echo "<p id='error'>Ez az email már foglalt!</p><br>";
+                }
+            ?>
+            <button id="data-save" class="nyolcszog" name="data-save" type="submit">Mentés</button>
+        </form>
         
         <h2>Saját fánkok:</h2>
         <div id="donut-box-container"></div>

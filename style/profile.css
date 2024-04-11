@@ -63,7 +63,15 @@ input {
     cursor: pointer;
 }
 
-#logout {
+#error {
+    margin-top: 5px;
+    margin-left: 20px;
+    color: red;
+    font-size: 20px;
+}
+
+#logout, #data-save {
+    width: fit-content;
     --cut-length: 12px;
     --border-size: 3px;
     --border-color: white;
