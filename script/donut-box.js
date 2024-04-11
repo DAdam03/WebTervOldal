@@ -51,6 +51,27 @@ function createUserDonutBoxes(){
     }
 }
 
+function createProfileDonutBoxes(){
+    let donutBoxContainer = document.getElementById("donut-box-container");
+    
+    let donutIds = Object.keys(donutData);
+    let sortedIds = [];
+
+    for(let i=0; i<donutIds.length; i++){
+        if(donutData[donutIds[i]]["rating"] != -1 && donutData[donutIds[i]]["user"] == currentUser){
+            sortedIds.push(donutIds[i]);
+        }
+    }
+
+    sortedIds.sort(ratingSort);
+
+    for(let i=0; i<sortedIds.length; i++){
+        let donutBox = DonutBox(sortedIds[i]);
+        donutBoxContainer.appendChild(donutBox);
+    }
+}
+
+
 function donutEditClicked(){
     let donutAmount = this.parentElement.querySelector(".donut-amount-button");
     let editData = {

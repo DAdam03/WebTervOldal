@@ -53,7 +53,7 @@
     <link rel="icon" href="img/favicon.png"/>
 
 </head>
-<body onload="createUserDonutBoxes()">
+<body onload="createProfileDonutBoxes()">
     <div id="background-image"></div>
     <header class="only-desktop">
         <div id="logo" onclick="location.href='index.php'">
@@ -96,9 +96,21 @@
         <h2>Saját adatok:</h2>
         <div id="profile-grid" class="nyolcszog">
             <label for="username">Felhasználó név: </label><br class="only-phone">
-            <input type="text" value="Sanyí" id="username" name="username"><br class="only-phone">
+            <?php
+                echo '<input type="text" value="';
+                if(isset($_SESSION["user"])){
+                    echo $_SESSION["user"]["data"]["name"];
+                }
+                echo '" id="username" name="username"><br class="only-phone">';
+            ?>
             <label for="email">E-mail: </label><br class="only-phone">
-            <input type="email" value="sanyiAló@freemail.hu" id="email" name="email"><br class="only-phone">
+            <?php
+                echo '<input type="email" value="';
+                if(isset($_SESSION["user"])){
+                    echo $_SESSION["user"]["data"]["email"];
+                }
+                echo '" id="email" name="email"><br class="only-phone">';
+            ?>
         </div>
         
         <h2>Saját fánkok:</h2>
