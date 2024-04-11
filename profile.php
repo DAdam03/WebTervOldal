@@ -65,11 +65,11 @@
             <div id="profileMenu" class="nyolcszog">
                 <a href="profile.php">Saját profil</a>
                 <?php
-                    if(isset($_SESSION["user"]) && isset($_SESSION["user"]["data"]["admin"])){
+                    if(isset($_SESSION["user"]) && $_SESSION["user"]["data"]["admin"]){
                         echo '<a href="admin.php">Admin oldal</a>';
                     }
                 ?>
-                <a href="login.php">Kijelentkezés</a>
+                <a href="login.php?logout=TRUE">Kijelentkezés</a>
             </div>
         </div>
     </header>
@@ -103,9 +103,27 @@
         
         <h2>Saját fánkok:</h2>
         <div id="donut-box-container"></div>
-        <button id="admin" class="nyolcszog" onclick="location.href='admin.php'">Admin felület</button>
-        <button id="logout" class="nyolcszog" onclick="location.href='login.php'">Kijelentkezés</button>
-        <button id="delete" class="nyolcszog" onclick="location.href='login.php'">Profil törlése</button>
+        <?php
+            if(isset($_SESSION["user"]) && $_SESSION["user"]["data"]["admin"]){
+                echo '<button id="admin" class="nyolcszog" onclick="location.href=';
+                echo "'admin.php'";
+                echo '">Admin felület</button>';
+            }
+        ?>
+        
+        
+        <button id="logout" class="nyolcszog" onclick="location.href='login.php?logout=TRUE'">Kijelentkezés</button>
+
+        <?php
+            
+            echo '<button id="delete" class="nyolcszog" onclick="location.href=';
+            echo "'login.php?delete=";
+            echo session_id();
+            echo "'";
+            echo '">Profil törlése</button>';
+            
+        ?>
+
     </main>
 
     <footer>

@@ -69,6 +69,8 @@
 
                 session_start();
                 $_SESSION["user"] = ["id" => $new_id, "data" => $new_data];
+
+                header("Location: profile.php");
             }
         }
     }
@@ -118,11 +120,11 @@
             <div id="profileMenu" class="nyolcszog">
                 <a href="profile.php">Saját profil</a>
                 <?php
-                    if(isset($_SESSION["user"]) && isset($_SESSION["user"]["data"]["admin"])){
+                    if(isset($_SESSION["user"]) && $_SESSION["user"]["data"]["admin"]){
                         echo '<a href="admin.php">Admin oldal</a>';
                     }
                 ?>
-                <a href="login.php">Kijelentkezés</a>
+                <a href="login.php?logout=TRUE">Kijelentkezés</a>
             </div>
         </div>
     </header>
@@ -153,9 +155,9 @@
             </div>
             <?php
                 if(in_array("username",$errors)){
-                    echo "<h4>Töltsd ki a mezőt!</h4>";
+                    echo "<p id='error'>Töltsd ki a mezőt!</p>";
                 }elseif(in_array("username_used",$errors)){
-                    echo "<h4>Ez a név már foglalt!</h4>";
+                    echo "<p id='error'>Ez a név már foglalt!</p>";
                 }
             ?>
             <div class="login-input-wrapper">
@@ -164,9 +166,9 @@
             </div>
             <?php
                 if(in_array("email",$errors)){
-                    echo "<h4>Töltsd ki a mezőt!</h4>";
+                    echo "<p id='error'>Töltsd ki a mezőt!</p>";
                 }elseif(in_array("email_used",$errors)){
-                    echo "<h4>Ez az email már foglalt!</h4>";
+                    echo "<p id='error'>Ez az email már foglalt!</p>";
                 }
             ?>
             <div class="login-input-wrapper">
@@ -175,7 +177,7 @@
             </div>
             <?php
                 if(in_array("password",$errors)){
-                    echo "<h4>Töltsd ki a mezőt!</h4>";
+                    echo "<p id='error'>Töltsd ki a mezőt!</p>";
                 }
             ?>
             <div class="login-input-wrapper">
@@ -184,7 +186,7 @@
             </div>
             <?php
                 if(in_array("password2",$errors)){
-                    echo "<h4>A két jelszó nem egyezik!</h4>";             
+                    echo "<p id='error'>A két jelszó nem egyezik!</p>";             
                 }
             ?>
             <button class="nyolcszog" type="submit" name="login">Regisztrálás</button>

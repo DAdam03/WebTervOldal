@@ -58,10 +58,10 @@ button[type="submit"] {
 }
 
 #error {
-    visibility: hidden;
     margin-top: 5px;
     text-align: center;
     color: red;
+    font-size: 16px;
 }
 
 #redirect {

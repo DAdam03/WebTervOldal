@@ -78,6 +78,7 @@ header.only-desktop {
 
 #logo {
     margin-left: 30px;
+    width: fit-content;
 }
 
 #logo img{

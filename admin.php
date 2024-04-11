@@ -65,11 +65,11 @@
             <div id="profileMenu" class="nyolcszog">
                 <a href="profile.php">Saját profil</a>
                 <?php
-                    if(isset($_SESSION["user"]) && isset($_SESSION["user"]["data"]["admin"])){
+                    if(isset($_SESSION["user"]) && $_SESSION["user"]["data"]["admin"]){
                         echo '<a href="admin.php">Admin oldal</a>';
                     }
                 ?>
-                <a href="login.php">Kijelentkezés</a>
+                <a href="login.php?logout=TRUE">Kijelentkezés</a>
             </div>
         </div>
     </header>

@@ -5,6 +5,27 @@
 
     session_start();
 
+    if(isset($_GET["logout"])){
+        session_unset();
+        session_destroy();
+
+        session_start();
+    }
+
+    if(isset($_GET["delete"]) && $_GET["delete"] == session_id()){
+        if(isset($_SESSION["user"])){
+            unset($user_data[(string)$_SESSION["user"]["id"]]);
+            store_json($user_data,"jsonData/users.json");
+
+            // fankok torlese
+
+            session_unset();
+            session_destroy();
+
+            session_start();
+        }
+    }
+
     $c_user_data = [];
     foreach($user_data as $id => $u_data){
         $c_data = [];
@@ -14,31 +35,34 @@
     }
     $client_user_data = json_encode($c_user_data, JSON_UNESCAPED_UNICODE | JSON_FORCE_OBJECT);
 
+    $error = FALSE;
 
-    if(isset($_POST["username"])){
-        $password = "";
-        if(isset($_POST["password"])){
-            $password = $_POST["password"];
-        }
-
-
-        foreach($user_data as $id => $u_data){
-            if($u_data["name"] == $_POST["username"] && password_verify($password,$u_data["password"])){
-                session_unset();
-                session_destroy();
-                
-                session_start();
-                $_SESSION["user"] = ["id" => (int)$id, "data" => $u_data];
-                break;
-            }else{
-                //hibas adatok
+    if(isset($_POST["login"])){
+        if(isset($_POST["username"])){
+            $password = "";
+            if(isset($_POST["password"])){
+                $password = $_POST["password"];
             }
+    
+    
+            foreach($user_data as $id => $u_data){
+                if($u_data["name"] == $_POST["username"] && password_verify($password,$u_data["password"])){
+                    session_unset();
+                    session_destroy();
+                    
+                    session_start();
+                    $_SESSION["user"] = ["id" => (int)$id, "data" => $u_data];
+                    header("Location: profile.php");
+                    break;
+                }else{
+                    $error = TRUE;
+                }
+            }
+    
+        }else{
+            $error = TRUE;
         }
-
-    }else{
-        //nincs un
     }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -84,11 +108,11 @@
             <div id="profileMenu" class="nyolcszog">
                 <a href="profile.php">Saját profil</a>
                 <?php
-                    if(isset($_SESSION["user"]) && isset($_SESSION["user"]["data"]["admin"])){
+                    if(isset($_SESSION["user"]) && $_SESSION["user"]["data"]["admin"]){
                         echo '<a href="admin.php">Admin oldal</a>';
                     }
                 ?>
-                <a href="login.php">Kijelentkezés</a>
+                <a href="login.php?logout=TRUE">Kijelentkezés</a>
             </div>
         </div>
     </header>
@@ -121,8 +145,12 @@
                 <input name="password" id="password" type="password" placeholder="">
                 <label for="password">Jelszó</label>
             </div>
-            <p id="error">Hibás felhasználó név vagy jelszó</p>
-            <button class="nyolcszog" type="submit">Bejelentkezés</button>
+            <?php
+                if($error){
+                    echo "<p id='error'>Hibás felhasználó név vagy jelszó</p>";
+                }
+            ?>
+            <button class="nyolcszog" type="submit" name="login">Bejelentkezés</button>
         </form>
 
         <p id="redirect">Még nem regisztráltál?<br>
