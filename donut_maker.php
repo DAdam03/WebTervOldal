@@ -116,7 +116,7 @@
             </div>
             <h3 class="only-phone">Ár: 0 Ft</h3>
             <div id="inputs">
-                <button id="share-button" class="nyolcszog">Megosztás</button>
+                <button id="share-button" class="nyolcszog" onclick="saveDonut()">Megosztás</button>
                 <div id="name-input" class="login-input-wrapper">
                     <input type="text" id="donut-name" placeholder="">
                     <label for="donut-name">Fánk neve:</label>

@@ -12,13 +12,48 @@ var currentPrice = 0;
 
 var checkoutIndex = -1;
 
+function saveDonut(){
+    if(currentUser == -1){
+        location.href = "login.php";
+    }else{
+        let curIngredients = [];
+        let curIngredientIds = Object.keys(currentRecipe);
+        for(let i=0; i<curIngredientIds.length; i++){
+            curIngredients.push([curIngredientIds[i],currentRecipe[curIngredientIds[i]]]);
+        }
+
+        let nameInput = document.getElementById("donut-name");
+        let curName = nameInput.value;
+
+        let editId = JSON.parse(sessionStorage.getItem("editId"));
+
+        let newLocation = "user_donuts.php?";
+        if(curName.length != 0){
+            newLocation+="name="+curName+"&";
+        }
+        newLocation+="ingredients="+JSON.stringify(curIngredients);
+        if("id" in editId){
+            newLocation+="&id="+String(editId["id"]);
+        }
+
+        sessionStorage.setItem("editId","{}");
+
+        location.href = newLocation;
+    }
+}
+
+
 function createIngredientInputs(){
 
     let editId = JSON.parse(sessionStorage.getItem("editId"));
     let editData = {};
     if(Object.keys(editId).length != 0){
         if("id" in editId){
-            editData["ingredients"] = donutData[Number(editId["id"])]["ingredients"];
+            editData["ingredients"] = [];
+            arrays = Object.values(donutData[Number(editId["id"])]["ingredients"]);
+            for(let i=0; i<arrays.length; i++){
+                editData["ingredients"].push(Object.values(arrays[i]));
+            }
             editData["name"] = donutData[Number(editId["id"])]["name"];
             editData["amount"] = Number(editId["amount"]);
         }else{
@@ -63,11 +98,11 @@ function createIngredientInputs(){
                     }
                 }
                 if(Object.keys(editId).length != 0){
-                    for(let j=0; j<editData["ingredients"].length; j++){
-                        if(ingredientIds[i] == editData["ingredients"][j][0]){
+                    for(let k=0; k<editData["ingredients"].length; k++){
+                        if(ingredientIds[i] == editData["ingredients"][k][0]){
                             if(canHaveMore){
                                 let amountInput = ingredientInput.querySelector(".donut-amount-button");
-                                amountInput.value = Number(editData["ingredients"][j][1]);
+                                amountInput.value = Number(editData["ingredients"][k][1]);
                                 let radio = ingredientInput.querySelector("#ch_i_"+String(ingredientIds[i]));
                                 radio.checked = true;
                             }else{
