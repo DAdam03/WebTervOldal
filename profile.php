@@ -169,6 +169,36 @@
             ?>
             <button id="data-save" class="nyolcszog" name="data-save" type="submit">Mentés</button>
         </form>
+
+        <h2>Szint:</h2>
+        <div id="progress_conatiner">
+            <span id="current_level">
+                <?php
+                    $req_points = 50;// ennyi pontonként van egy szint
+                    echo floor($_SESSION["user"]["data"]["score"] / $req_points) + 1;
+                ?>
+            </span>
+            <div id="progress_bar_conatiner">
+                <?php
+                    $progress = $_SESSION["user"]["data"]["score"] % $req_points / $req_points * 100;
+                    echo '<div id="progress_bar" style="width:' . $progress . '%"></div>';
+                ?>
+                
+                
+            </div>
+            <span id="next_level">
+                <?php
+                    echo floor($_SESSION["user"]["data"]["score"] / $req_points) + 2;
+                ?>
+            </span>
+        </div>
+        <p id="progress_text">Következő szinthez szükséges pontok: 
+            <span id="progress_text_point">
+                <?php
+                    echo $req_points - $_SESSION["user"]["data"]["score"] % $req_points;
+                ?>
+            </span>
+        </div>
         
         <h2>Saját fánkok:</h2>
         <div id="donut-box-container"></div>
