@@ -9,6 +9,16 @@
     $user_data = load_json("jsonData/users.json");
     $donut_data = load_json("jsonData/donuts.json");
 
+    if(isset($_GET["delete_donut_id"]) && isset($_SESSION["user"])){
+        if(array_key_exists((string)$_GET["delete_donut_id"], $donut_data)){
+            if($donut_data[(string)$_GET["delete_donut_id"]]["user"] == (int)$_SESSION["user"]["id"] || $_SESSION["user"]["data"]["admin"]){
+                unset($donut_data[(string)$_GET["delete_donut_id"]]);
+                store_json($donut_data,"jsonData/donuts.json");
+                header("Location: profile.php");
+            }
+        }
+    }
+
     $c_donut_data = json_encode($donut_data, JSON_UNESCAPED_UNICODE | JSON_FORCE_OBJECT);
     
     $errors = [];

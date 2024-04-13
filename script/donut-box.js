@@ -87,6 +87,11 @@ function donutEditClicked(){
 function donutDeleteClicked(){
     let donutBoxDiv = this.parentElement;
     donutBoxDiv.remove();
+
+    let phpLocation = location.href.split("?")[0];
+    let donutId = donutBoxDiv.id;
+
+    location.href = phpLocation+"?delete_donut_id="+donutId;
 }
 
 function starMouseEntered(){

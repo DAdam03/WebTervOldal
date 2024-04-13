@@ -31,6 +31,17 @@
         }
     }
 
+    if(isset($_GET["delete_donut_id"]) && isset($_SESSION["user"])){
+        if(array_key_exists((string)$_GET["delete_donut_id"], $donut_data)){
+            if($donut_data[(string)$_GET["delete_donut_id"]]["user"] == (int)$_SESSION["user"]["id"] || $_SESSION["user"]["data"]["admin"]){
+                unset($donut_data[(string)$_GET["delete_donut_id"]]);
+                store_json($donut_data,"jsonData/donuts.json");
+                header("Location: user_donuts.php");
+            }
+        }
+    }
+
+
     if(isset($_GET["ingredients"]) && isset($_SESSION["user"])){
         $donut_name = "Új fánk";
         if(isset($_GET["name"])){
