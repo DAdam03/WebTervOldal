@@ -230,11 +230,20 @@ function DonutBox(donutId){
         donutBoxDiv.appendChild(ratingDiv);
 
         if(currentUser != data.user){
+            let userRating = 0;
+            if(String(currentUser) in data.rating){
+                userRating = data.rating[String(currentUser)];
+            }
             for(let i=0; i<5; i++){
                 let starIcon = document.createElement("i");
                 starIcon.classList.add("fa-solid");
                 starIcon.classList.add("fa-star");
                 starIcon.index = i;
+
+                if(i<userRating){
+                    starIcon.classList.add("star-selected");
+                }
+
                 starIcon.addEventListener("mouseenter",starMouseEntered);
                 starIcon.addEventListener("mouseleave",starMouseExited);
                 starIcon.addEventListener("click",starClicked);

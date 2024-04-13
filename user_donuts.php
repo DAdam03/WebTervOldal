@@ -5,6 +5,7 @@
 
     $user_data = load_json("jsonData/users.json");
     $donut_data = load_json("jsonData/donuts.json");
+    $ingredient_data = load_json("jsonData/ingredients.json");
 
 
     if(isset($_GET["rate_id"]) && isset($_SESSION["user"]) && isset($donut_data[(string)$_GET["rate_id"]])){
@@ -27,6 +28,43 @@
                 }
                 
             }
+        }
+    }
+
+    if(isset($_GET["ingredients"]) && isset($_SESSION["user"])){
+        $donut_name = "Új fánk";
+        if(isset($_GET["name"])){
+            $donut_name = htmlspecialchars(trim($_GET["name"]));
+        }
+        
+        $ingredients = json_decode($_GET["ingredients"],JSON_FORCE_OBJECT);
+        $fixed_ingredients = [];
+        for($i=0; $i<count($ingredients); $i++){
+            if(array_key_exists((string)$ingredients[$i][0],$ingredient_data["data"])){
+                $fixed_ingredients[] = $ingredients[$i];
+            }
+        }
+        if(isset($_GET["id"]) && array_key_exists((string)$_GET["id"],$donut_data) && ($donut_data[(string)$_GET["id"]]["user"] == (int)$_SESSION["user"]["id"] || ($donut_data[(string)$_GET["id"]]["user"] == -1 && $_SESSION["user"]["data"]["admin"]))){
+            $donut_data[(string)$_GET["id"]]["name"] = $donut_name;
+            $donut_data[(string)$_GET["id"]]["ingredients"] = $fixed_ingredients;
+        }else{
+            $new_donut_id = 0;
+            while(array_key_exists((string)$new_donut_id,$donut_data)){
+                $new_donut_id++;
+            }
+            $new_donut_data = [];
+            $new_donut_data["ingredients"] = $fixed_ingredients;
+            $new_donut_data["name"] = $donut_name;
+            $new_donut_data["rating"] = [];
+            $new_donut_data["user"] = (int)$_SESSION["user"]["id"];
+            $donut_data[$new_donut_id] = $new_donut_data;
+        }
+        store_json($donut_data,"jsonData/donuts.json");
+        if($donut_data[(string)$_GET["id"]]["user"] == -1 && $_SESSION["user"]["data"]["admin"]){
+            header("Location: index.php");
+        }
+        else{
+            header("Location: user_donuts.php");
         }
     }
 

@@ -109,7 +109,8 @@ var ingredientData = {
 function getPriceByIngredients(ingredients){
     let price = 0;
     
-    for(let i=0; i<ingredients.length; i++){
+    let index = Object.keys(ingredients);
+    for(let i=0; i<index.length; i++){
         if(ingredients[i][0] in ingredientData){
             price += ingredientData[ingredients[i][0]][2]*ingredients[i][1];
         }
