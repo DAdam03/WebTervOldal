@@ -76,7 +76,7 @@ input::placeholder {
     padding: 3px 5px;
 }
 
-#newIngredient {
+#newIngredient, #save-button {
     --cut-length: 8px;
     --background-color: #5A88FF;
     --border-size: 2px;
@@ -85,8 +85,12 @@ input::placeholder {
     font-size: 32px;
     font-weight: bold;
 
-    margin-top: 50px; 
+    margin-top: 50px;
     padding: 6px 15px;
+}
+
+#save-button {
+    margin-left: 15px;
 }
 
 footer{
@@ -151,7 +155,7 @@ footer p {
         padding: 2px 3px;
     }
 
-    #newIngredient {
+    #newIngredient,#save-button {
         --cut-length: 6px;
         --border-size: 2px;
     
