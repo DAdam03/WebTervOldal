@@ -102,6 +102,7 @@
         </div>
 
         <button id="newIngredient" class="nyolcszog" onclick="newIngredientClicked()">Új hozzáadása</button>
+        <button id="save-button" class="nyolcszog" onclick="location.href?">Mentés</button>
     </main>
 
     <footer>
