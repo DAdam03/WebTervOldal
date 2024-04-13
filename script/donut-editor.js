@@ -78,19 +78,19 @@ function createIngredientInputs(){
 
         for(let i=0; i<ingredientIds.length; i++){
             if(ingredientData[ingredientIds[i]][3] == typeIds[j]){
-                let ingredientInput = IngredientInput(ingredientIds[i]);
+                let ingredientInput = IngredientInput(Number(ingredientIds[i]));
                 let canHaveMore = ingredientTypes[ingredientData[ingredientIds[i]][3]][1];
                 if(!canHaveMore && firstIngredient){
                     firstIngredient = false;
-                    let radio = ingredientInput.querySelector("#r_i_"+String(ingredientIds[i]));
+                    let radio = ingredientInput.querySelector("#r_i_"+ingredientIds[i]);
                     if(Object.keys(editId).length == 0){
                         radio.checked = true;
                     
                         let imgContainerDiv = document.getElementById("image-container");
-                        let imgLayer = DonutImgLayer(ingredientIds[i]);
+                        let imgLayer = DonutImgLayer(Number(ingredientIds[i]));
                         imgContainerDiv.appendChild(imgLayer);
 
-                        currentRecipe[ingredientIds[i]] = 1;
+                        currentRecipe[Number(ingredientIds[i])] = 1;
                         currentPrice += ingredientData[ingredientIds[i]][2];
                         
                         let fullPrice = document.getElementsByTagName("h3")[0];
@@ -99,22 +99,22 @@ function createIngredientInputs(){
                 }
                 if(Object.keys(editId).length != 0){
                     for(let k=0; k<editData["ingredients"].length; k++){
-                        if(ingredientIds[i] == editData["ingredients"][k][0]){
+                        if(Number(ingredientIds[i]) == editData["ingredients"][k][0]){
                             if(canHaveMore){
                                 let amountInput = ingredientInput.querySelector(".donut-amount-button");
                                 amountInput.value = Number(editData["ingredients"][k][1]);
-                                let radio = ingredientInput.querySelector("#ch_i_"+String(ingredientIds[i]));
+                                let radio = ingredientInput.querySelector("#ch_i_"+ingredientIds[i]);
                                 radio.checked = true;
                             }else{
-                                let radio = ingredientInput.querySelector("#r_i_"+String(ingredientIds[i]));
+                                let radio = ingredientInput.querySelector("#r_i_"+ingredientIds[i]);
                                 radio.checked = true;
                             }
 
                             let imgContainerDiv = document.getElementById("image-container");
-                            let imgLayer = DonutImgLayer(ingredientIds[i]);
+                            let imgLayer = DonutImgLayer(Number(ingredientIds[i]));
                             imgContainerDiv.appendChild(imgLayer);
 
-                            currentRecipe[ingredientIds[i]] = 1;
+                            currentRecipe[Number(ingredientIds[i])] = 1;
                             currentPrice += ingredientData[ingredientIds[i]][2];
                             
                             let fullPrice = document.getElementsByTagName("h3")[0];
@@ -189,13 +189,13 @@ function ingredientAmountChanged(){
     let inputDiv = this.parentElement;
     
     let priceSpan = inputDiv.getElementsByClassName("price-span")[0];
-    priceSpan.innerText = String(newAmount*ingredientData[ingredientId][2])+" Ft";
+    priceSpan.innerText = String(newAmount*ingredientData[String(ingredientId)][2])+" Ft";
 
     if(ingredientId in currentRecipe){
         let oldAmount = currentRecipe[ingredientId];
         currentRecipe[ingredientId] = newAmount;
 
-        let change = (newAmount - oldAmount)*ingredientData[ingredientId][2];
+        let change = (newAmount - oldAmount)*ingredientData[String(ingredientId)][2];
         currentPrice += change;
 
         let fullPrice = document.getElementsByTagName("h3")[0];
@@ -206,12 +206,12 @@ function ingredientAmountChanged(){
 function ingredientCheckChanged(){
     let ingredientId = this.ingredientId;
 
-    let canHaveMore = ingredientTypes[ingredientData[ingredientId][3]][1];
+    let canHaveMore = ingredientTypes[ingredientData[String(ingredientId)][3]][1];
 
     let imgContainerDiv = document.getElementById("image-container");
 
     if(ingredientId in currentRecipe){
-        let change = currentRecipe[ingredientId]*ingredientData[ingredientId][2];
+        let change = currentRecipe[ingredientId]*ingredientData[String(ingredientId)][2];
         delete currentRecipe[ingredientId];
         currentPrice -= change;
         
@@ -232,7 +232,7 @@ function ingredientCheckChanged(){
                 if(sibligNodes[i].classList.contains("ingredient-input-div")){
                     let siblingIngredientId = sibligNodes[i].ingredientId;
                     if(siblingIngredientId in currentRecipe){
-                        change -= ingredientData[siblingIngredientId][2];
+                        change -= ingredientData[String(siblingIngredientId)][2];
                         let imgLayers = imgContainerDiv.getElementsByClassName("ingredient_"+String(siblingIngredientId));
                         for(let i=0; i<imgLayers.length; i++){
                             imgLayers[imgLayers.length-i-1].remove();
@@ -243,7 +243,7 @@ function ingredientCheckChanged(){
             }
         }
         
-        change += amount*ingredientData[ingredientId][2];
+        change += amount*ingredientData[String(ingredientId)][2];
 
         currentRecipe[ingredientId] = amount;
 
@@ -268,7 +268,7 @@ function IngredientInput(ingredientId){
         inputDiv.appendChild(ingredientImg);
     }
 
-    let canHaveMore = ingredientTypes[ingredientData[ingredientId][3]][1];
+    let canHaveMore = ingredientTypes[ingredientData[String(ingredientId)][3]][1];
 
     let checkbox = document.createElement("input");
     if(canHaveMore){
@@ -278,7 +278,7 @@ function IngredientInput(ingredientId){
     }else{
         checkbox.type = "radio";
         checkbox.id = "r_i_"+String(ingredientId);
-        checkbox.name = ingredientData[ingredientId][3];
+        checkbox.name = ingredientData[String(ingredientId)][3];
     }
     
     checkbox.addEventListener("change",ingredientCheckChanged);
@@ -287,15 +287,15 @@ function IngredientInput(ingredientId){
 
     let label = document.createElement("label");
     label.for = "ch_i_"+String(ingredientId);
-    if(ingredientId in ingredientData){
-        label.innerText = ingredientData[ingredientId][0];
+    if(String(ingredientId) in ingredientData){
+        label.innerText = ingredientData[String(ingredientId)][0];
     }
     inputDiv.appendChild(label);
 
     let priceSpan = document.createElement("span");
     priceSpan.classList.add("price-span");
-    if(ingredientId in ingredientData){
-        priceSpan.innerText = ingredientData[ingredientId][2]+" Ft";
+    if(String(ingredientId) in ingredientData){
+        priceSpan.innerText = ingredientData[String(ingredientId)][2]+" Ft";
     }
     inputDiv.appendChild(priceSpan);
 

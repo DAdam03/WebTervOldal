@@ -3,6 +3,10 @@
 
     $user_data = load_json("jsonData/users.json");
     $donut_data = load_json("jsonData/donuts.json");
+    $ingredient_data = load_json("jsonData/ingredients.json");
+
+    $c_ingredient_types = json_encode($ingredient_data["types"], JSON_UNESCAPED_UNICODE);
+    $c_ingredient_data = json_encode($ingredient_data["data"], JSON_UNESCAPED_UNICODE | JSON_FORCE_OBJECT);
 
     $c_donut_data = json_encode($donut_data, JSON_UNESCAPED_UNICODE | JSON_FORCE_OBJECT);
 
@@ -106,7 +110,7 @@
             $user_id = $_SESSION["user"]["id"];
             echo "<script>currentUser = Number('$user_id');</script>";
         }
-        echo "<script>userData = JSON.parse('$client_user_data'); donutData = JSON.parse('$c_donut_data');</script>";
+        echo "<script>userData = JSON.parse('$client_user_data'); donutData = JSON.parse('$c_donut_data'); ingredientTypes = JSON.parse('$c_ingredient_types'); ingredientData = JSON.parse('$c_ingredient_data');</script>";
     ?>
 
     <script src="script/profile-menu.js"></script>

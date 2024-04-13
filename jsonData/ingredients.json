@@ -1,15 +1,56 @@
 {
-    "types":{
-        "alap":["Fánk alap",false,0],
-        "maz":["Máz",false,1],
-        "toltelek":["Töltelék",false,2],
-        "feltet":["Feltétek",true,3]
+    "types": {
+        "alap": {
+            "0": "F\u00e1nk alap",
+            "1": false,
+            "2": 0
+        },
+        "maz": {
+            "0": "M\u00e1z",
+            "1": false,
+            "2": 1
+        },
+        "toltelek": {
+            "0": "T\u00f6ltel\u00e9k",
+            "1": false,
+            "2": 2
+        },
+        "feltet": {
+            "0": "Felt\u00e9tek",
+            "1": true,
+            "2": 3
+        }
     },
-    "data":{
-        "0":["Fánk alap", "img/donut_base.png", 100, "alap"],
-        "1":["Cukormáz", "img/icing.png", 100, "maz"],
-        "2":["Csokis töltelék", "img/chocolate_filling.png", 50, "toltelek"],
-        "3":["Cukorkák", "img/sprinkles.png", 20, "feltet"],
-        "4":["Narancsos töltelék", "img/orange_filling.png", 40, "toltelek"]
+    "data": {
+        "0": {
+            "0": "F\u00e1nk alap",
+            "1": "img\/donut_base.png",
+            "2": 100,
+            "3": "alap"
+        },
+        "1": {
+            "0": "Cukorm\u00e1z",
+            "1": "img\/icing.png",
+            "2": 100,
+            "3": "maz"
+        },
+        "2": {
+            "0": "Csokis t\u00f6ltel\u00e9k",
+            "1": "img\/chocolate_filling.png",
+            "2": 50,
+            "3": "toltelek"
+        },
+        "3": {
+            "0": "Cukork\u00e1k",
+            "1": "img\/sprinkles.png",
+            "2": 20,
+            "3": "feltet"
+        },
+        "4": {
+            "0": "Narancsos t\u00f6ltel\u00e9k",
+            "1": "img\/orange_filling.png",
+            "2": 40,
+            "3": "toltelek"
+        }
     }
 }

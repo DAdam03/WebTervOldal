@@ -7,6 +7,9 @@
     $donut_data = load_json("jsonData/donuts.json");
     $ingredient_data = load_json("jsonData/ingredients.json");
 
+    $c_ingredient_types = json_encode($ingredient_data["types"], JSON_UNESCAPED_UNICODE);
+    $c_ingredient_data = json_encode($ingredient_data["data"], JSON_UNESCAPED_UNICODE | JSON_FORCE_OBJECT);
+
 
     if(isset($_GET["rate_id"]) && isset($_SESSION["user"]) && isset($donut_data[(string)$_GET["rate_id"]])){
         if($_SESSION["user"]["id"] != (string)$donut_data[(string)$_GET["rate_id"]]["user"]){
@@ -117,7 +120,7 @@
             $user_id = $_SESSION["user"]["id"];
             echo "<script>currentUser = Number('$user_id');</script>";
         }
-        echo "<script>userData = JSON.parse('$client_user_data'); donutData = JSON.parse('$c_donut_data');</script>";
+        echo "<script>userData = JSON.parse('$client_user_data'); donutData = JSON.parse('$c_donut_data'); ingredientTypes = JSON.parse('$c_ingredient_types'); ingredientData = JSON.parse('$c_ingredient_data');</script>";
     ?>
     <script src="script/donut-image-container.js"></script>
     <script src="script/donut-box.js"></script>

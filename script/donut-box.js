@@ -210,16 +210,16 @@ function DonutBox(donutId){
 
     let ingredientIndex = Object.keys(data.ingredients); //ez muszaj mert a php osszekeveri az array-t es az object-et
 
-    if(ingredientIndex.length > 0 && data.ingredients[0][0] in ingredientData){
-        ingredientsText += ingredientData[data.ingredients[0][0]][0];
+    if(ingredientIndex.length > 0 && String(data.ingredients[0][0]) in ingredientData){
+        ingredientsText += ingredientData[String(data.ingredients[0][0])][0];
     }
     for(let i=1; i<ingredientIndex.length; i++){
-        if(data.ingredients[i][0] in ingredientData){
+        if(String(data.ingredients[i][0]) in ingredientData){
             if(ingredientsText.length != 0){
                 ingredientsText += ", ";
             }
 
-            ingredientsText += ingredientData[data.ingredients[i][0]][0];
+            ingredientsText += ingredientData[String(data.ingredients[i][0])][0];
             if(data.ingredients[i][1] > 1){
                 ingredientsText += (" x"+data.ingredients[i][1]);
             }
@@ -436,16 +436,16 @@ function CheckoutDonutBox(data,index){
 
     let ingredientIndex = Object.keys(data.ingredients); //ez muszaj mert a php osszekeveri az array-t es az object-et
 
-    if(ingredientIndex.length > 0 && data.ingredients[0][0] in ingredientData){
-        ingredientsText += ingredientData[data.ingredients[0][0]][0];
+    if(ingredientIndex.length > 0 && String(data.ingredients[0][0]) in ingredientData){
+        ingredientsText += ingredientData[String(data.ingredients[0][0])][0];
     }
     for(let i=1; i<ingredientIndex.length; i++){
-        if(data.ingredients[i][0] in ingredientData){
+        if(String(data.ingredients[i][0]) in ingredientData){
             if(ingredientsText.length != 0){
                 ingredientsText += ", ";
             }
 
-            ingredientsText += ingredientData[data.ingredients[i][0]][0];
+            ingredientsText += ingredientData[String(data.ingredients[i][0])][0];
             if(data.ingredients[i][1] > 1){
                 ingredientsText += (" x"+data.ingredients[i][1]);
             }

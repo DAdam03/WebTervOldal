@@ -98,11 +98,11 @@ var ingredientTypes = {
 };
 
 var ingredientData = {
-    0:["Fánk alap", "img/donut_base.png", 100, "alap"],
-    1:["Cukormáz", "img/icing.png", 100, "maz"],
-    2:["Csokis töltelék", "img/chocolate_filling.png", 50, "toltelek"],
-    3:["Cukorkák", "img/sprinkles.png", 20, "feltet"],
-    4:["Narancsos töltelék", "img/orange_filling.png", 40, "toltelek"],
+    "0":["Fánk alap", "img/donut_base.png", 100, "alap"],
+    "1":["Cukormáz", "img/icing.png", 100, "maz"],
+    "2":["Csokis töltelék", "img/chocolate_filling.png", 50, "toltelek"],
+    "3":["Cukorkák", "img/sprinkles.png", 20, "feltet"],
+    "4":["Narancsos töltelék", "img/orange_filling.png", 40, "toltelek"],
 };
 
 
@@ -111,8 +111,8 @@ function getPriceByIngredients(ingredients){
     
     let index = Object.keys(ingredients);
     for(let i=0; i<index.length; i++){
-        if(ingredients[i][0] in ingredientData){
-            price += ingredientData[ingredients[i][0]][2]*ingredients[i][1];
+        if(String(ingredients[i][0]) in ingredientData){
+            price += ingredientData[String(ingredients[i][0])][2]*ingredients[i][1];
         }
     }
     

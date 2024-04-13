@@ -27,13 +27,13 @@ function DonutImgContainer(ingredients){
 
 
 function DonutImgLayer(ingredientId){
-    if(ingredientId in ingredientData){
+    if(String(ingredientId) in ingredientData){
         let donutImg = document.createElement("img");
                 
-        donutImg.src = ingredientData[ingredientId][1];
+        donutImg.src = ingredientData[String(ingredientId)][1];
         donutImg.alt = "osszetevo";
         donutImg.classList.add("ingredient_"+String(ingredientId));
-        donutImg.style.zIndex = ingredientTypes[ingredientData[ingredientId][3]][2];
+        donutImg.style.zIndex = ingredientTypes[ingredientData[String(ingredientId)][3]][2];
 
         return donutImg;
     }

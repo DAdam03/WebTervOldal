@@ -4,8 +4,69 @@
 
     session_start();
 
+    if(!isset($_SESSION["user"]) || !$_SESSION["user"]["data"]["admin"]){
+        header("Location: login.php");
+    }
+
     $user_data = load_json("jsonData/users.json");
     $donut_data = load_json("jsonData/donuts.json");
+    $ingredient_data = load_json("jsonData/ingredients.json");
+
+
+    /*
+    if(isset($_POST["x"])){
+        $post_success = true;
+    }
+    */
+    $new_data = [];
+    if(isset($_POST["ingredient_changes"])){
+        //$post_success = true;
+        if(isset($_POST["new_data"])){
+            $new_data = json_decode($_POST["new_data"], JSON_FORCE_OBJECT);
+            foreach($new_data as $ingredient_id => $i_data){
+                if(isset($i_data["n"])){
+                    $ingredient_data["data"][$ingredient_id]["0"] = $i_data["n"];
+                }
+                if(isset($i_data["i"])){
+                    if(isset($_FILES[$i_data["i"]])){
+                        $img_path = "img/" . $_FILES[$i_data["i"]]["name"];
+                        if(move_uploaded_file($_FILES[$i_data["i"]]["tmp_name"], $img_path)){
+                            $ingredient_data["data"][$ingredient_id]["1"] = $img_path;
+                        }
+                    };
+                }
+                if(isset($i_data["p"])){
+                    $ingredient_data["data"][$ingredient_id]["2"] = $i_data["p"];
+                }
+                if(isset($i_data["t"])){
+                    $ingredient_data["data"][$ingredient_id]["3"] = $i_data["t"];
+                }
+            }
+        }
+        if(isset($_POST["deleted_ids"])){
+            $deleted_ids = json_decode($_POST["deleted_ids"], JSON_FORCE_OBJECT);
+            for($i=0; $i<count($deleted_ids); $i++){
+                unset($ingredient_data["data"][$deleted_ids[$i]]);
+            }
+            if(count($deleted_ids) > 0){
+                foreach($donut_data as $id => $d_data){
+                    $new_donut_ingredients = [];
+                    foreach($d_data["ingredients"] as $i_index => $i_data){
+                        if(isset($ingredient_data[$i_data["0"]])){
+                            $new_donut_ingredients[$i_index] = $i_data;
+                        }
+                    }
+                    $donut_data[$id]["ingredients"] = $new_donut_ingredients;
+                }
+                store_json($donut_data,"jsonData/donuts.json");
+            }
+        }
+        
+        store_json($ingredient_data,"jsonData/ingredients.json");
+    }
+
+    $c_ingredient_types = json_encode($ingredient_data["types"], JSON_UNESCAPED_UNICODE);
+    $c_ingredient_data = json_encode($ingredient_data["data"], JSON_UNESCAPED_UNICODE | JSON_FORCE_OBJECT);
 
     $c_donut_data = json_encode($donut_data, JSON_UNESCAPED_UNICODE | JSON_FORCE_OBJECT);
 
@@ -18,9 +79,7 @@
     }
     $client_user_data = json_encode($c_user_data, JSON_UNESCAPED_UNICODE | JSON_FORCE_OBJECT);
 
-    if(!isset($_SESSION["user"]) || !$_SESSION["user"]["data"]["admin"]){
-        header("Location: login.php");
-    }
+    
 ?>
 <!DOCTYPE html>
 <html lang="hu">
@@ -41,7 +100,7 @@
             $user_id = $_SESSION["user"]["id"];
             echo "<script>currentUser = Number('$user_id');</script>";
         }
-        echo "<script>userData = JSON.parse('$client_user_data'); donutData = JSON.parse('$c_donut_data');</script>";
+        echo "<script>userData = JSON.parse('$client_user_data'); donutData = JSON.parse('$c_donut_data'); ingredientTypes = JSON.parse('$c_ingredient_types'); ingredientData = JSON.parse('$c_ingredient_data');</script>";
     ?>
     <script src="script/donut-box.js"></script>
     <script src="script/admin-ingredient-box.js"></script>
@@ -102,7 +161,7 @@
         </div>
 
         <button id="newIngredient" class="nyolcszog" onclick="newIngredientClicked()">Új hozzáadása</button>
-        <button id="save-button" class="nyolcszog" onclick="location.href?">Mentés</button>
+        <button id="save-button" class="nyolcszog" onclick="ingredientSave()">Mentés</button>
     </main>
 
     <footer>
