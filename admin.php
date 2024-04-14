@@ -13,14 +13,8 @@
     $ingredient_data = load_json("jsonData/ingredients.json");
 
 
-    /*
-    if(isset($_POST["x"])){
-        $post_success = true;
-    }
-    */
     $new_data = [];
     if(isset($_POST["ingredient_changes"])){
-        //$post_success = true;
         if(isset($_POST["new_data"])){
             $new_data = json_decode($_POST["new_data"], JSON_FORCE_OBJECT);
             foreach($new_data as $ingredient_id => $i_data){
@@ -28,12 +22,16 @@
                     $ingredient_data["data"][$ingredient_id]["0"] = $i_data["n"];
                 }
                 if(isset($i_data["i"])){
-                    if(isset($_FILES[$i_data["i"]])){
-                        $img_path = "img/" . $_FILES[$i_data["i"]]["name"];
-                        if(move_uploaded_file($_FILES[$i_data["i"]]["tmp_name"], $img_path)){
-                            $ingredient_data["data"][$ingredient_id]["1"] = $img_path;
+                    if($i_data["i"][1] == "_"){
+                        if(isset($_FILES[$i_data["i"]])){
+                            $img_path = "img/" . $_FILES[$i_data["i"]]["name"];
+                            if(move_uploaded_file($_FILES[$i_data["i"]]["tmp_name"], $img_path)){
+                                $ingredient_data["data"][$ingredient_id]["1"] = $img_path;
+                            }
                         }
-                    };
+                    }else{
+                        $ingredient_data["data"][$ingredient_id]["1"] = $i_data["i"];
+                    }
                 }
                 if(isset($i_data["p"])){
                     $ingredient_data["data"][$ingredient_id]["2"] = $i_data["p"];
@@ -44,7 +42,7 @@
             }
         }
         if(isset($_POST["deleted_ids"])){
-            $deleted_ids = json_decode($_POST["deleted_ids"], JSON_FORCE_OBJECT);
+            $deleted_ids = json_decode($_POST["deleted_ids"]);
             for($i=0; $i<count($deleted_ids); $i++){
                 unset($ingredient_data["data"][$deleted_ids[$i]]);
             }
@@ -52,7 +50,7 @@
                 foreach($donut_data as $id => $d_data){
                     $new_donut_ingredients = [];
                     foreach($d_data["ingredients"] as $i_index => $i_data){
-                        if(isset($ingredient_data[$i_data["0"]])){
+                        if(isset($ingredient_data["data"][$i_data["0"]])){
                             $new_donut_ingredients[$i_index] = $i_data;
                         }
                     }

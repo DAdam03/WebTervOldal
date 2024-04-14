@@ -46,19 +46,40 @@ function ingredientSave(){
         }
     }
 
+    //console.log(sessionStorage.getItem("checkout"));
+
     let newIds = Object.keys(ingredientData);
     for(let i=0; i<newIds.length; i++){
         if(!(newIds[i] in oldIngredientData)){
             let newIngredientData = {
                 "n":ingredientData[newIds[i]][0],
-                "i":ingredientData[newIds[i]][1],
                 "p":ingredientData[newIds[i]][2],
                 "t":ingredientData[newIds[i]][3]
             };
+            if(typeof ingredientData[newIds[i]][1] == "string"){
+                newIngredientData["i"] = ingredientData[newIds[i]][1];
+            }else{
+                newIngredientData["i"] = "i_"+String(newImages.push(ingredientData[newIds[i]][1])-1);
+            }
             newData[newIds[i]] = newIngredientData;
         }
     }
 
+    let checkoutDataNew = JSON.parse(sessionStorage.getItem("checkout"));
+    for(let i=0; i<checkoutDataNew.length; i++){
+        if("ingredients" in checkoutDataNew[i]){
+            let newCheckoutIngredients = []
+            for(let j=0; j<checkoutDataNew[i]["ingredients"].length; j++){
+                if(! deleteIds.includes(checkoutDataNew[i]["ingredients"][j][0])){
+                        newCheckoutIngredients.push(checkoutDataNew[i]["ingredients"][j]);
+                }
+            }
+            checkoutDataNew[i]["ingredients"] = newCheckoutIngredients;
+        }
+    }
+    sessionStorage.setItem("checkout",JSON.stringify(checkoutDataNew));
+
+    
     var formData = new FormData();
     
     formData.append("ingredient_changes","true");
@@ -103,7 +124,7 @@ function newIngredientClicked(){
 
 
 function ingredientDeleteClicked(){
-    let ingredientId = this.ingredientId;
+    let ingredientId = this.parentElement.id;
 
     delete ingredientData[String(ingredientId)];
     this.parentElement.remove();
