@@ -71,10 +71,17 @@
             $new_donut_data["name"] = $donut_name;
             $new_donut_data["rating"] = [];
             $new_donut_data["user"] = (int)$_SESSION["user"]["id"];
+            
+            if($_SESSION["user"]["data"]["admin"]){
+                $new_donut_data["rating"] = -1;
+                $new_donut_data["user"] = -1;
+            }
+
             $donut_data[$new_donut_id] = $new_donut_data;
+            
         }
         store_json($donut_data,"jsonData/donuts.json");
-        if($donut_data[(string)$_GET["id"]]["user"] == -1 && $_SESSION["user"]["data"]["admin"]){
+        if(((isset($_GET["id"]) && $donut_data[(string)$_GET["id"]]["user"] == -1) || !isset($_GET["id"])) && $_SESSION["user"]["data"]["admin"]){
             header("Location: index.php");
         }
         else{
