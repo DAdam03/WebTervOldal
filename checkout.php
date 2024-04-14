@@ -106,14 +106,26 @@
 
                 </div>
                 <h2 id="price">Fizetendő összeg: 0 Ft</h2>
-                <form id="checkout-form" class="nyolcszog">
+                <form id="checkout-form" class="nyolcszog" method="POST">
                     <div class="login-input-wrapper">
-                        <input type="text" id="name" name="name" placeholder="">
+                        <?php
+                            echo '<input type="text" value="';
+                            if(isset($_SESSION["user"])){
+                                echo $_SESSION["user"]["data"]["name"];
+                            }
+                            echo '" id="name" name="name" placeholder="">';
+                        ?>
                         <label for="name">Név:</label>
                     </div>
 
                     <div class="login-input-wrapper">
-                        <input type="email" id="e-mail" name="e-mail" placeholder="">
+                        <?php
+                            echo '<input type="email" value="';
+                            if(isset($_SESSION["user"])){
+                                echo $_SESSION["user"]["data"]["email"];
+                            }
+                            echo '" id="e-mail" name="e-mail" placeholder="">';
+                        ?>
                         <label for="e-mail">E-mail cím:</label>
                     </div>
 
