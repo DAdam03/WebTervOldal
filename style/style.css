@@ -76,6 +76,13 @@ header.only-desktop {
     background-image: linear-gradient(black,rgba(0, 0, 0, 0));
 }
 
+#error {
+    margin-top: 5px;
+    text-align: center;
+    color: red;
+    font-size: 16px;
+}
+
 #logo {
     margin-left: 30px;
     width: fit-content;

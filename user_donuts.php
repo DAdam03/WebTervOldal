@@ -6,6 +6,9 @@
     $user_data = load_json("jsonData/users.json");
     $donut_data = load_json("jsonData/donuts.json");
     $ingredient_data = load_json("jsonData/ingredients.json");
+    $rewards = load_json("jsonData/rewards.json");
+
+    $req_points = 200;// ennyi pontonként van egy szint
 
     $c_ingredient_types = json_encode($ingredient_data["types"], JSON_UNESCAPED_UNICODE);
     $c_ingredient_data = json_encode($ingredient_data["data"], JSON_UNESCAPED_UNICODE | JSON_FORCE_OBJECT);
@@ -24,7 +27,16 @@
                         //pontot kell adni a fank keszitojenek
                         $donut_data[(string)$_GET["rate_id"]]["rating"][(string)$_SESSION["user"]["id"]] = $new_rating;
                         //az ertekeles tizszereset kapja
+                        $old_level = (int)($user_data[(string)$donut_data[(string)$_GET["rate_id"]]["user"]]["score"]/$req_points);
                         $user_data[(string)$donut_data[(string)$_GET["rate_id"]]["user"]]["score"] += $new_rating*10;
+                        $new_level = (int)($user_data[(string)$donut_data[(string)$_GET["rate_id"]]["user"]]["score"]/$req_points);
+
+                        for($i=$old_level; $i<$new_level; $i++){
+                            if(isset($rewards[(string)$i])){
+                                $user_data[(string)$donut_data[(string)$_GET["rate_id"]]["user"]]["uncollected_rewards"][] = $rewards[(string)$i];
+                            }
+                        }
+
                         store_json($user_data,"jsonData/users.json");
                     }
                     store_json($donut_data,"jsonData/donuts.json");

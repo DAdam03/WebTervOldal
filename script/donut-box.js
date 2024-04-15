@@ -349,8 +349,52 @@ function createCheckoutDonutBoxes(){
     priceSum.innerText = "Fizetendő összeg: "+String(currentPrice)+" Ft";
 }
 
+function orderSend(){
+    let donutBoxContainer = document.getElementById("order-container");
+    let donutBoxes = donutBoxContainer.childNodes;
+    let dataSum = [];
+    for(let i=0; i<donutBoxes.length; i++){
+        if("ingredients" in donutBoxes[i]){
+            let amount = 1;
+            let ingredientObject = donutBoxes[i].ingredients;
+            let ingredients = [];
+            let ingredientIndex = Object.keys(ingredientObject);
+            for(let j=0; j<ingredientIndex.length; j++){
+                ingredients.push(Object.values(ingredientObject[j]));
+            }
+            let donutAmountButton = donutBoxes[i].querySelector(".donut-amount-button");
+            if(donutAmountButton){
+                amount = Number(donutAmountButton.value);
+            }
+            //console.log(donutBoxes[i]);
+            let data = [ingredients,amount];
+            //console.log(ingredients);
+            dataSum.push(data);
+        }
+    }
 
-function CheckoutDonutAmountChanged(){
+    let nameInput = document.getElementById("name");
+    let name = nameInput.value;
+
+    let emailInput = document.getElementById("e-mail");
+    let email = emailInput.value;
+
+    let addressInput = document.getElementById("address");
+    let address = addressInput.value;
+
+    let payment = "cash"
+
+    //let cashInput = document.getElementById("cash");
+
+    let cardInput = document.getElementById("card");
+    if(cardInput.checked){
+        payment = "card";
+    }
+
+    location.href = "checkout.php?checkout-data="+JSON.stringify(dataSum)+"&name="+name+"&email="+email+"&address="+address+"&payment="+payment;
+}
+
+function checkoutDonutAmountChanged(){
     let checkoutData = JSON.parse(sessionStorage.getItem("checkout"));
 
     let donutBoxDiv = this.parentElement;
@@ -386,7 +430,7 @@ function checkoutDonutEditClicked(){
 }
 
 
-function CheckoutDonutDeleted(){
+function checkoutDonutDeleted(){
     let checkoutData = JSON.parse(sessionStorage.getItem("checkout"));
 
     let donutBoxDiv = this.parentElement;
@@ -415,6 +459,8 @@ function CheckoutDonutDeleted(){
 function CheckoutDonutBox(data,index){
     let donutBoxDiv = document.createElement("div");
     donutBoxDiv.classList.add("checkout-donut-box");
+
+    donutBoxDiv.ingredients = data.ingredients;
 
     donutBoxDiv.index = index;
 
@@ -463,7 +509,7 @@ function CheckoutDonutBox(data,index){
     amountInput.size = 3;
     amountInput.classList.add("donut-amount-button");
 
-    amountInput.addEventListener("change",CheckoutDonutAmountChanged);
+    amountInput.addEventListener("change",checkoutDonutAmountChanged);
 
     donutBoxDiv.appendChild(amountInput);
 
@@ -489,7 +535,7 @@ function CheckoutDonutBox(data,index){
     deleteIcon.classList.add("fa-xs");
 
     deleteInput.appendChild(deleteIcon);
-    deleteInput.addEventListener("click", CheckoutDonutDeleted);
+    deleteInput.addEventListener("click", checkoutDonutDeleted);
     donutBoxDiv.appendChild(deleteInput);
 
 

@@ -6,6 +6,8 @@
 
     include "file_functions.php";
 
+    $req_points = 200;// ennyi pontonként van egy szint
+
     $user_data = load_json("jsonData/users.json");
     $donut_data = load_json("jsonData/donuts.json");
     $ingredient_data = load_json("jsonData/ingredients.json");
@@ -188,7 +190,6 @@
         <div id="progress_conatiner">
             <span id="current_level">
                 <?php
-                    $req_points = 50;// ennyi pontonként van egy szint
                     echo floor($_SESSION["user"]["data"]["score"] / $req_points) + 1;
                 ?>
             </span>
