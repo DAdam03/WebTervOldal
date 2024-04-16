@@ -32,6 +32,35 @@ h2 {
 
 }
 
+#profile-picture{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}
+
+#profile-pic-label{
+    --cut-length: 8px;
+    --background-color: #5A88FF;
+    --border-size: 2px;
+    text-align: center;
+    padding: 5px 7px;
+}
+
+#profile-pic-input{
+    display: none;
+}
+
+#profile-pic-save-button{
+    --cut-length: 12px;
+    --border-size: 3px;
+    --border-color: white;
+    --background-color: #5A88FF;
+    font-weight: 700;
+    
+    padding: 5px 20px;
+    cursor: pointer;
+}
+
 #profile-grid {
     --cut-length: 20px;
     --background-color: #7b9eb0;

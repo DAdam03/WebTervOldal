@@ -32,6 +32,11 @@
             }
             $donut_data = $new_donut_data;
 
+            //profilkep torlese
+            if(file_exists("img/profilePics/img_".(string)$_SESSION["user"]["id"].".png")){
+                unlink("img/profilePics/img_".(string)$_SESSION["user"]["id"].".png");
+            }
+
             store_json($donut_data, "jsonData/donuts.json");
 
             unset($user_data[(string)$_SESSION["user"]["id"]]);

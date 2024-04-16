@@ -27,8 +27,17 @@
 
     $c_donut_data = json_encode($donut_data, JSON_UNESCAPED_UNICODE | JSON_FORCE_OBJECT);
     
-    $errors = [];
+    
+    if(isset($_POST["profile_pic_save"]) && isset($_SESSION["user"])){
+        if(isset($_FILES["profile_pic_image"])){
+            $img_path = "img/profilePics/img_" . (string)$_SESSION["user"]["id"] . ".png";
+            if(move_uploaded_file($_FILES["profile_pic_image"]["tmp_name"], $img_path)){
+                //sikeres feltoltes
+            }
+        }
+    }
 
+    $errors = [];
     if(isset($_POST["data-save"])){
         if(!isset($_POST["username"]) || trim($_POST["username"]) == ""){
             $errors[] = "username";
@@ -151,6 +160,37 @@
                 Felhasználók fánkjai
             </div>
         </nav>
+        <h2>Profilkép:</h2>
+        
+        <?php
+            if(isset($_SESSION["user"])){
+                echo '<img alt="profil" src="img/profilePics/';
+                if(file_exists("img/profilePics/img_".(string)$_SESSION["user"]["id"].".png")){
+                    echo 'img_';
+                    echo $_SESSION["user"]["id"];
+                    echo '.png" id="profile-picture">';
+                }else{
+                    echo 'temp.png" id="profile-picture">';
+                }
+            }
+        ?>
+        <script>
+            function profilePicChanged(){
+                let inputElement = document.querySelector("#profile-pic-input");
+                let files = inputElement.files;
+                console.log(inputElement.files);
+                if(files.length > 0){
+                    let src = URL.createObjectURL(files[0]);
+                    let imgTag = document.querySelector("#profile-picture");
+                    imgTag.src = src;
+                }
+            }
+        </script>
+        <form method="POST" enctype="multipart/form-data">
+            <label class="nyolcszog" for="profile-pic-input" id="profile-pic-label">Új kép megadása</label>
+            <input type="file" id="profile-pic-input" name="profile_pic_image" accept="image/*" onchange="profilePicChanged()">
+            <button class="nyolcszog" id="profile-pic-save-button" name="profile_pic_save" type="submit">Mentés</button>
+        </form>
         <h2>Saját adatok:</h2>
         <form id="profile-grid" class="nyolcszog" method="POST">
             <label for="username">Felhasználó név: </label><br class="only-phone">
