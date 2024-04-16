@@ -3,11 +3,9 @@
         "name": "janoska657",
         "password": "$2y$10$3N3BWojv2Hzkpvr.WZTV2eF0F\/XlhmTEIa.Dh71ldDRHAzfRvEtQ2",
         "email": "janos@ikszde.hu",
-        "score": 455,
+        "score": 715,
         "admin": true,
-        "uncollected_rewards": {
-            "0": "Octo Donut b\u00f6gre"
-        }
+        "uncollected_rewards": {}
     },
     "1": {
         "name": "janoska",

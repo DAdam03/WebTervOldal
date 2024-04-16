@@ -65,10 +65,13 @@
                         $user_data[(string)$_SESSION["user"]["id"]]["uncollected_rewards"][] = $rewards[(string)$i];
                     }
                 }
-
                 store_json($user_data,"jsonData/users.json");
             }
-            header("Location: checkout.php");
+            if($full_price > 0){
+                header("Location: checkout.php?order_success=true");
+            }else{
+                $errors[] = "no_donut";
+            }
         }
     }
 
@@ -167,14 +170,23 @@
             </nav>
 
             <div id="content">
+                <?php
+                    if(isset($_GET["order_success"])){
+                        echo '<h2 id="order-alert">Sikeres Rendelés!</h2>';
+                    }
+                    if(in_array("no_donut",$errors)){
+                        echo "<p id='error'>Sikertelen rendelés: Adj fánkokat a kosárhoz!</p>";
+                    }
+                ?>
+
                 <h2>Kosár:</h2>
                 <div id="order-container" class="nyolcszog">
                     <?php
                         if(isset($_SESSION["user"])){
                             for($i=0; $i<count($_SESSION["user"]["data"]["uncollected_rewards"]); $i++){
-                                echo '<div class="bonus_reward"><img alt="bónusz ajándék" src="img/rewards/bonus_';
+                                echo '<div class="bonus-reward"><img alt="bónusz ajándék" src="img/rewards/bonus_';
                                 echo $i;
-                                echo '.png class="bonus_reward_img"><p class="bonus_reward_name">';
+                                echo '.png" class="bonus-reward_img"><p class="bonus-reward-name">Bónusz ajándék: <br class="only-phone">';
                                 echo $_SESSION["user"]["data"]["uncollected_rewards"][$i];
                                 echo '</p></div>';
                             }
