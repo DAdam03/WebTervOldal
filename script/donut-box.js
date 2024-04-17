@@ -184,6 +184,11 @@ function donutBuyClicked(){
     location.href = "checkout.php";
 }
 
+function profilePictureError(){
+    this.src = "img/profilePics/temp.png";
+    this.removeEventListener("error",profilePictureError);
+}
+
 
 function DonutBox(donutId){
     let data = donutData[donutId];
@@ -264,6 +269,14 @@ function DonutBox(donutId){
         ratingDiv.appendChild(ratingSpan);
 
         
+        let profilePic = document.createElement("img");
+        profilePic.src = "img/profilePics/img_"+String(data.user)+".png";
+        profilePic.alt = "user_"+String(data.user);
+        profilePic.classList.add("profile-pic");
+        profilePic.addEventListener("error",profilePictureError);
+        donutBoxDiv.appendChild(profilePic);
+
+
         let userNameTag = document.createElement("h4");
         userNameTag.innerText = userData[String(data.user)]["name"];
         donutBoxDiv.appendChild(userNameTag);
@@ -382,7 +395,7 @@ function orderSend(){
     let addressInput = document.getElementById("address");
     let address = addressInput.value;
 
-    let payment = "cash"
+    let payment = "cash";
 
     //let cashInput = document.getElementById("cash");
 

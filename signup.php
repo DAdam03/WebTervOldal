@@ -62,7 +62,7 @@
                 }
                 $new_data = [];
                 $new_data["name"] = $username;
-                $new_data["password"] = password_hash($password, PASSWORD_DEFAULT);;
+                $new_data["password"] = password_hash($password, PASSWORD_DEFAULT);
                 $new_data["email"] = $email;
                 $new_data["score"] = 0;
                 $new_data["admin"] = FALSE;

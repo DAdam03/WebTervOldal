@@ -48,7 +48,11 @@
         if(count($errors) == 0){
             $username = htmlspecialchars(trim($_POST["username"]));
             $email = htmlspecialchars(trim($_POST["email"]));
-
+            $password = "";
+            if(isset($_POST["password"])){
+                $password = htmlspecialchars(trim($_POST["password"]));
+            }
+            
             $exists = FALSE;
             $email_exists = FALSE;
             foreach($user_data as $id => $u_data){
@@ -68,6 +72,11 @@
             }else{
                 $_SESSION["user"]["data"]["name"] = $username;
                 $_SESSION["user"]["data"]["email"] = $email;
+
+                if($password != ""){
+                    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+                    $_SESSION["user"]["data"]["password"] = $hashed_password;
+                }
 
                 $user_data[(string)$_SESSION["user"]["id"]] = $_SESSION["user"]["data"];
                 store_json($user_data,"jsonData/users.json");
@@ -223,6 +232,8 @@
                     echo "<p id='error'>Ez az email már foglalt!</p><br>";
                 }
             ?>
+            <label for="password">Új jelszó: </label><br class="only-phone">
+            <input type="password" value="" id="password" name="password"><br class="only-phone">
             <button id="data-save" class="nyolcszog" name="data-save" type="submit">Mentés</button>
         </form>
 
