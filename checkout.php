@@ -185,8 +185,8 @@
                         if(isset($_SESSION["user"])){
                             for($i=0; $i<count($_SESSION["user"]["data"]["uncollected_rewards"]); $i++){
                                 echo '<div class="bonus-reward"><img alt="bónusz ajándék" src="img/rewards/bonus_';
-                                echo $i;
-                                echo '.png" class="bonus-reward_img"><p class="bonus-reward-name">Bónusz ajándék: <br class="only-phone">';
+                                echo array_search($_SESSION["user"]["data"]["uncollected_rewards"][$i],$rewards);
+                                echo '.png" class="bonus-reward-img"><p class="bonus-reward-name">Bónusz ajándék: <br class="only-phone">';
                                 echo $_SESSION["user"]["data"]["uncollected_rewards"][$i];
                                 echo '</p></div>';
                             }

@@ -275,6 +275,7 @@ button:hover {
     height: 70px;
     width: 70px;
     margin-right: 15px;
+    float: left;
 }
 
 .bonus-reward-name{
