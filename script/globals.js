@@ -40,38 +40,7 @@ var currentUser = -1; // -1 -> nincs bejelentkezve
     },
 */
 
-var donutData = {
-    0:{
-        "ingredients":[[0,1],[1,1],[2,1],[3,1]],
-        "name":"TesztFánk",
-        "rating":-1,
-        "user":-1
-    },
-    1:{
-        "ingredients":[[0,1],[1,1],[2,1],[3,1]],
-        "name":"TesztFánk2",
-        "rating":-1,
-        "user":-1
-    },
-    2:{
-        "ingredients":[[0,1],[1,1],[2,1],[3,1]],
-        "name":"TesztFánk3",
-        "rating":-1,
-        "user":-1
-    },
-    3:{
-        "ingredients":[[0,1],[1,1],[2,1],[3,1]],
-        "name":"TesztFánk4",
-        "rating":2,
-        "user":0
-    },
-    4:{
-        "ingredients":[[0,1],[1,1],[2,1],[3,1]],
-        "name":"TesztFánk5",
-        "rating":5.5,
-        "user":1
-    },
-}
+var donutData = {}
 
 
 /*
@@ -90,20 +59,9 @@ típusok: alap, maz, toltelek, feltet -> (ebből több is lehet egyszerre, a tö
     típus-id:[típus-név, lehet-több]
 */
 
-var ingredientTypes = {
-    "alap":["Fánk alap",false,0],
-    "maz":["Máz",false,1],
-    "toltelek":["Töltelék",false,2],
-    "feltet":["Feltétek",true,3]
-};
+var ingredientTypes = {};
 
-var ingredientData = {
-    "0":["Fánk alap", "img/donut_base.png", 100, "alap"],
-    "1":["Cukormáz", "img/icing.png", 100, "maz"],
-    "2":["Csokis töltelék", "img/chocolate_filling.png", 50, "toltelek"],
-    "3":["Cukorkák", "img/sprinkles.png", 20, "feltet"],
-    "4":["Narancsos töltelék", "img/orange_filling.png", 40, "toltelek"],
-};
+var ingredientData = {};
 
 
 function getPriceByIngredients(ingredients){

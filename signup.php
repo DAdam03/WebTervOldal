@@ -66,6 +66,7 @@
                 $new_data["email"] = $email;
                 $new_data["score"] = 0;
                 $new_data["admin"] = FALSE;
+                $new_data["uncollected_rewards"] = [];
                 
                 $user_data[(string) $new_id] = $new_data;
 
