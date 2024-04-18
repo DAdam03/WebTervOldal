@@ -93,9 +93,13 @@ input::placeholder {
     margin-left: 15px;
 }
 
+main{
+    min-height: calc(100vh - 200px - 30px);
+}
+
+
 footer{
-    position: absolute;
-    bottom: 0;
+    margin-top: 80px;
 }
 
 
@@ -105,9 +109,6 @@ footer p {
 
 @media screen and (max-width: 1400px){
 
-    footer{
-        position: static;
-    }
 
     .admin-ingredient-container {
         grid-template-columns: none;

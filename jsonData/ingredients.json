@@ -51,6 +51,66 @@
             "1": "img\/orange_filling.png",
             "2": 40,
             "3": "toltelek"
+        },
+        "5": {
+            "0": "Csokis f\u00e1nk alap",
+            "1": "img\/donut_base_chocolate.png",
+            "2": 120,
+            "3": "alap"
+        },
+        "6": {
+            "0": "Cs\u00edkos f\u00e1nk alap",
+            "1": "img\/donut_base_zebra.png",
+            "2": 150,
+            "3": "alap"
+        },
+        "7": {
+            "0": "Epres f\u00e1nk alap",
+            "1": "img\/donut_base_strawberry.png",
+            "2": 120,
+            "3": "alap"
+        },
+        "8": {
+            "0": "K\u00e9k cukorm\u00e1z",
+            "1": "img\/blue_icing.png",
+            "2": 105,
+            "3": "maz"
+        },
+        "9": {
+            "0": "Sz\u00fcrke cukorm\u00e1z",
+            "1": "img\/ash_icing.png",
+            "2": 95,
+            "3": "maz"
+        },
+        "10": {
+            "0": "F\u00e9nyl\u0151 cukorm\u00e1z",
+            "1": "img\/glowing_icing.png",
+            "2": 125,
+            "3": "maz"
+        },
+        "11": {
+            "0": "Citromos t\u00f6ltel\u00e9k",
+            "1": "img\/lemon_filling.png",
+            "2": 50,
+            "3": "toltelek"
+        },
+        "12": {
+            "0": "Epres t\u00f6ltel\u00e9k",
+            "1": "img\/strawberry_filling.png",
+            "2": 50,
+            "3": "toltelek"
+        },
+        "13": {
+            "0": "Piros cukork\u00e1k",
+            "1": "img\/red_sprinkles.png",
+            "2": 30,
+            "3": "feltet"
+        },
+        "14": {
+            "0": "Szenes cukork\u00e1k",
+            "1": "img\/bug_sprinkles.png",
+            "2": 15,
+            "3": "feltet"
         }
     }
 }
