@@ -259,12 +259,11 @@
             </span>
         </div>
         <p id="progress_text">Következő szinthez szükséges pontok: 
-            <span id="progress_text_point">
-                <?php
-                    echo $req_points - $_SESSION["user"]["data"]["score"] % $req_points;
-                ?>
-            </span>
-        </div>
+        <span id="progress_text_point">
+            <?php
+                echo $req_points - $_SESSION["user"]["data"]["score"] % $req_points;
+            ?>
+        </span>
         
         <h2>Saját fánkok:</h2>
         <div id="donut-box-container"></div>
